@@ -17,16 +17,29 @@
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-  
     <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <!-- Header -->
     <include src="./partials/header.html"></include>
     <main>
+      <!-- Hero -->
       <include src="./partials/hero.html"></include>
-      <include src="./partials/weekly-trends.html"></include>
-      <include src="./partials/upcoming.html"></include>
+
+      <!-- Search form -->
+      <include src="./partials/search-form.html"></include>
+
+      <!-- Filter -->
+      <include src="./partials/filter.html"></include>
+
+      <!-- Gallery -->
+      <include src="./partials/gallery.html"></include>
+
+      <!-- Pagination -->
+      <include src="./partials/pagination.html"></include>
     </main>
+
+    <!-- Footer -->
     <include src="./partials/footer.html"></include>
 
-    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/catalog.js"></script>
   </body>
 </html>
