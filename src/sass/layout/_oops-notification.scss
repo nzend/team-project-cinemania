@@ -1,36 +1,35 @@
-.box{
-    // outline: 1px solid blue;
+.notification{
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
     width: 280px;
     height: 289px;
+    padding: 20px;
     background: #111111;
     box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
     border-radius: 16px;
 }
 @media screen and (min-width: 768px){
-    .box{
-    position: relative;
+    .notification{
     width: 609px;
     height: 400px;
     }
 }
 @media screen and (min-width: 1200px){
-    .box{
-     position: absolute;
-    left: 290px;
-    top: 190px;
+    .notification{
+    margin-left: auto;
+    margin-right: auto;
     width: 700px;
     height: 400px;
     border-radius: 20px;
     }
 }
-.text{
+.notification-text{
     position: absolute;
     width: 214px;
     height: 65px;
     left: 33px;
     top: 39px;
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -38,7 +37,7 @@
     color: #FFFFFF;
 }
 @media screen and (min-width: 768px){
-    .text{
+    .notification-text{
     width: 321px;
     height: 92px;
     left: 44px;
@@ -49,64 +48,69 @@
 }
 
 @media screen and (min-width: 1200px){
-    .text{
+    .notification-text{
     left: 50px;
     top: 150px;
     width: 321px;
     height: 100px;
-    border-radius: 20px;
-    font-size: 24px;
-    line-height: 28px;
     }
 }
 
-.label{
+.notification-label{
 position: absolute;
-width: 159px;
-height: 153px;
 left: 61px;
-top: 128px;
+bottom: 8px;
+
 }
 
 @media screen and (min-width: 768px){
-    .label{
-        width: 296px;
-        height: 260px;
+    .notification-label{
         left: 303px;
         top: 124px;
+        bottom: 16px;
     }
 }
 
 @media screen and (min-width: 1200px){
-    .label{
+    .notification-label{
     left: 337px;
     top: 77px;
-    width: 363px;
-    height: 318px;
+    bottom: 5px;
     }
 }
-.button-close{
+.notification-btn-close{
 position: absolute;
 width: 16px;
 height: 16px;
-left: 244px;
+padding: 0;
+border: none;
 top: 20px;
+right: 20px;
+display: flex;
+justify-content: center;
+background: transparent;
+cursor: pointer;
 }
 
 @media screen and (min-width: 768px){
-    .button-close{
+    .notification-btn-close{
         width: 24px;
         height: 24px;
-        left: 561px;
+        right: 24px;
         top: 24px;
     }
 }
 
 @media screen and (min-width: 1200px){
-    .button-close{
-    left: 648px;
-    top: 28px;
-    width: 24px;
-    height: 24px;
+    .notification-btn-close{
+        right: 28px;
+        top: 28px;
     }
+}
+
+.notification-btn-icon{
+    fill: white;
+    color: white;
+    width: 16px;
+    height: 16px;
 }
