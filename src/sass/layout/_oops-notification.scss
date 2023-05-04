@@ -4,9 +4,8 @@
     margin-right: auto;
     width: 280px;
     height: 289px;
-    padding: 20px;
-    background: #111111;
-    box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+    background:var(--grey-text-color);
+    box-shadow: var(--modal-box-shadow);
     border-radius: 16px;
 }
 @media screen and (min-width: 768px){
@@ -34,7 +33,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    color: #FFFFFF;
+    color: var(--second-text-color);
 }
 @media screen and (min-width: 768px){
     .notification-text{
@@ -88,8 +87,10 @@ top: 20px;
 right: 20px;
 display: flex;
 justify-content: center;
+align-items: center;
 background: transparent;
 cursor: pointer;
+color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px){
@@ -108,9 +109,3 @@ cursor: pointer;
     }
 }
 
-.notification-btn-icon{
-    fill: white;
-    color: white;
-    width: 16px;
-    height: 16px;
-}
