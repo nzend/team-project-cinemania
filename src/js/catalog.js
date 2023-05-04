@@ -2,63 +2,57 @@
 import * as Api from './api';
 // import * as moduleName from './js/module-name';
 
-const catalogRef = document.querySelector('.catalog');
-console.log(catalogRef);
 
-Api.getTrending(1).then(data => {
-  const films = data.results;
-  console.log(films);
 
-  displayMarkup(films);
-});
 
-async function getNameOfGenresById(ids) {
-  try {
-    const { genres } = await Api.getGanres();
-    const nameOfGenres = ids.map(id => {
-      const filmById = genres.find(film => film.id === id);
-      return filmById.name;
-    });
-    return nameOfGenres;
-  } catch (error) {
-    console.log(error);
-  }
+
+function getNameOfGenresById(ids) {
+ 
+	const savedGenres = localStorage.getItem("genres");
+	const parsedGenres = JSON.parse(savedGenres);
+
+	const nameOfGenres = ids.map(id => {
+		 
+		const filmById = parsedGenres.find(film => {
+			return film.id === id
+		});
+		if (!filmById) return ''; 
+		return filmById.name;
+	});
+	return nameOfGenres;
 }
 
-async function creatMarkupCatalogCard({
-  backdrop_path,
-  title,
-  name,
-  genre_ids,
-  release_date,
-  first_air_date,
-}) {
-  const nameOfGenres = await getNameOfGenresById(genre_ids);
-  //   console.log(nameOfGenres);
-  // getNameOfGenresById(genre_ids).then(data => console.log(data))
-  return `<li class="catalog__card">
+function setGenresInStorage() {
+	Api.getGanres().then(data => {localStorage.setItem("genres", JSON.stringify(data.genres));
+})
+}
+
+setGenresInStorage();
+
+
+export async function creatMarkupCatalogCard(data) {
+
+	const list = data.map(({ backdrop_path, title, name, genre_ids, release_date, first_air_date }) => {
+		const arrOfGenres = getNameOfGenresById(genre_ids);
+		const stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
+		
+
+		return `<li class="catalog__card">
     <div class="catalog__img-wrapper">
-      <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="" />
+      <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="${name || title}" width="395" height="574" class="catalog__img" />
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
       <ul class="info__list">
-        <li class="info__descr"></li>
-        <li class="info__descr">${release_date || first_air_date}</li>
+        <li class="info__descr">${stringOfGenres}</li>
+        <li class="info__descr">${(release_date) ? release_date.slice(0,4) : first_air_date.slice(0,4)}</li>
       </ul>
     </div>
-  </li>`;
-}
+  </li>`}).join('');
+	return list;
 
-function displayMarkup(data) {
-  const list = data.reduce(
-    (markup, movie) => markup + creatMarkupCatalogCard(movie),
-    ''
-  );
+ }
 
-  catalogRef.innerHTML = list;
-}
-
-function clearMarkup(element) {
-  return (element.innerHTML = '');
-}
+	function clearMarkup(element) {
+		return (element.innerHTML = '');
+	}

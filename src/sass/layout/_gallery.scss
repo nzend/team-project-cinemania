@@ -1,6 +1,14 @@
+.catalog {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
 .catalog__img-wrapper {
   position: relative;
   display: inline-block;
+  	width: 395px;
+	height: 574px;
 }
 
 .catalog__img-wrapper::after {
@@ -64,3 +72,8 @@ ul {
 .title {
 	margin-bottom: 28px;
 }
+
+// .catalog__img {
+// 	width: 100%;
+
+// }
