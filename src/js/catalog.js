@@ -5,20 +5,37 @@ import * as Api from './api';
 const catalogRef = document.querySelector('.catalog');
 console.log(catalogRef);
 
-Api.getTrending(1).then(films => {
-  console.log(films.results);
-  displayMarkup(films.results);
+Api.getTrending(1).then(data => {
+  const films = data.results;
+  console.log(films);
+
+  displayMarkup(films);
 });
 
-function creatMarkupCatalogCard({
+async function getNameOfGenresById(ids) {
+  try {
+    const { genres } = await Api.getGanres();
+    const nameOfGenres = ids.map(id => {
+      const filmById = genres.find(film => film.id === id);
+      return filmById.name;
+    });
+    return nameOfGenres;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function creatMarkupCatalogCard({
   backdrop_path,
   title,
   name,
   genre_ids,
   release_date,
-  first_air_date
+  first_air_date,
 }) {
-	console.log(genre_ids[0]);
+  const nameOfGenres = await getNameOfGenresById(genre_ids);
+  //   console.log(nameOfGenres);
+  // getNameOfGenresById(genre_ids).then(data => console.log(data))
   return `<li class="catalog__card">
     <div class="catalog__img-wrapper">
       <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="" />
@@ -26,7 +43,7 @@ function creatMarkupCatalogCard({
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
       <ul class="info__list">
-        <li class="info__descr">${(genre_ids[0], genre_ids[1])}</li>
+        <li class="info__descr"></li>
         <li class="info__descr">${release_date || first_air_date}</li>
       </ul>
     </div>
@@ -34,7 +51,6 @@ function creatMarkupCatalogCard({
 }
 
 function displayMarkup(data) {
-  console.log(data);
   const list = data.reduce(
     (markup, movie) => markup + creatMarkupCatalogCard(movie),
     ''
