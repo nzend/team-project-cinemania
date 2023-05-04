@@ -2,10 +2,22 @@ import axios from 'axios';
 
 const MAIN_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'c9873e67c5e03bd61e79d852c2fd46a6';
+export const IMG_SRC = 'https://image.tmdb.org/t/p/';
 
 // Отримує параметр поточної сторінки та повертає промікс фільмів що були в тренді протягом дня
 export async function getTrending(page = 1) {
   const url = `${MAIN_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`;
+  return await axios
+    .get(url)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => console.log(error));
+}
+
+// Отримує параметр поточної сторінки та повертає промікс фільмів що були в тренді протягом тижня
+export async function getTrending(page = 1) {
+  const url = `${MAIN_URL}/trending/all/week?api_key=${API_KEY}&language=en-US&page=${page}`;
   return await axios
     .get(url)
     .then(response => {
