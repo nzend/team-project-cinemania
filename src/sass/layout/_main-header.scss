@@ -1,10 +1,115 @@
-.main-header {
-  color: red;
+// body {
+//   margin: 0;
+//   line-height: normal;
+// }
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
 }
-.list {
-    height: 300px;
-  background-color: tomato;
+:root {
+  /* fonts */
+  --font-roboto: Roboto;
+
+  /* font sizes */
+  --font-size-sm: 14px;
+
+  /* Colors */
+  --grey: #b7b7b7;
+  --orange: #f87719;
+  --white: #fff;
 }
-.item {
-  background-color: aquamarine;
+
+.frame-child {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.cinemania,
+.frame-child {
+  position: relative;
+}
+
+.frame-parent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+
+.home,
+.catalog,
+.my-library {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--grey);
+  /* додайте цей рядок */
+}
+
+.home:hover,
+.catalog:hover,
+.my-library:hover,
+.home:focus,
+.catalog:focus,
+.my-library:focus {
+  color: var(--orange);
+}
+
+.home-parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+
+.frame-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 504px;
+}
+
+.color-switcher {
+  position: relative;
+  width: 60px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.frame-group,
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.frame-group {
+  gap: 417px;
+  font-size: var(--font-size-sm);
+  color: var(--grey);
+}
+
+.header {
+  position: relative;
+  background-color: #000;
+  width: 100%;
+  height: 60px;
+  padding: 12px 32px;
+  box-sizing: border-box;
+  gap: 307px;
+  text-align: center;
+  font-size: 24px;
+  color: var(--white);
+  font-family: var(--font-roboto);
+    margin: 0;
+      line-height: normal;
 }
