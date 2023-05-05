@@ -1,0 +1,48 @@
+.weekly-trends {
+    padding: 40px 20px 32px 20px;
+
+    @media (min-width: 768px) {
+        padding: 52px 32px 44px 32px;
+    }
+
+    @media (min-width: 1200px) {
+        padding: 80px 32px 60px 32px;
+    }
+}
+
+.head-weeklytrends {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+
+    @media (min-width: 768px) {
+        margin-bottom: 24px;
+    }
+
+    @media (min-width: 1200px) {
+        margin-bottom: 28px;
+    }
+}
+
+.weeklytrends-title {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.17;
+    font-weight: 500;
+
+    @media (min-width: 768px) {
+        font-size: 24px;
+    }
+
+    @media (min-width: 1200px) {
+        font-size: 28px;
+    }
+
+    &__orange {
+        color: #F87719;
+    }
+}
+
+.weekly-films {}
+
