@@ -18,16 +18,58 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    @media screen and (min-width: 768px) {
+        background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+    rgba(14, 14, 14, 0) 60.07%), 
+    url('/src/images/library/hero-hall-tablet-1x.jpg');
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-tablet-2x.jpg');
+            }
+        }    
+    }
+    @media screen and (min-width: 1280px) {
+        background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+    rgba(14, 14, 14, 0) 60.07%), 
+    url('/src/images/library/hero-hall-desktop-1x.jpg');
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-desktop-2x.jpg');
+            }
+        }    
+    }
 }
 
 .library-container {
     width: 100%;
     margin: 0 auto;
     padding: 40px 20px;
+    @media screen and (min-width: 768px) {
+        padding: 60px 32px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding: 169px 117px;
+    }
 }
 
 .library-text__wrap {
     padding-bottom: 100px;
+    @media screen and (min-width: 768px) {
+        padding-bottom: 60px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding-bottom: 80px;
+    }
 }
 
 .library-header {
@@ -36,6 +78,14 @@
     line-height: 38px;
     color: #FFFFFF;
     margin-bottom: 8px;
+    @media screen and (min-width: 768px) {
+        font-size: 44px;
+        line-height: 52px;
+    }
+    @media screen and (min-width: 768px) {
+        font-size: 64px;
+        line-height: 75px;
+    }
 }
 
 .library-text {
@@ -43,11 +93,25 @@
     line-height: 16px;
     color: #F8F8F8;
     width: 249px;
+    @media screen and (min-width: 768px) {
+        width: 357px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 16px;
+        line-height: 19px;
+        width: 464px;
+    }
 }
 
 .library-content {
     width: 100%;
     padding: 40px 20px;
+    @media screen and (min-width: 768px) {
+        padding: 92px 32px 60px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding: 117px 32px 96px;
+    }
 
 }
 
@@ -57,6 +121,16 @@
     text-align: center;
     color: #FFFFFF;
     margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 1.33;
+        margin-bottom: 24px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 32px;
+        line-height: 1.12;
+        margin-bottom: 28px;
+    }
 }
 
 .library-btn {
@@ -72,6 +146,16 @@
     width: 121px;
     padding: 12px 24px;
     margin: 0 auto;
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+        line-height: 16px;
+        width: 133px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 18px;
+        line-height: 1.56;
+        width: 158px;
+    }
 }
 
 img {
@@ -80,82 +164,105 @@ img {
     height: auto;
 }
 
-// .catalog {
-// 	display: flex;
-// 	flex-wrap: wrap;
-// 	gap: 16px;
-// }
-
-// .catalog__img-wrapper {
-//   position: relative;
-//   display: inline-block;
-//   	width: 395px;
-// 	height: 574px;
-// }
-
-// .catalog__img-wrapper::after {
-//   content: "";
-//   position: absolute;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: linear-gradient(
-//     180deg,
-//     rgba(255, 0, 0, 0) 63.48%,
-//     rgba(0, 0, 0, 0.9) 92.16%
-//   );
-// }
-
-// ul {
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-// }
-
-// .catalog__card {
-//   position: relative;
-//   display: inline-block;
-//   color: aliceblue;
-// }
-
-// .catalog__info {
-//   position: absolute;
-//   bottom: 20px;
-//   left: 20px;
-// }
-
-// .info__list{
-// 	display: flex;
-// }
-
-// .info__title{
-// 	margin-bottom: 14px;
-// 	text-transform: uppercase;
-// }
-
-// .info__descr{
-// 	position: relative;
-// }
-// .info__descr:not(:last-child){
-// 	margin-right: 14px;
-// }
-
-// .info__descr:first-child::after {
-// 	position: absolute;
-// 	right: -7px;
-// 	display: inline-block;
-// 	content: '';
-// 	height: 100%;
-// 	width: 1px;
-// 	background-color: rgb(255, 255, 255);
-// }
-
-// .title {
-// 	margin-bottom: 28px;
-// }
-
-// // .catalog__img {
-// // 	width: 100%;
-
-// // }
+.library-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .library-list__img-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 395px;
+    height: 574px;
+  }
+  
+  .library-list__img-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 0, 0, 0) 63.48%,
+      rgba(0, 0, 0, 0.9) 92.16%
+    );
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .library-list__card {
+    position: relative;
+    display: inline-block;
+    color: aliceblue;
+  }
+  
+  .library-list__info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .library-info__list {
+    display: flex;
+  }
+  
+  .library-info__title {
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  
+  .library-info__descr {
+    position: relative;
+  }
+  .library-info__descr:not(:last-child) {
+    margin-right: 14px;
+  }
+  
+  .library-info__descr:first-child::after {
+    position: absolute;
+    right: -7px;
+    display: inline-block;
+    content: '';
+    height: 100%;
+    width: 1px;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .library-title {
+    margin-bottom: 28px;
+  }
+  
+  .library-star {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .library-list__input {
+    background-color: var(--main-background);
+    color: var(--main-white-color);
+    margin-bottom: 36px;
+    width: 315px;
+    height: 48px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+  
+    padding-left: 24px;
+    padding-top: 14.5px;
+      padding-bottom: 14.5px;
+  
+  }
+  
+  .library-list__btn {
+      width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--btn-background);
+  }
+  
