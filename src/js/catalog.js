@@ -41,8 +41,7 @@ function makeCard({
       <li class="info__descr">${stringOfGenres}</li>
       <li class="info__descr">${convertReleaseDate(date)}</li>
 		<div class="catalog__stars-wrap">
-		<div class="catalog__raitnig-active" width="${vote_average / 2 / 0.05}%"></div>
-		
+		<div class="catalog__rating-active" style="width:${vote_average / 2 / 0.05}%"></div>
 		</div>
       </ul>
 		

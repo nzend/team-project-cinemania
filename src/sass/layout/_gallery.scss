@@ -10,7 +10,7 @@
 	display: block;
 }
 
-.catalog__raitnig-active {
+.catalog__rating-active {
   position: absolute;
   width: 0%;
   height: 100%;
@@ -19,7 +19,7 @@
   overflow: hidden;
  }
 
-.catalog__raitnig-active::before {
+.catalog__rating-active::before {
 	content: " ★ ★ ★ ★ ★";	
   position: absolute;
   width: 100%;
