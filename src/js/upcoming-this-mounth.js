@@ -1,20 +1,45 @@
 // import { getWeekTrending } from './api';
 
 import * as Api from './api';
+import { setGenresInStorage } from './get-genres';
+import { getNameOfGenresById } from './get-genres';
 
-console.log('hello world!');
+import axios from 'axios';
+
+const MAIN_URL = 'https://api.themoviedb.org/3';
+const API_KEY = 'c9873e67c5e03bd61e79d852c2fd46a6';
+export const IMG_SRC = 'https://image.tmdb.org/t/p/';
 
 const container = document.querySelector('.upcoming-content');
 
-Api.getWeekTrending().then(({ results }) => {
-  // console.log(results[0]);
-  // console.log(createMarkup(results[0]));
+// Отримує параметр поточної сторінки та повертає промікс фільмів які очікуються на сайті
 
-  const render = createMarkup(results[1]);
-  // console.log(render);
+export async function getUpcoming(page = 1) {
+  const url = `${MAIN_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`;
+
+  return await axios
+    .get(url)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => console.log(error));
+}
+
+getUpcoming().then(({ results }) => {
+  console.log(results);
+  const random = Math.floor(Math.random() * (results.length - 1));
+
+  const render = createMarkup(results[random]);
 
   renderMarkup(render);
 });
+
+// Api.getWeekTrending().then(({ results }) => {
+//   const render = createMarkup(results[3]);
+//   renderMarkup(render);
+// });
+
+setGenresInStorage();
 
 function createMarkup({
   backdrop_path,
@@ -28,8 +53,9 @@ function createMarkup({
 }) {
   const vote = vote_average.toFixed(1);
   const populate = popularity.toFixed(1);
+  const genre = getNameOfGenresById(genre_ids);
 
-  return `<div class="upcoming-content">
+  return `
       <img
         class="upcoming-content__img"
         src="https://image.tmdb.org/t/p/w500${backdrop_path}"
@@ -61,7 +87,7 @@ function createMarkup({
             </li>
             <li class="upcoming-list__item">
               <p class="upcoming-list__text">Genre</p>
-              <p class="upcoming-list__genre">${genre_ids}</p>
+              <p class="upcoming-list__genre">${genre}</p>
             </li>
           </ul>
         </div>
@@ -80,23 +106,6 @@ function renderMarkup(markup) {
   container.innerHTML = markup;
 }
 
-// `<div class="photo-card">
-//    <a href="${largeImageURL}">
-//       <img src="${webformatURL}" alt="${tags}" loading="lazy" "/>
-//    </a>
-
-//     <div class="info">
-//       <p class="info-item">
-//         <b>Likes</b>${likes}
-//       </p>
-//       <p class="info-item">
-//         <b>Views</b>${views}
-//       </p>
-//       <p class="info-item">
-//         <b>Comments</b>${comments}
-//       </p>
-//       <p class="info-item">
-//         <b>Downloads</b>${downloads}
-//       </p>
-//     </div>
-//   </div>`;
+function clearMarkup() {
+  container.innerHTML = '';
+}

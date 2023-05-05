@@ -3,6 +3,11 @@ img {
   width: 100%;
 }
 
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
 .upcoming {
   padding-top: 32px;
   padding-bottom: 40px;
@@ -58,13 +63,44 @@ img {
 }
 
 .upcoming-content {
+  width: 100%;
+  // height: 400px;
+  // background-image: url('../images/hero/hero-people-mobile-1x.jpg');
+
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
+
+  // @media (min-device-pixel-ratio: 2),
+  //   (min-resolution: 192dpi),
+  //   (min-resolution: 2dppx) {
+  //   background-image: url('../images/hero/hero-people-mobile-2x.jpg');
+  // }
+
   @media (min-width: 768px) {
     width: 704px;
+
+    // background-image: url('../images/hero/hero-people-tablet-1x.jpg');
+
+    // @media (min-device-pixel-ratio: 2),
+    //   (min-resolution: 192dpi),
+    //   (min-resolution: 2dppx) {
+    //   background-image: url('../images/hero/hero-people-tablet-2x.jpg');
+    // }
   }
 
   @media (min-width: 1200px) {
     display: flex;
     width: 1214px;
+    // height: 460px;
+
+    // background-image: url('../images/hero/hero-people-desktop-1x.jpg');
+
+    // @media (min-device-pixel-ratio: 2),
+    //   (min-resolution: 192dpi),
+    //   (min-resolution: 2dppx) {
+    //   background-image: url('../images/hero/hero-people-desktop-2x.jpg');
+    // }
   }
 }
 
@@ -268,3 +304,5 @@ img {
   background: #fff;
   border: 2px solid #f87719;
 }
+
+//! ================================================================
