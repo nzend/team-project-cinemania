@@ -5,7 +5,7 @@ notificationBtnClose.addEventListener(`click`, onNotificationBtnClick);
 
 
 function  onNotificationBtnClick (){
-    console.log(5);
+    notification.style.display= "none";
 }
     
 
