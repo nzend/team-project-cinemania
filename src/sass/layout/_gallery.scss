@@ -77,7 +77,9 @@ ul {
 // 	width: 100%;
 
 // }
-
+svg {
+  fill: var(--brend-color);
+}
 .star {
   width: 18px;
   height: 18px;
@@ -94,13 +96,50 @@ ul {
 
   padding-left: 24px;
   padding-top: 14.5px;
-    padding-bottom: 14.5px;
-
+  padding-bottom: 14.5px;
 }
 
 .catalog__btn {
-	width: 48px;
-height: 48px;
-border-radius: 50%;
-background-color: var(--btn-background);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--btn-background);
+  border: none;
 }
+
+.catalog__stars-wrap {
+	font-size: 18px;
+  position: relative;
+}
+.catalog__stars-wrap::before {
+	content: " ★ ★ ★ ★ ★";	
+}
+.catalog__raitnig-active {
+	font-size: 18px;
+  position: absolute;
+  display:inline;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+ }
+
+.catalog__raitnig-active::before {
+	content: " ★ ★ ★ ★ ★";	
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: rgb(243, 152, 54);
+}
+
+// .catalog__raitnig-list {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+// }
+
