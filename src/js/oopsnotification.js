@@ -1,10 +1,10 @@
 
-const notificationBtnClose = document.querySelector(`.notification-btn-close`);
-const notification = document.querySelector(`.notification`);
-notificationBtnClose.addEventListener(`click`, onNotificationBtnClick);
+const notificationBtnClose = document.querySelector(`.notification-trailer-fail-btn-close`);
+const notification = document.querySelector(`.notification-trailer-fail`);
+notificationBtnClose.addEventListener(`click`, onNotificationTrailerFailBtnClick);
 
 
-function  onNotificationBtnClick (){
+function  onNotificationTrailerFailBtnClick (){
     notification.style.display= "none";
 }
     

@@ -1,4 +1,4 @@
-.notification{
+.notification-trailer-fail{
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -9,13 +9,13 @@
     border-radius: 16px;
 }
 @media screen and (min-width: 768px){
-    .notification{
+    .notification-trailer-fail{
     width: 609px;
     height: 400px;
     }
 }
 @media screen and (min-width: 1200px){
-    .notification{
+    .notification-trailer-fail{
     margin-left: auto;
     margin-right: auto;
     width: 700px;
@@ -23,7 +23,7 @@
     border-radius: 20px;
     }
 }
-.notification-text{
+.notification-trailer-fail-text{
     position: absolute;
     width: 214px;
     height: 65px;
@@ -36,7 +36,7 @@
     color: var(--second-text-color);
 }
 @media screen and (min-width: 768px){
-    .notification-text{
+    .notification-trailer-fail-text{
     width: 321px;
     height: 92px;
     left: 44px;
@@ -47,7 +47,7 @@
 }
 
 @media screen and (min-width: 1200px){
-    .notification-text{
+    .notification-trailer-fail-text{
     left: 50px;
     top: 150px;
     width: 321px;
@@ -55,7 +55,7 @@
     }
 }
 
-.notification-label{
+.notification-trailer-fail-label{
 position: absolute;
 left: 61px;
 bottom: 8px;
@@ -63,7 +63,7 @@ bottom: 8px;
 }
 
 @media screen and (min-width: 768px){
-    .notification-label{
+    .notification-trailer-fail-label{
         left: 303px;
         top: 124px;
         bottom: 16px;
@@ -71,13 +71,13 @@ bottom: 8px;
 }
 
 @media screen and (min-width: 1200px){
-    .notification-label{
+    .notification-trailer-fail-label{
     left: 337px;
     top: 77px;
     bottom: 5px;
     }
 }
-.notification-btn-close{
+.notification-trailer-fail-btn-close{
 position: absolute;
 width: 16px;
 height: 16px;
@@ -90,11 +90,10 @@ justify-content: center;
 align-items: center;
 background: transparent;
 cursor: pointer;
-color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px){
-    .notification-btn-close{
+    .notification-trailer-fail-btn-close{
         width: 24px;
         height: 24px;
         right: 24px;
@@ -103,9 +102,14 @@ color: #FFFFFF;
 }
 
 @media screen and (min-width: 1200px){
-    .notification-btn-close{
+    .notification-trailer-fail-btn-close{
         right: 28px;
         top: 28px;
     }
+}
+
+.notification-trailer-fail-btn-close__icon{
+    width: 16px;
+    height: 16px;
 }
 
