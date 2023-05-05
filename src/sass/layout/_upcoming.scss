@@ -158,9 +158,6 @@ img {
   }
 }
 
-.rigth {
-}
-
 .upcoming-list {
 }
 
@@ -290,6 +287,10 @@ img {
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   border-radius: 74px;
   color: #111111;
+  cursor: pointer;
+
+  // transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  //   background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
   }

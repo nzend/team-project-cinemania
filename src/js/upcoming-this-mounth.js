@@ -1,43 +1,16 @@
-// import { getWeekTrending } from './api';
-
 import * as Api from './api';
 import { setGenresInStorage } from './get-genres';
 import { getNameOfGenresById } from './get-genres';
 
-import axios from 'axios';
-
-const MAIN_URL = 'https://api.themoviedb.org/3';
-const API_KEY = 'c9873e67c5e03bd61e79d852c2fd46a6';
-export const IMG_SRC = 'https://image.tmdb.org/t/p/';
-
 const container = document.querySelector('.upcoming-content');
 
-// Отримує параметр поточної сторінки та повертає промікс фільмів які очікуються на сайті
-
-export async function getUpcoming(page = 1) {
-  const url = `${MAIN_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`;
-
-  return await axios
-    .get(url)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => console.log(error));
-}
-
-getUpcoming().then(({ results }) => {
-  console.log(results);
+Api.getUpcoming().then(({ results }) => {
   const random = Math.floor(Math.random() * (results.length - 1));
 
   const render = createMarkup(results[random]);
 
   renderMarkup(render);
 });
-
-// Api.getWeekTrending().then(({ results }) => {
-//   const render = createMarkup(results[3]);
-//   renderMarkup(render);
-// });
 
 setGenresInStorage();
 
