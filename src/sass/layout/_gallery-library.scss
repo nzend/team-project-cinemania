@@ -1,0 +1,74 @@
+.library-section {
+    width: 100%;
+    background-color: #000000;
+    background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+    rgba(14, 14, 14, 0) 60.07%), 
+    url('/src/images/library/hero-hall-mobile-1x.jpg');
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-mobile-2x.jpg');
+            }
+        }
+    background-repeat: no-repeat;
+    background-position: right, top;
+    background-size: contain;
+}
+
+.library-container {
+    padding: 40px 20px;
+
+}
+
+.library-text__wrap {
+    height: 380px;
+    margin-bottom: 40px;
+}
+
+.library-header {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.library-text {
+    font-size: 14px;
+    line-height: 16px;
+    color: #F8F8F8;
+    width: 249px;
+}
+
+.library-content__text {
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.library-btn {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #111111;
+    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+    border-radius: 74px;
+    width: 121px;
+    padding: 12px 24px;
+    margin: 0 auto;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
