@@ -266,3 +266,155 @@ img {
   background-color: var(--btn-background);
   }
   
+  .catalog {
+    display: grid;
+    grid-template-columns: 1fr;
+  
+    @include desktop {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 16px;
+    }
+  
+    &__card {
+      position: relative;
+      display: inline-block;
+      color: aliceblue;
+    }
+  
+    &__img-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 395px;
+      height: 574px;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 0, 0, 0) 63.48%,
+          rgba(0, 0, 0, 0.9) 92.16%
+        );
+      }
+    }
+    &__info {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+  }
+  
+  .info {
+    &__list {
+      display: flex;
+    }
+  
+    &__title {
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+  
+    &__descr {
+      position: relative;
+  
+      &:not(:last-child) {
+        margin-right: 14px;
+      }
+  
+      &:first-child::after {
+        position: absolute;
+        right: -7px;
+        display: inline-block;
+        content: '';
+        height: 100%;
+        width: 1px;
+        background-color: rgb(255, 255, 255);
+      }
+    }
+  }
+  
+  .catalog__stars-wrap {
+    margin-right: 0px;
+    width: 110px;
+    font-size: 18px;
+    position: relative;
+  
+    &::before {
+      content: ' ★ ★ ★ ★ ★';
+      display: block;
+    }
+  }
+  
+  .catalog__rating-active {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  
+    &::before {
+      content: ' ★ ★ ★ ★ ★';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      color: rgb(243, 152, 54);
+    }
+  }
+  
+  // .catalog__img {
+  // 	width: 100%;
+  
+  // }
+  
+  .catalog__input {
+    background-color: var(--main-background);
+    color: var(--main-white-color);
+    margin-bottom: 36px;
+    width: 140px;
+    height: 40px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+  
+    padding-left: 24px;
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+  
+    margin-right: 16px;
+  }
+  
+  .catalog__filter-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .catalog__btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--btn-background);
+    border: none;
+    position: relative;
+    color: var(--main-text-color);
+    transition: color 250ms var(--cubic);
+  
+    &-svg {
+      fill: currentColor;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    &:hover {
+      color: var(--main-background);
+    }
+  }

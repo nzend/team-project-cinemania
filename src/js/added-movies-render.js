@@ -1,4 +1,4 @@
-// console.log('hello');
+console.log('hello');
 
 import * as Api from './api';
 import * as LocalStorage from './local-storage';
@@ -6,17 +6,27 @@ import * as getGenres from './get-genres';
 
 const myLibGallery = document.querySelector('.mylib-gallery');
 const moviesArray = LocalStorage.getAddedMovies() || [934433, 649609, 713704];
+const addBtn = document.querySelector('button');
+const LOCALSTORAGE_KEY = 'movieId';
+const libraryFilms = [];
+
+addBtn.addEventListener('click', onAddBtn);
+
+function onAddBtn(evt) {
+  const movieId = addBtn.dataset.movieId;
+  localStorage.setItem(LOCALSTORAGE_KEY, movieId);
+};
 
 // Api.getWeekTrending().then(data => {console.log(data)})
 
 Api.getArrayOfMovies(moviesArray).then(data => {
 
-    return creatMarkupCatalogCard(data);
+    creatMarkupCatalogCard(data);
 })
 
 
 
-export async function creatMarkupCatalogCard(data) {
+async function creatMarkupCatalogCard(data) {
     console.log(data);
     const markUp = data
       .slice(0, 10)
