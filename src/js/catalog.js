@@ -1,65 +1,61 @@
 // Тут додаємо імпорт готового модулю за зразком:
-import * as Api from './api';
-import {  } from "./modal-info/modal-info";
+import sprite from '../../src/images/sprite-stars.svg';
+import { setGenresInStorage, getNameOfGenresById } from './get-genres';
+
 // import * as moduleName from './js/module-name';
 
-const catalogRef = document.querySelector('.catalog');
-console.log(catalogRef);
+setGenresInStorage();
 
-Api.getTrending(1).then(data => {
-  const films = data.results;
-  console.log(films);
-
-  displayMarkup(films);
-});
-
-async function getNameOfGenresById(ids) {
-  try {
-    const { genres } = await Api.getGanres();
-    const nameOfGenres = ids.map(id => {
-      const filmById = genres.find(film => film.id === id);
-      return filmById.name;
-    });
-    return nameOfGenres;
-  } catch (error) {
-    console.log(error);
-  }
+export async function creatMarkupCatalogCard(data) {
+  console.log(data);
+  const markUp = data
+    .slice(0, 10)
+    .reduce((markup, film) => markup + makeCard(film), '');
+  return markUp;
 }
 
-async function creatMarkupCatalogCard({
-  backdrop_path,
+function makeCard({
+  id,
+  poster_path,
   title,
   name,
   genre_ids,
   release_date,
   first_air_date,
+  vote_average,
 }) {
-  const nameOfGenres = await getNameOfGenresById(genre_ids);
-  //   console.log(nameOfGenres);
-  // getNameOfGenresById(genre_ids).then(data => console.log(data))
-  return `<li class="catalog__card">
+  const arrOfGenres = getNameOfGenresById(genre_ids);
+  const stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
+	const date = release_date || first_air_date;
+	
+
+  return `<li class="catalog__card" data-id="${id}">
     <div class="catalog__img-wrapper">
-      <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="" />
+      <img src="https://image.tmdb.org/t/p/w500${
+        poster_path || 'Oops. There is no poster to this movie'
+      }" alt="${name || title}" width="395" height="574" class="catalog__img" />
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
       <ul class="info__list">
-        <li class="info__descr"></li>
-        <li class="info__descr">${release_date || first_air_date}</li>
+      <li class="info__descr">${stringOfGenres}</li>
+      <li class="info__descr">${convertReleaseDate(date)}</li>
+		<div class="catalog__stars-wrap">
+		<div class="catalog__rating-active" style="width:${vote_average / 2 / 0.05}%"></div>
+		</div>
       </ul>
+		
     </div>
   </li>`;
 }
 
-function displayMarkup(data) {
-  const list = data.reduce(
-    (markup, movie) => markup + creatMarkupCatalogCard(movie),
-    ''
-  );
 
-  catalogRef.innerHTML = list;
+function convertReleaseDate(date) {
+  if (date) {
+    return date.slice(0, 4);
+  } else return '';
 }
 
-function clearMarkup(element) {
+export function clearMarkup(element) {
   return (element.innerHTML = '');
 }
