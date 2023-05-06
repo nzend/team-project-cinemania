@@ -104,6 +104,34 @@ img {
   }
 }
 
+.upcoming-error-container {
+}
+
+.error {
+  display: block;
+}
+
+.upcoming-error-container__text {
+  margin-top: 80px;
+  font-family: 'Roboto';
+
+  font-size: 20px;
+  line-height: 1.2;
+
+  color: #ffffff;
+
+  @media (min-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 28px;
+  }
+}
+
 .upcoming-content__desktop {
   @media (min-width: 1200px) {
     max-width: 400px;
@@ -150,15 +178,12 @@ img {
 
 .left {
   @media (min-width: 768px) {
-    margin-right: 118px;
+    margin-right: 112px;
   }
 
   @media (min-width: 1200px) {
     margin-right: 0px;
   }
-}
-
-.upcoming-list {
 }
 
 .upcoming-list__item {
@@ -304,6 +329,12 @@ img {
   color: #f87719;
   background: #fff;
   border: 2px solid #f87719;
+}
+
+.error-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 //! ================================================================
