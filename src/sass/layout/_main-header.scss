@@ -143,13 +143,30 @@ header {
   }
 }
 
+.mobile-menu__link {
+    padding: 10px;
+    text-align: left;
+    color: #FFFFFF;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      transition: color 0.75s;
+      color: #f87719;
+    }
+  }
+
+  .current__nav-link {
+    color: #f87719;
+  }
+
 
 #menu {
   padding: 17px 0;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  color: #ffffff;
+  color: #B7B7B7;
   background-color: transparent;
   border: none;
   cursor: pointer;
