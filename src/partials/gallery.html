@@ -1,19 +1,26 @@
 <section class="section-catalog container">
-	<div  class="catalog__filter-wrapper">
-		<input type="text" name="q" class="catalog__input" placeholder="film" />
-  <button type="submit" class="catalog__btn">
-  <svg class="catalog__btn-svg"  width="32px"
-          heigth="32px">
-        <use
-          class="svg"
-          href="./images/sprite.svg#icon-search"
-         
-        ></use>
+  <div class="catalog__filter-wrapper">
+    <input type="text" name="q" class="catalog__input" placeholder="film" />
+    <button type="submit" class="catalog__btn">
+      <svg class="catalog__btn-svg" width="32px" heigth="32px">
+        <use class="svg" href="./images/sprite.svg#icon-search"></use>
       </svg>
-   
-  </button>
-	</div>
-  
-
-  <ul class="catalog"></ul>
+    </button>
+  </div>
+  <style>
+    .catalog__item {
+      padding: 8px;
+      background-color: aqua;
+      border: 1px solid red;
+      text-align: center;
+    }
+    .catalog__item:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  </style>
+  <ul class="catalog">
+    <li class="catalog__item" data-film-id="11">123</li>
+    <li class="catalog__item" data-film-id="12">456</li>
+    <li class="catalog__item" data-film-id="13">789</li>
+  </ul>
 </section>
