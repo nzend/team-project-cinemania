@@ -39,7 +39,7 @@ function makeCard({
     <div class="catalog__img-wrapper">
       <img src="https://image.tmdb.org/t/p/w500${
         poster_path || 'Oops. There is no poster to this movie'
-      }" alt="${name || title}" width="395" height="574" class="catalog__img" />
+      }" alt="${name || title}" class="catalog__img" />
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>

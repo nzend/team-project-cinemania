@@ -1,5 +1,5 @@
 @mixin tel {
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 320px) {
     @content;
   }
 }
@@ -11,7 +11,7 @@
 }
 
 @mixin desktop {
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     @content;
   }
 }
