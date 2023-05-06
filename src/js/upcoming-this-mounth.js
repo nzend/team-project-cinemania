@@ -4,13 +4,31 @@ import { getNameOfGenresById } from './get-genres';
 
 const container = document.querySelector('.upcoming-content');
 
-Api.getUpcoming().then(({ results }) => {
-  const random = Math.floor(Math.random() * (results.length - 1));
+Api.getUpcoming()
+  .then(({ results }) => {
+    const NOW_Date = new Date();
 
-  const render = createMarkup(results[random]);
+    const filmUpcomingRelease = results.filter(
+      film => NOW_Date < Date.parse(film.release_date)
+    );
 
-  renderMarkup(render);
-});
+    if (filmUpcomingRelease.length === 0) {
+      container.classList.toggle('error');
+
+      renderMarkupError();
+      return;
+    }
+    const random = Math.floor(Math.random() * filmUpcomingRelease.length);
+
+    const render = createMarkup(filmUpcomingRelease[random]);
+
+    // const random = Math.floor(Math.random() * results.length);
+
+    // const render = createMarkup(results[random]);
+
+    renderMarkup(render);
+  })
+  .catch(error => console.log(error));
 
 setGenresInStorage();
 
@@ -26,7 +44,7 @@ function createMarkup({
 }) {
   const vote = vote_average.toFixed(1);
   const populate = popularity.toFixed(1);
-  const genre = getNameOfGenresById(genre_ids);
+  const genres = getNameOfGenresById(genre_ids).join(' ');
 
   return `
       <img
@@ -60,7 +78,7 @@ function createMarkup({
             </li>
             <li class="upcoming-list__item">
               <p class="upcoming-list__text">Genre</p>
-              <p class="upcoming-list__genre">${genre}</p>
+              <p class="upcoming-list__genre">${genres}</p>
             </li>
           </ul>
         </div>
@@ -71,7 +89,7 @@ function createMarkup({
 
   <button type="button" class="upcoming-content__btn">
   Remind me
-</button>;      
+</button>      
 `;
 }
 
@@ -79,6 +97,14 @@ function renderMarkup(markup) {
   container.innerHTML = markup;
 }
 
-function clearMarkup() {
-  container.innerHTML = '';
+function renderMarkupError() {
+  markupError = `
+       <p class="upcoming-error-container__text">
+        OOPS...<br />
+        We are very sorry!<br />
+        But we couldn't find any upcoming movies this month.
+      </p>
+      <button type="button" class="upcoming-content__btn">Remind me</button>
+     `;
+  return (container.innerHTML = markupError);
 }
