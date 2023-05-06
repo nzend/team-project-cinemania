@@ -1,16 +1,15 @@
 import { creatMarkupCatalogCard } from './catalog';
-import { clearMarkup } from './catalog';
 import * as Api from './api';
 
 const catalogRef = document.querySelector('.catalog');
+const btnSearch = document.querySelector('.catalog__btn');
 const input = document.querySelector('.catalog__input');
 
-input.addEventListener('input', onInputSearch);
+btnSearch.addEventListener('click', onBtnSearch);
 
-async function onInputSearch(e) {
-  clearMarkup(catalogRef);
+async function onBtnSearch(e) {
   try {
-    const search = e.currentTarget.value;
+    const search = input.value;
     console.log(search);
 
     const searchData = await Api.getBySearch(search, 1);
