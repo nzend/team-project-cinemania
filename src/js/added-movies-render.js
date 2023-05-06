@@ -11,7 +11,7 @@ const moviesArray = LocalStorage.getAddedMovies() || [934433, 649609, 713704];
 
 Api.getArrayOfMovies(moviesArray).then(data => {
 
-    console.log(creatMarkupCatalogCard(data));
+    return creatMarkupCatalogCard(data);
 })
 
 
@@ -66,6 +66,6 @@ export async function creatMarkupCatalogCard(data) {
     } else return '';
   }
   
-  export function clearMarkup(element) {
-    return (element.innerHTML = '');
-  }
+  // export function clearMarkup(element) {
+  //   return (element.innerHTML = '');
+  // }
