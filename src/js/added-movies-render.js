@@ -1,38 +1,41 @@
 console.log('hello');
 
 import * as Api from './api';
-import * as LocalStorage from './local-storage';
+import { getAddedMovies } from './local-storage';
 import * as getGenres from './get-genres';
 
 const myLibGallery = document.querySelector('.mylib-gallery');
-const moviesArray = LocalStorage.getAddedMovies() || [934433, 649609, 713704];
+
 const addBtn = document.querySelector('button');
 const LOCALSTORAGE_KEY = 'movieId';
 const libraryFilms = [];
 
+
 addBtn.addEventListener('click', onAddBtn);
 
 function onAddBtn(evt) {
-  const movieId = addBtn.dataset.movieId;
-  localStorage.setItem(LOCALSTORAGE_KEY, movieId);
+  // const movieId = addBtn.dataset.movieId;
+  localStorage.setItem(LOCALSTORAGE_KEY, 447365);
 };
 
-// Api.getWeekTrending().then(data => {console.log(data)})
+// 
+const film = localStorage.getItem(LOCALSTORAGE_KEY);
+const filmParse = JSON.parse(film)
+console.log(filmParse);
 
-Api.getArrayOfMovies(moviesArray).then(data => {
+Api.getInfoMovie(filmParse)
+.then(data => creatMarkupCatalogCard(data)
+    .then(data => (myLibGallery.innerHTML = data))
+    )
 
-    creatMarkupCatalogCard(data);
-})
+.catch(error => console.log(error))
 
-
-
-async function creatMarkupCatalogCard(data) {
-    console.log(data);
-    const markUp = data
-      .slice(0, 10)
-      .reduce((markup, film) => markup + makeCard(film), '');
-    return markUp;
-  }
+// async function creatMarkupCatalogCard(data) {
+//     console.log(data);
+//     const markUp = data
+//     .reduce((markup, film) => markup + makeCard(film), '');
+//     return markUp;
+//   }
   
   function makeCard({
     id,
@@ -76,6 +79,4 @@ async function creatMarkupCatalogCard(data) {
     } else return '';
   }
   
-  // export function clearMarkup(element) {
-  //   return (element.innerHTML = '');
-  // }
+  
