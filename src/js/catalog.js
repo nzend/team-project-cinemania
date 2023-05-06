@@ -1,8 +1,4 @@
-// Тут додаємо імпорт готового модулю за зразком:
-import sprite from '../../src/images/sprite-stars.svg';
 import { setGenresInStorage, getNameOfGenresById } from './get-genres';
-
-// import * as moduleName from './js/module-name';
 
 setGenresInStorage();
 
@@ -56,6 +52,4 @@ function convertReleaseDate(date) {
   } else return '';
 }
 
-export function clearMarkup(element) {
-  return (element.innerHTML = '');
-}
+
