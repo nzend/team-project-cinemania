@@ -19,7 +19,7 @@
             background-image: url('/src/images/hero/hero-people-mobile-2x.jpg');
         }
     
-        @media screen and (min-width: 321px) {
+        @include tablet {
             background-image: 
             url('/src/images/hero/hero-tablet-1x.png'),
             url('/src/images/hero/hero-people-tablet-1x.jpg');
@@ -33,7 +33,7 @@
             }
         }
     
-        @media screen and (min-width: 769px) {
+        @include desktop {
             background-image: 
             url('/src/images/hero/hero-desktop-1x.png'),
             url('/src/images/hero/hero-people-desktop-1x.jpg');
@@ -52,7 +52,7 @@
             }
         }
     
-        @media screen and (min-width: 1200px) {
+        @include desktop {
             padding-top: 118px;
             padding-bottom: 178px;
             padding-left: 135px;
@@ -121,12 +121,12 @@
 
         padding-bottom: 12px;
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
             font-size: 44px;
             line-height: 52px;
         }
 
-    @media screen and (min-width: 1200px) {
+    @include desktop {
             font-size: 64px;
             line-height: 75px;
             padding-bottom: 16px;
@@ -135,7 +135,7 @@
 
 .rating{
     padding-bottom: 20px;
-    @media screen and (min-width: 1200px) {
+    @include desktop {
             padding-bottom: 28px;
         }
 }
@@ -148,7 +148,7 @@
         align-items: center;
         color: #F8F8F8;
         padding-bottom: 16px;
-    @media screen and (min-width: 1200px) {
+    @include desktop {
             padding-bottom: 36px;
             font-size: 16px;
             line-height: 19px;
