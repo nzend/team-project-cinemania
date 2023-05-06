@@ -1,10 +1,10 @@
-const menuButton = document.getElementById('menu');
-const menu = document.querySelector('nav');
+const mobileMenuButton = document.getElementById('menu');
+const menuNav = document.querySelector('nav');
 const overlay = document.getElementById('overlay');
 const body = document.querySelector('body');
 
-menuButton.addEventListener('click', () => {
-  menu.style.left = '0';
+mobileMenuButton.addEventListener('click', () => {
+  menuNav.style.left = '0';
   overlay.style.display = 'block';
 //   body.style.overflow = 'hidden';
 });
