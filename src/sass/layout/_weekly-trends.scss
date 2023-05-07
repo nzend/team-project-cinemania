@@ -92,6 +92,16 @@ ul {
         display: inline-block;
         width: 280px;
         height: 406px;
+
+        @include tablet {
+            width: 224px;
+            height: 325px;
+        }
+
+        @include desktop {
+            width: 395px;
+            height: 574px;
+        }
     }
 
     &__img-wrapper::after {
@@ -114,8 +124,12 @@ ul {
 
     &__info {
         position: absolute;
-        bottom: 20px;
-        left: 20px;
+        bottom: 12px;
+        left: 12px;
+
+        @include desktop {
+            left: 20px;
+        }
     }
 
     &__input {
@@ -155,10 +169,21 @@ ul {
     &__title {
         color: #ffffff;
         font-size: 12px;
+        font-weight: 500;
         line-height: 1.67;
         text-transform: uppercase;
 
         margin-bottom: 14px;
+
+        @include tablet {
+            font-size: 14px;
+            line-height: 1.29;
+        }
+
+        @include desktop {
+            font-size: 20px;
+            line-height: 1.17;
+        }
     }
 
     &__descr {
@@ -167,6 +192,15 @@ ul {
         font-weight: 500;
         line-height: 1.67;
         position: relative;
+
+        @include tablet {
+            line-height: 1.5;
+        }
+
+        @include desktop {
+            font-size: 20px;
+            line-height: 1.17;
+        }
     }
 
     &__descr:not(:last-child) {

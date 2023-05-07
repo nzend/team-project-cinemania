@@ -32,8 +32,26 @@ function makeCard({
   vote_average,
 }) {
   const arrOfGenres = getNameOfGenresById(genre_ids);
-  const stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
+  const stringOfGenres = arrOfGenres.slice(0, 2);
   const date = release_date || first_air_date;
+
+  let currentGenres = '';
+  if (window.innerWidth < 1280) {
+    currentGenres = stringOfGenres[0];
+  } else {
+    currentGenres = stringOfGenres.join(', ');
+  }
+
+  window.addEventListener('resize', () => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 1280) {
+      currentGenres = stringOfGenres[0];
+      return;
+    }
+
+    currentGenres = stringOfGenres.join(', ');
+  });
 
   return `<li class="catalog__card" data-id="${id}">
     <div class="catalog__img-wrapper">
@@ -44,7 +62,7 @@ function makeCard({
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
       <ul class="info__list">
-      <li class="info__descr">${stringOfGenres}</li>
+      <li class="info__descr">${currentGenres}</li>
       <li class="info__descr">${convertReleaseDate(date)}</li>
 		<div class="catalog__stars-wrap">
 		<div class="catalog__rating-active" style="width:${
