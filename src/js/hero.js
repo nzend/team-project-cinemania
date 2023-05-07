@@ -11,7 +11,6 @@ const hero = document.querySelector('.hero');
     createTrendingMarkup(movieOfDay);
 }); 
 
-
 /* async function updateHero() {
     const data = await getWeekTrending(1).then(data => {
         const trending = data.results[0];
@@ -104,4 +103,5 @@ function createTrendingMarkup(movieOfDay) {
         <p class="description">${movieOfDay.overview}</p>
         <button class="button-mob">Watch trailer</button>
     </div>`
+    hero.innerHTML = markup;
 }
