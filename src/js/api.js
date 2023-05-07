@@ -5,7 +5,7 @@ const API_KEY = 'c9873e67c5e03bd61e79d852c2fd46a6';
 export const IMG_SRC = 'https://image.tmdb.org/t/p/';
 
 // Отримує параметр поточної сторінки та повертає промікс фільмів що були в тренді протягом дня
-export async function getTrending(page = 1) {
+export async function getDayTrending(page = 1) {
   const url = `${MAIN_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`;
   return await axios
     .get(url)
@@ -16,7 +16,7 @@ export async function getTrending(page = 1) {
 }
 
 // Отримує параметр поточної сторінки та повертає промікс фільмів що були в тренді протягом тижня
-export async function getTrending(page = 1) {
+export async function getWeekTrending(page = 1) {
   const url = `${MAIN_URL}/trending/all/week?api_key=${API_KEY}&language=en-US&page=${page}`;
   return await axios
     .get(url)
@@ -66,6 +66,19 @@ export async function getArrayOfMovies(array) {
 // Повертає промікс з масивом об'єктів з назвою жанру та id
 export async function getGanres() {
   const url = `${MAIN_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+  return await axios
+    .get(url)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => console.log(error));
+}
+
+// Отримує параметр поточної сторінки та повертає промікс фільмів які очікуються на сайті
+
+export async function getUpcoming(page = 1) {
+  const url = `${MAIN_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`;
+
   return await axios
     .get(url)
     .then(response => {

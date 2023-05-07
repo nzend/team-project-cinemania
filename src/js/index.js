@@ -2,3 +2,6 @@
 
 // import * as moduleName from './js/module-name';
 import * as oopsnotification from './oopsnotification';
+import * as Catalog from './render-catalog'
+
+
