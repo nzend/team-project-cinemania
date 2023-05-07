@@ -1,6 +1,6 @@
-.library-hero__section {
-    margin: 0 auto;
-    width: 100%;
+.library-hero__container {
+  margin: 0 auto;
+  width: 100%;
     background-color: #000000;
     background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
     rgba(14, 14, 14, 0) 60.07%), 
@@ -15,9 +15,20 @@
             url('/src/images/library/hero-hall-mobile-2x.jpg');
             }
         }
+        @media (min-device-pixel-ratio: 3),
+        (-webkit-min-device-pixel-ratio: 3),
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-mobile-3x.jpg');
+            }
+        }    
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
     @media screen and (min-width: 768px) {
         background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
     rgba(14, 14, 14, 0) 60.07%), 
@@ -31,8 +42,19 @@
             rgba(14, 14, 14, 0) 60.07%), 
             url('/src/images/library/hero-hall-tablet-2x.jpg');
             }
+          }
+            @media (min-device-pixel-ratio: 3),
+            (-webkit-min-device-pixel-ratio: 3),
+            (min-resolution: 288dpi),
+            (min-resolution: 3dppx) {
+                & {
+                background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+                rgba(14, 14, 14, 0) 60.07%), 
+                url('/src/images/library/hero-hall-tablet-3x.jpg');
+                }
+            }    
         }    
-    }
+    
     @media screen and (min-width: 1280px) {
         background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
     rgba(14, 14, 14, 0) 60.07%), 
@@ -46,8 +68,18 @@
             rgba(14, 14, 14, 0) 60.07%), 
             url('/src/images/library/hero-hall-desktop-2x.jpg');
             }
+            @media (min-device-pixel-ratio: 3),
+        (-webkit-min-device-pixel-ratio: 3),
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-desktop-3x.jpg');
+            }
         }    
     }
+}
 }
 
 .library-container {
@@ -134,27 +166,32 @@
 }
 
 .library-btn {
+  display: flex;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
-    display: flex;
     align-items: center;
     text-align: center;
     color: #111111;
     background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
     border-radius: 74px;
-    width: 121px;
+    border: 1px solid;
+    width: 123px;
     padding: 12px 24px;
     margin: 0 auto;
     @media screen and (min-width: 768px) {
         font-size: 14px;
         line-height: 16px;
-        width: 133px;
+        width: 135px;
     }
     @media screen and (min-width: 1280px) {
         font-size: 18px;
         line-height: 1.56;
-        width: 158px;
+        width: 160px;
+    }
+    &:hover {
+      color: #F87719;
+      background: #FFFFFF;
     }
 }
 
@@ -164,257 +201,3 @@ img {
     height: auto;
 }
 
-.library-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  .library-list__img-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 395px;
-    height: 574px;
-  }
-  
-  .library-list__img-wrapper::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 0, 0, 0) 63.48%,
-      rgba(0, 0, 0, 0.9) 92.16%
-    );
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .library-list__card {
-    position: relative;
-    display: inline-block;
-    color: aliceblue;
-  }
-  
-  .library-list__info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-  }
-  
-  .library-info__list {
-    display: flex;
-  }
-  
-  .library-info__title {
-    margin-bottom: 14px;
-    text-transform: uppercase;
-  }
-  
-  .library-info__descr {
-    position: relative;
-  }
-  .library-info__descr:not(:last-child) {
-    margin-right: 14px;
-  }
-  
-  .library-info__descr:first-child::after {
-    position: absolute;
-    right: -7px;
-    display: inline-block;
-    content: '';
-    height: 100%;
-    width: 1px;
-    background-color: rgb(255, 255, 255);
-  }
-  
-  .library-title {
-    margin-bottom: 28px;
-  }
-  
-  .library-star {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .library-list__input {
-    background-color: var(--main-background);
-    color: var(--main-white-color);
-    margin-bottom: 36px;
-    width: 315px;
-    height: 48px;
-    border: 1px solid #ffffff;
-    border-radius: 8px;
-  
-    padding-left: 24px;
-    padding-top: 14.5px;
-      padding-bottom: 14.5px;
-  
-  }
-  
-  .library-list__btn {
-      width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: var(--btn-background);
-  }
-  
-  .catalog {
-    display: grid;
-    grid-template-columns: 1fr;
-  
-    @include desktop {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 16px;
-    }
-  
-    &__card {
-      position: relative;
-      display: inline-block;
-      color: aliceblue;
-    }
-  
-    &__img-wrapper {
-      position: relative;
-      display: inline-block;
-      width: 395px;
-      height: 574px;
-  
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 0, 0, 0) 63.48%,
-          rgba(0, 0, 0, 0.9) 92.16%
-        );
-      }
-    }
-    &__info {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-    }
-  }
-  
-  .info {
-    &__list {
-      display: flex;
-    }
-  
-    &__title {
-      margin-bottom: 14px;
-      text-transform: uppercase;
-    }
-  
-    &__descr {
-      position: relative;
-  
-      &:not(:last-child) {
-        margin-right: 14px;
-      }
-  
-      &:first-child::after {
-        position: absolute;
-        right: -7px;
-        display: inline-block;
-        content: '';
-        height: 100%;
-        width: 1px;
-        background-color: rgb(255, 255, 255);
-      }
-    }
-  }
-  
-  .catalog__stars-wrap {
-    margin-right: 0px;
-    width: 110px;
-    font-size: 18px;
-    position: relative;
-  
-    &::before {
-      content: ' ★ ★ ★ ★ ★';
-      display: block;
-    }
-  }
-  
-  .catalog__rating-active {
-    position: absolute;
-    width: 0%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  
-    &::before {
-      content: ' ★ ★ ★ ★ ★';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      color: rgb(243, 152, 54);
-    }
-  }
-  
-  // .catalog__img {
-  // 	width: 100%;
-  
-  // }
-  
-  .catalog__input {
-    background-color: var(--main-background);
-    color: var(--main-white-color);
-    margin-bottom: 36px;
-    width: 140px;
-    height: 40px;
-    border: 1px solid #ffffff;
-    border-radius: 8px;
-  
-    padding-left: 24px;
-    padding-top: 14.5px;
-    padding-bottom: 14.5px;
-  
-    margin-right: 16px;
-  }
-  
-  .catalog__filter-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-  .catalog__btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--btn-background);
-    border: none;
-    position: relative;
-    color: var(--main-text-color);
-    transition: color 250ms var(--cubic);
-  
-    &-svg {
-      fill: currentColor;
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  
-    &:hover {
-      color: var(--main-background);
-    }
-  }
