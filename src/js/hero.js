@@ -3,8 +3,7 @@ import { getWeekTrending} from './api.js';
 
 async function updateHero() {
     const data = await getWeekTrending(1).then(data => {
-        console.log(data[0]);
-        // const trending = data.results[0];
+        const trending = data.results[0];
         return data;
     }).catch(error => console.log(error));
 
