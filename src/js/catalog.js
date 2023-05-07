@@ -1,7 +1,7 @@
 import { setGenresInStorage, getNameOfGenresById } from './get-genres';
+import { getElement } from './modal-info/modal-info';
 
 setGenresInStorage();
-
 export async function creatMarkupCatalogCard(data) {
   console.log(data);
   const markUp = data
