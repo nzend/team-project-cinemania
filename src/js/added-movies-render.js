@@ -1,5 +1,6 @@
 import * as Api from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
+import LoadMoreButton from './load-more-button';
 
 
 const myLibGallery = document.querySelector('.mylib-gallery');
@@ -7,6 +8,8 @@ const addBtn = document.querySelector('button');
 const LOCALSTORAGE_KEY = 'movieId';
 const libraryFilms = getAddedMovies();
 console.log(libraryFilms);
+const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true})
+
 
 addBtn.addEventListener('click', onAddBtn);
 
