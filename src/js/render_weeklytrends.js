@@ -5,19 +5,30 @@ import * as Api from './api';
 
 const filmList = document.querySelector('.catalog');
 
-Api.getWeekTrending(1).then(data => {
-  const films = data.results.slice(0, 3);
-  creatMarkupCatalogCard(films)
-    .then(data => (filmList.innerHTML = data))
-    .catch(error => console.log(error));
-});
+// функція яка перевіряє ширину екрану, якщо менше 768px то завантажує тільки один фільм
+function renderCatalogFilms() {
+  if (window.innerWidth < 768) {
+    Api.getWeekTrending(1).then(data => {
+      const films = [data.results[0]];
+      creatMarkupCatalogCard(films)
+        .then(data => (filmList.innerHTML = data))
+        .catch(error => console.log(error));
+    });
+  } else {
+    Api.getWeekTrending(1).then(data => {
+      const films = data.results.slice(0, 3);
+      creatMarkupCatalogCard(films)
+        .then(data => (filmList.innerHTML = data))
+        .catch(error => console.log(error));
+    });
+  }
+}
 
-setGenresInStorage();
+window.addEventListener('resize', renderCatalogFilms);
+renderCatalogFilms();
 
 async function creatMarkupCatalogCard(data) {
-  const markUp = data
-    .slice(0, 3)
-    .reduce((markup, film) => markup + makeCard(film), '');
+  const markUp = data.reduce((markup, film) => markup + makeCard(film), '');
   return markUp;
 }
 
@@ -35,22 +46,15 @@ function makeCard({
   const stringOfGenres = arrOfGenres.slice(0, 2);
   const date = release_date || first_air_date;
 
-  let currentGenres = '';
-  if (window.innerWidth < 1280) {
-    currentGenres = stringOfGenres[0];
-  } else {
-    currentGenres = stringOfGenres.join(', ');
-  }
+  const currentGenres = () => {
+    if (window.innerWidth < 1280) {
+      return stringOfGenres[0];
+    }
+    return stringOfGenres.join(', ');
+  };
 
   window.addEventListener('resize', () => {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth < 1280) {
-      currentGenres = stringOfGenres[0];
-      return;
-    }
-
-    currentGenres = stringOfGenres.join(', ');
+    currentGenres();
   });
 
   return `<li class="catalog__card" data-id="${id}">
@@ -62,7 +66,7 @@ function makeCard({
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
       <ul class="info__list">
-      <li class="info__descr">${currentGenres}</li>
+      <li class="info__descr">${currentGenres()}</li>
       <li class="info__descr">${convertReleaseDate(date)}</li>
 		<div class="catalog__stars-wrap">
 		<div class="catalog__rating-active" style="width:${
