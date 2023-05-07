@@ -1,7 +1,18 @@
-import { getWeekTrending} from './api.js';
+import { getDayTrending } from './api.js';
+
+const hero = document.querySelector('.hero');
+
+    getDayTrending(1).then(({ results }) => {
+    const random = Math.floor(Math.random() * (results.length - 1));
+    /* console.log(random); */
+    console.log(results[random]);
+    hero.innerHTML = '';
+    const movieOfDay = results[random];
+    createTrendingMarkup(movieOfDay);
+}); 
 
 
-async function updateHero() {
+/* async function updateHero() {
     const data = await getWeekTrending(1).then(data => {
         console.log(data[0]);
         // const trending = data.results[0];
@@ -32,13 +43,13 @@ async function getRandomPageData() {
         }
     };
     return pageData;
-}
+}  */
 
 
-function createTrendingMarkup(currentmovie) {
+function createTrendingMarkup(movieOfDay) {
     const markup = `
     <div class="container">
-        <h1 class="title">${currentmovie.title}</h1>
+        <h1 class="title">${movieOfDay.title || movieOfDay.name}</h1>
         <div class="rating">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none">
                 <path fill="url(#a)"
@@ -91,9 +102,7 @@ function createTrendingMarkup(currentmovie) {
                 </defs>
             </svg>
         </div>
-        <p class="description">Salt-of-the-earth Cole falls head over heels for enigmatic Sadie — but then makes the
-            shocking discovery that she’s a
-            secret agent.</p>
+        <p class="description">${movieOfDay.overview}</p>
         <button class="button-mob">Watch trailer</button>
     </div>`
 }
