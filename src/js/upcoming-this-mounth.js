@@ -1,6 +1,8 @@
 import * as Api from './api';
 import { setGenresInStorage } from './get-genres';
 import { getNameOfGenresById } from './get-genres';
+import { setAddedMovies } from './local-storage';
+import { getAddedMovies } from './local-storage';
 
 const container = document.querySelector('.upcoming-content');
 
@@ -13,9 +15,6 @@ Api.getUpcoming()
     );
 
     if (filmUpcomingRelease.length === 0) {
-      container.classList.toggle('error');
-
-      renderMarkupError();
       return;
     }
     const random = Math.floor(Math.random() * filmUpcomingRelease.length);
@@ -23,16 +22,51 @@ Api.getUpcoming()
     const render = createMarkup(filmUpcomingRelease[random]);
 
     // const random = Math.floor(Math.random() * results.length);
-
     // const render = createMarkup(results[random]);
 
     renderMarkup(render);
+
+    const buttonAdd = document.getElementById('add');
+    const buttonRemove = document.getElementById('remove');
+
+    buttonAdd.addEventListener('click', onClick);
+    buttonRemove.addEventListener('click', onRemove);
+
+    function onClick() {
+      let existing = getAddedMovies();
+      existing = existing ? existing : [];
+      if (existing.includes(filmUpcomingRelease[random].id)) {
+        buttonAdd.classList.add('hidden');
+        buttonRemove.classList.remove('hidden');
+        return;
+      }
+      existing.push(filmUpcomingRelease[random].id);
+      setAddedMovies(existing);
+      buttonAdd.classList.add('hidden');
+      buttonRemove.classList.remove('hidden');
+    }
+
+    function onRemove() {
+      let existing = getAddedMovies();
+      existing = existing ? existing : [];
+      if (existing.includes(filmUpcomingRelease[random].id)) {
+        let index = existing.findIndex(
+          id => id === filmUpcomingRelease[random].id
+        );
+
+        existing.splice(index, 1);
+        setAddedMovies(existing);
+        buttonAdd.classList.remove('hidden');
+        buttonRemove.classList.add('hidden');
+      }
+    }
   })
   .catch(error => console.log(error));
 
 setGenresInStorage();
 
 function createMarkup({
+  id,
   backdrop_path,
   genre_ids,
   title,
@@ -46,11 +80,21 @@ function createMarkup({
   const populate = popularity.toFixed(1);
   const genres = getNameOfGenresById(genre_ids).join(' ');
 
+  // let existing = getAddedMovies();
+  // existing = existing ? existing : [];
+  // if (existing.includes(id)) {
+  //   console.log(`Email address exists`);
+  // } else {
+
+  //   console.log(`Email address not found`);
+  // }
+
   return `
       <img
         class="upcoming-content__img"
         src="https://image.tmdb.org/t/p/w500${backdrop_path}"
         alt="${title}"
+       
       
       />
 
@@ -87,9 +131,12 @@ function createMarkup({
         <p class="upcoming-content__text">${overview}
         </p>
 
-  <button type="button" class="upcoming-content__btn">
+  <button type="button" class="upcoming-content__btn" id="add">
   Remind me
-</button>      
+</button>   
+ <button type="button" class="upcoming-content__btn hidden" id="remove">
+  Remove
+</button>    
 `;
 }
 
@@ -97,14 +144,17 @@ function renderMarkup(markup) {
   container.innerHTML = markup;
 }
 
-function renderMarkupError() {
-  markupError = `
-       <p class="upcoming-error-container__text">
-        OOPS...<br />
-        We are very sorry!<br />
-        But we couldn't find any upcoming movies this month.
-      </p>
-      <button type="button" class="upcoming-content__btn">Remind me</button>
-     `;
-  return (container.innerHTML = markupError);
-}
+// const section = document.querySelector('.upcoming-content__desktop');
+// section.addEventListener('load', checkButton);
+
+// function checkButton() {
+//   let existing = getAddedMovies();
+//   existing = existing ? existing : [];
+//   if (existing.includes(id)) {
+//     console.log(`Email address exists`);
+//     buttonAdd.classList.add('hidden');
+//     buttonRemove.classList.remove('hidden');
+//   } else {
+//     console.log(`Email address not found`);
+//   }
+// }
