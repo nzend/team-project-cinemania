@@ -3,3 +3,4 @@
 // import * as moduleName from './js/module-name';
 
 import * as upcomingMounth from '../js/upcoming-this-mounth';
+import * as Catalog from './render-catalog';
