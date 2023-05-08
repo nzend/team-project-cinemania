@@ -1,7 +1,6 @@
 
 .notification-trailer-fail-overlay{
     display: none;
-    // display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -14,7 +13,6 @@
 }
 
 .notification-trailer-fail{
-    // position: relative;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -25,33 +23,17 @@
     border-radius: 16px;
     z-index: 10;
 }
-// @media screen and (min-width: 768px){
-//     .notification-trailer-fail{
-//     width: 609px;
-//     height: 400px;
-//     }
-// }
+
 @include tablet{
-     .notification-trailer-fail{
+.notification-trailer-fail{
     width: 609px;
     height: 400px;
     z-index: 10;
     }
 }
-// @media screen and (min-width: 1200px){
-//     .notification-trailer-fail{
-//     margin-left: auto;
-//     margin-right: auto;
-//     width: 700px;
-//     height: 400px;
-//     border-radius: 20px;
-//     }
-// }
 
 @include desktop{
-    .notification-trailer-fail{
-    margin-left: auto;
-    margin-right: auto;
+.notification-trailer-fail{
     width: 700px;
     height: 400px;
     border-radius: 20px;
@@ -59,134 +41,82 @@
     }
 }
 .notification-trailer-fail-text{
-    // position: absolute;
     width: 214px;
     height: 65px;
-    left: 33px;
-    top: 39px;
+    margin-top: 3px;
+    margin-left: 33px;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     color: var(--second-text-color);
 }
-// @media screen and (min-width: 768px){
-//     .notification-trailer-fail-text{
-//     width: 321px;
-//     height: 92px;
-//     left: 44px;
-//     top: 132px;
-//     font-size: 24px;
-//     line-height: 28px;
-//     }
-// }
+
 @include tablet{
-   .notification-trailer-fail-text{
+.notification-trailer-fail-text{
     width: 321px;
     height: 92px;
-    left: 44px;
-    top: 132px;
+    margin-top: 84px;
+    margin-left: 44px;
     font-size: 24px;
     line-height: 28px;
     } 
 }
 
-
-// @media screen and (min-width: 1200px){
-//     .notification-trailer-fail-text{
-//     left: 50px;
-//     top: 150px;
-//     width: 321px;
-//     height: 100px;
-//     }
-// }
 @include desktop{
-   .notification-trailer-fail-text{
-    left: 50px;
-    top: 150px;
+.notification-trailer-fail-text{
+    margin-top: 98px;
+    margin-left: 50px;
     width: 321px;
     height: 100px;
     } 
 }
 
 .notification-trailer-fail-label{
-// position: absolute;
-left: 61px;
-bottom: 8px;
-
+    margin-top: 24px;
+    margin-left: 61px;
 }
 
-// @media screen and (min-width: 768px){
-//     .notification-trailer-fail-label{
-//         left: 303px;
-//         top: 124px;
-//         bottom: 16px;
-//     }
-// }
 @include tablet{
-    .notification-trailer-fail-label{
-        left: 303px;
-        top: 124px;
-        bottom: 16px;
+.notification-trailer-fail-label{
+    margin-left:303px;
+    margin-top: -100px; 
     }
 }
 
-// @media screen and (min-width: 1200px){
-//     .notification-trailer-fail-label{
-//     left: 337px;
-//     top: 77px;
-//     bottom: 5px;
-//     }
-// }
 @include desktop{
-    .notification-trailer-fail-label{
-    left: 337px;
-    top: 77px;
-    bottom: 5px;
+.notification-trailer-fail-label{
+    margin-left:337px;
+    margin-top: -173px;
     }
 }
 .notification-trailer-fail-btn-close{
-// position: absolute;
-width: 16px;
-height: 16px;
-padding: 0;
-border: none;
-top: 20px;
-right: 20px;
-display: flex;
-justify-content: center;
-align-items: center;
-background: transparent;
-cursor: pointer;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    margin-top: 20px;
+    margin-left: 244px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
 }
 
-// @media screen and (min-width: 768px){
-//     .notification-trailer-fail-btn-close{
-//         width: 24px;
-//         height: 24px;
-//         right: 24px;
-//         top: 24px;
-//     }
-// }
 @include tablet{
-     .notification-trailer-fail-btn-close{
-        width: 24px;
-        height: 24px;
-        right: 24px;
-        top: 24px;
+.notification-trailer-fail-btn-close{
+    width: 24px;
+    height: 24px;
+    margin-top: 24px;
+    margin-left: 561px;
     }
 }
 
-// @media screen and (min-width: 1200px){
-//     .notification-trailer-fail-btn-close{
-//         right: 28px;
-//         top: 28px;
-//     }
-// }
 @include desktop{
-     .notification-trailer-fail-btn-close{
-        right: 28px;
-        top: 28px;
+.notification-trailer-fail-btn-close{
+    margin-top: 28px;
+    margin-left: 648px;
     }
 }
 
