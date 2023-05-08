@@ -29,10 +29,10 @@ Api.getUpcoming()
     const buttonAdd = document.getElementById('add');
     const buttonRemove = document.getElementById('remove');
 
-    buttonAdd.addEventListener('click', onClick);
-    buttonRemove.addEventListener('click', onRemove);
+    buttonAdd.addEventListener('click', onClickAdd);
+    buttonRemove.addEventListener('click', onClickRemove);
 
-    function onClick() {
+    function onClickAdd() {
       let existing = getAddedMovies();
       existing = existing ? existing : [];
       if (existing.includes(filmUpcomingRelease[random].id)) {
@@ -46,7 +46,7 @@ Api.getUpcoming()
       buttonRemove.classList.remove('hidden');
     }
 
-    function onRemove() {
+    function onClickRemove() {
       let existing = getAddedMovies();
       existing = existing ? existing : [];
       if (existing.includes(filmUpcomingRelease[random].id)) {
