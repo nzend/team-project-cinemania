@@ -1,9 +1,8 @@
 import { setGenresInStorage, getNameOfGenresById } from './get-genres';
 
-setGenresInStorage();
+
 
 export async function creatMarkupCatalogCard(data) {
-  console.log(data);
   const markUp = data
     .slice(0, 10)
     .reduce((markup, film) => markup + makeCard(film), '');
@@ -21,9 +20,19 @@ function makeCard({
   vote_average,
 }) {
   const arrOfGenres = getNameOfGenresById(genre_ids);
-  const stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
-	const date = release_date || first_air_date;
-	
+  let stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
+  const date = release_date || first_air_date;
+  const mediaQuery = window.matchMedia(
+    '(min-width: 768px) and (max-width: 1199px)'
+  );
+
+  if (mediaQuery.matches) {
+    stringOfGenres = arrOfGenres.slice(0, 1).join(', ');
+  }
+
+  if (stringOfGenres.length > 18)
+	  stringOfGenres = arrOfGenres.slice(0, 1).join(', ');
+
 
   return `<li class="catalog__card" data-id="${id}">
     <div class="catalog__img-wrapper">
@@ -33,23 +42,25 @@ function makeCard({
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
-      <ul class="info__list">
+		<div class="info__wrap">
+		<ul class="info__list">
       <li class="info__descr">${stringOfGenres}</li>
       <li class="info__descr">${convertReleaseDate(date)}</li>
-		<div class="catalog__stars-wrap">
-		<div class="catalog__rating-active" style="width:${vote_average / 2 / 0.05}%"></div>
-		</div>
       </ul>
+		<div class="catalog__stars-wrap">
+		<div class="catalog__rating-active" style="width:${
+      vote_average / 2 / 0.05
+    }%"></div>
+		</div>
+		
+		</div>
 		
     </div>
   </li>`;
 }
-
 
 function convertReleaseDate(date) {
   if (date) {
     return date.slice(0, 4);
   } else return '';
 }
-
-
