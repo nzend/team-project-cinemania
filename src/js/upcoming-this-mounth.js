@@ -19,11 +19,11 @@ Api.getUpcoming()
 
       return;
     }
-    const random = Math.floor(Math.random() * filmUpcomingRelease.length);
 
+    const random = Math.floor(Math.random() * filmUpcomingRelease.length);
     const render = createMarkup(filmUpcomingRelease[random]);
 
-    // const random = Math.floor(Math.random() * results.length);
+    // const random = Math.floor(Math.random() * (results.length-1));
     // const render = createMarkup(results[random]);
 
     renderMarkup(render);
@@ -75,7 +75,6 @@ Api.getUpcoming()
 setGenresInStorage();
 
 function createMarkup({
-  id,
   backdrop_path,
   genre_ids,
   title,
@@ -87,7 +86,7 @@ function createMarkup({
 }) {
   const vote = vote_average.toFixed(1);
   const populate = popularity.toFixed(1);
-  const genres = getNameOfGenresById(genre_ids).slice(0, 2).join(' ');
+  const genres = getNameOfGenresById(genre_ids).slice(0, 3).join(' ');
 
   return `
       <img
@@ -134,8 +133,8 @@ function createMarkup({
   <button type="button" class="upcoming-content__btn" id="add">
   Remind me
 </button>   
- <button type="button" class="upcoming-content__btn hidden" id="remove">
-  Remove
+ <button type="button" class="upcoming-content__btn-remove hidden" id="remove">
+  Remove from my library
 </button>    
 `;
 }

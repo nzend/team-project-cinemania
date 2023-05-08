@@ -3,11 +3,6 @@ img {
   width: 100%;
 }
 
-.logo {
-  width: 32px;
-  height: 32px;
-}
-
 .upcoming {
   padding-top: 32px;
   padding-bottom: 40px;
@@ -69,45 +64,18 @@ img {
 
 .upcoming-content {
   width: 100%;
-  // height: 400px;
-  // background-image: url('../images/hero/hero-people-mobile-1x.jpg');
-
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: cover;
-
-  // @media (min-device-pixel-ratio: 2),
-  //   (min-resolution: 192dpi),
-  //   (min-resolution: 2dppx) {
-  //   background-image: url('../images/hero/hero-people-mobile-2x.jpg');
-  // }
 
   @media (min-width: 768px) {
     width: 704px;
-
-    // background-image: url('../images/hero/hero-people-tablet-1x.jpg');
-
-    // @media (min-device-pixel-ratio: 2),
-    //   (min-resolution: 192dpi),
-    //   (min-resolution: 2dppx) {
-    //   background-image: url('../images/hero/hero-people-tablet-2x.jpg');
-    // }
   }
 
   @media (min-width: 1200px) {
     display: flex;
     width: 1214px;
-    // height: 460px;
-
-    // background-image: url('../images/hero/hero-people-desktop-1x.jpg');
-
-    // @media (min-device-pixel-ratio: 2),
-    //   (min-resolution: 192dpi),
-    //   (min-resolution: 2dppx) {
-    //   background-image: url('../images/hero/hero-people-desktop-2x.jpg');
-    // }
   }
 }
+
+//? ======  ошибка отсутствия контента =========
 
 .upcoming-error-container {
   padding-top: 80px;
@@ -144,25 +112,6 @@ img {
   @media (min-width: 1200px) {
     max-width: 400px;
   }
-}
-
-.upcoming-error-container__button {
-  width: 160px;
-  height: 40px;
-  background-color: orange;
-  border-radius: 74px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 11px;
-  padding-left: 6px;
-}
-
-.upcoming-error-container__link {
-  color: #111111;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 24px;
-  padding-right: 24px;
 }
 
 .upcoming-content__img {
@@ -327,6 +276,8 @@ img {
   }
 }
 
+//? ======  кнопка добавления =========
+
 .upcoming-content__btn {
   display: block;
   margin-top: 20px;
@@ -343,27 +294,44 @@ img {
   color: #111111;
   cursor: pointer;
 
-  // transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-  //   background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1200px) {
-  }
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .upcoming-content__btn:hover,
 .upcoming-content__btn:focus {
   color: #f87719;
   background: #fff;
-  border: 2px solid #f87719;
+  border: 1px solid #f87719;
 }
 
-.error-btn {
-  margin-left: auto;
-  margin-right: auto;
+//? ======  кнопка удаления =========
+
+.upcoming-content__btn-remove {
   display: block;
+  margin-top: 20px;
+  padding: 12 24;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+
+  border: 1px solid #f87719;
+  background-color: #111111;
+  border-radius: 74px;
+  color: #fff;
+  cursor: pointer;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upcoming-content__btn-remove:hover,
+.upcoming-content__btn-remove:focus {
+  color: #f87719;
+  background-color: #fff;
+  border: 1px solid #f87719;
 }
 
 .hidden {
