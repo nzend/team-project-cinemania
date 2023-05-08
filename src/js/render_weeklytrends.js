@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
 import sprite from '../../src/images/sprite-stars.svg';
-import { setGenresInStorage, getNameOfGenresById } from './get-genres';
+import { getNameOfGenresById } from './get-genres';
 import * as Api from './api';
 // import * as moduleName from './js/module-name';
 
@@ -45,19 +45,31 @@ function makeCard({
   vote_average,
 }) {
   const arrOfGenres = getNameOfGenresById(genre_ids);
-  const stringOfGenres = arrOfGenres.slice(0, 2);
+  let stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
   const date = release_date || first_air_date;
+  const mediaQuery = window.matchMedia(
+    '(min-width: 768px) and (max-width: 1279px)'
+  );
 
-  const currentGenres = () => {
-    if (window.innerWidth < 1280) {
-      return stringOfGenres[0];
-    }
-    return stringOfGenres.join(', ');
-  };
+  // На таблетці відображає один жанр
+  if (mediaQuery.matches) {
+    stringOfGenres = arrOfGenres.slice(0, 1).join(', ');
+  }
 
-  window.addEventListener('resize', () => {
-    currentGenres();
-  });
+  // Якшо строка жанрів більша, рендерити один жанр
+  if (stringOfGenres.length > 18)
+    stringOfGenres = arrOfGenres.slice(0, 1).join(', ');
+
+  // const currentGenres = () => {
+  //   if (window.innerWidth < 1280) {
+  //     return stringOfGenres[0];
+  //   }
+  //   return stringOfGenres.join(', ');
+  // };
+
+  // window.addEventListener('resize', () => {
+  //   currentGenres();
+  // });
 
   return `<li class="catalog__card" data-id="${id}">
   <div class="catalog__img-wrapper">
@@ -79,27 +91,11 @@ function makeCard({
 </div>
 </div>
   </div>
-</li>`};
+</li>`;
+}
 
 function convertReleaseDate(date) {
   if (date) {
     return date.slice(0, 4);
   } else return '';
-}
-
-function makeStars(n) {
-  console.log(n / 2);
-  const numberOfStars = Math.round(n / 2);
-  return numberOfStars;
-}
-makeStars(7.44);
-
-function convertReleaseDate(date) {
-  if (date) {
-    return date.slice(0, 4);
-  } else return '';
-}
-
-function clearMarkup(element) {
-  return (element.innerHTML = '');
 }
