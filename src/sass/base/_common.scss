@@ -6,7 +6,7 @@ html {
 
 body {
   background-color: var(--main-background);
-
+transition: background-color 0.4s ease-out;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -46,3 +46,4 @@ a {
     width: 1280px;
   }
 }
+
