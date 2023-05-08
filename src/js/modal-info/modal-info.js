@@ -22,7 +22,8 @@ function createCardMarkup({
   overview,
   genres,
 }) {
-  return `<div class="modal__wrap"><div class="modal-film">
+  return `<div class="modal__wrap">
+  <div class="modal-film">
    <button class="modal__close">
     <svg class="modal__svg" width="24" height="24">
       <use width="24" height="24" class="svg__use" href="./images/sprite.svg#icon-close"></use>
@@ -65,20 +66,24 @@ function createCardMarkup({
   </div>
 </div></div>`;
 }
+
+
+
+
 function onCatalogClick(event) {
   event.preventDefault();
-  console.log('sda');
+
   const filmID = event.target.getAttribute('data-id');
   const catalog = event.currentTarget;
+  console.log("🚀catalog:", catalog)
 
   getInfoMovie(filmID).then(data => {
     // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
     document
       .querySelector('body')
       .insertAdjacentHTML('beforeend', createCardMarkup(data));
-  });
-}
-
-function modalClose(params) {
-  
+      const closeEle = document.querySelector('.modal__wrap');
+      const addToLibrary = document.querySelector('.film__button');
+      console.log("🚀 ~ file: modal-info.js:87 ~ getInfoMovie ~ addToLibrary:", addToLibrary)
+  }).catch((error)=>console.log(error));
 }
