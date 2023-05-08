@@ -11,14 +11,18 @@ export function getNameOfGenresById(ids) {
 
   const savedGenres = localStorage.getItem('genres');
   const parsedGenres = JSON.parse(savedGenres);
-
   const nameOfGenres = ids.map(id => {
     const filmById = parsedGenres.find(film => {
       return film.id === id;
     });
 
     if (!filmById) return ''; //Якщо не знайшлося співпадіння з айді, повертає пусту строку
+    filmById.name === 'Science Fiction'
+      ? (filmById.name = 'Sci-Fi')
+      : filmById.name;
     return filmById.name;
   });
   return nameOfGenres; //Масив з іменами жанрів
 }
+
+setGenresInStorage(); 
