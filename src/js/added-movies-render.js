@@ -3,47 +3,38 @@ import { getAddedMovies, setAddedMovies } from './local-storage';
 import LoadMoreButton from './load-more-button';
 
 
-const myLibGallery = document.querySelector('.mylib-gallery');
-const addBtn = document.querySelector('.addButton');
-const LOCALSTORAGE_KEY = 'movieId';
-const libraryFilms = getAddedMovies();
-console.log(libraryFilms);
+const myLibGallery = document.querySelector('.mylib-gallery__list');
+const addBtn = document.querySelector('.btn');
+
+
+
 const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true});
 const loadMoreBtn = document.querySelector('.load-more');
 
-
+//  vremenna
 addBtn.addEventListener('click', onAddBtn);
-loadMoreBtn.addEventListener('click', onLoadMore);
 
-function onLoadMore(evt) {
-  // if(arrIds.lendth < 9) {
-  //   loadMoreButton.disabled()
-  // }
-    loadMoreButton.enabled()
-    console.log('hello');
-}
-
-
-function onAddBtn(evt) {
- const v = [447365, 447365, 420808, 420808, 420808, 420808, 420808, 
-  420808, 420808, 420808, 420808, 420808, 420808, 420808, 420808, 420808, 420808]
- setAddedMovies(v)
+function onAddBtn() {
+ const v = [447365, 447365, 420808, 420808]
+ setAddedMovies(v);
 };
 
-function renderLibrary(arrIds) {
- console.log(arrIds);
- arrIds.slice(0, 9).map(id => {
-  console.log(id);
-  Api.getInfoMovie(id)
- .then(data => {
-  console.log(data);
- 
-  const list = makeCard(data);
-  myLibGallery.insertAdjacentHTML("beforeend", list);
-})
-.catch(error => console.log(error))
- })
+
+
+const libraryFilms = getAddedMovies();
+
+
+
+function renderLibrary(arrOfFilms) {
+ Api.getArrayOfMovies(arrOfFilms)
+    .then(data => {
+      data.map(film => {
+        myLibGallery.insertAdjacentHTML('beforEend', makeCard(film))
+      });
+    })
+    .catch(error => console.error(error));
 }
+
 
 renderLibrary(libraryFilms);
 
@@ -57,7 +48,7 @@ renderLibrary(libraryFilms);
   first_air_date,
   vote_average,
 }) {
-
+   
   const date = release_date || first_air_date;
  
 
