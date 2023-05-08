@@ -6,11 +6,11 @@ const body = document.querySelector('body');
 mobileMenuButton.addEventListener('click', () => {
   menuNav.style.left = '0';
   overlay.style.display = 'block';
-//   body.style.overflow = 'hidden';
+  body.style.overflow = 'hidden';
 });
 
 overlay.addEventListener('click', () => {
-  menu.style.left = '-64%';
+  menuNav.style.left = '-64%';
   overlay.style.display = 'none';
   body.style.overflow = 'auto';
 });

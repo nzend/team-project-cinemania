@@ -290,4 +290,69 @@ header {
   display: none;
 }
 
+// Light theme
+
+//^ BODY
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.4s ease-out;
+}
+
+//* HEADER
+body.light {
+  .header__container {
+    background-color: #ffffff;
+  }
+
+  .logo-text {
+    color: #000000;
+  }
+
+  .header__nav-link {
+    color: #595959;
+
+    &:hover,
+    &:focus {
+      color: #f87719;
+    }
+  }
+
+  .link__current {
+    color: #f87719;
+  }
+
+  // mobile-menu
+  .header__nav {
+    @media (max-width: 767px) {
+      background-color: #ffffff;
+    }
+  }
+
+  .mobile-menu__link.link__current {
+    color: #f87719;
+  }
+
+  .mobile-menu__link {
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+      color: #f87719;
+    }
+  }
+
+  #menu-button {
+    color: #595959;
+
+    &:hover,
+    &:focus {
+      color: #f87719;
+    }
+  }
+
+  #overlay {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
 
