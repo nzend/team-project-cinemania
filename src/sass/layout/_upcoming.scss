@@ -205,7 +205,8 @@ img {
 
 .left {
   @media (min-width: 768px) {
-    margin-right: 112px;
+    margin-right: auto;
+    // margin-right: 118px;
   }
 
   @media (min-width: 1200px) {
