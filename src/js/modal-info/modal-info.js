@@ -1,7 +1,8 @@
 import { getInfoMovie } from '../api';
 import { getAddedMovies, setAddedMovies } from '../local-storage';
-import sprite from '../../src/images/sprite.svg#icon-close';
+import sprite from '../../images/sprite.svg';
 
+//* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
 
 function makeGenres(objArray) {
@@ -26,7 +27,7 @@ function createCardMarkup({
 }) {
   return `<div class="modal__wrap">
   <div class="modal-film">
-   <button class="modal__close">
+  <button class="modal__close">
     <svg class="modal__svg" width="24" height="24">
       <use width="24" height="24" class="svg__use" href="${sprite}#icon-close"></use>
     </svg>
@@ -73,7 +74,6 @@ function createCardMarkup({
   </div>
 </div></div>`;
 }
-
 function onCatalogClick(event) {
   event.preventDefault();
 
@@ -81,61 +81,92 @@ function onCatalogClick(event) {
   const catalog = event.currentTarget;
   console.log('🚀catalog:', catalog);
 
-  getInfoMovie(filmID)
-    .then(data => {
-      // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
-      document
-        .querySelector('body')
-        .insertAdjacentHTML('beforeend', createCardMarkup(data));
+  getInfoMovie(filmID).then(data => {
+    // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
+    document
+      .querySelector('body')
+      .insertAdjacentHTML('beforeend', createCardMarkup(data));
 
-      const buttonAdd = document.getElementById('add');
-      const buttonRemove = document.getElementById('remove');
+    const buttonAdd = document.getElementById('add');
+    const buttonRemove = document.getElementById('remove');
+    //!---------
+    let existing = getAddedMovies();
+    existing = existing ? existing : [];
+    if (existing.includes(filmID)) {
+      buttonAdd.classList.add('hidden');
+      buttonRemove.classList.remove('hidden');
+    }
+    buttonAdd.addEventListener('click', onClickAdd);
+    buttonRemove.addEventListener('click', onClickRemove);
 
+    function onClickAdd() {
       let existing = getAddedMovies();
       existing = existing ? existing : [];
       if (existing.includes(filmID)) {
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
+        return;
       }
-      buttonAdd.addEventListener('click', onClickAdd);
-      buttonRemove.addEventListener('click', onClickRemove);
+      existing.push(filmID);
+      setAddedMovies(existing);
+      buttonAdd.classList.add('hidden');
+      buttonRemove.classList.remove('hidden');
+      console.log('its working');
+    }
 
-      function onClickAdd() {
-        let existing = getAddedMovies();
-        existing = existing ? existing : [];
-        if (existing.includes(filmID)) {
-          buttonAdd.classList.add('hidden');
-          buttonRemove.classList.remove('hidden');
-          return;
-        }
-        existing.push(filmID);
+    function onClickRemove() {
+      let existing = getAddedMovies();
+      existing = existing ? existing : [];
+      if (existing.includes(filmID)) {
+        let index = existing.findIndex(id => id === filmID);
+
+        existing.splice(index, 1);
         setAddedMovies(existing);
-        buttonAdd.classList.add('hidden');
-        buttonRemove.classList.remove('hidden');
-        console.log('its working');
+        buttonAdd.classList.remove('hidden');
+        buttonRemove.classList.add('hidden');
       }
-
-      function onClickRemove() {
-        let existing = getAddedMovies();
-        existing = existing ? existing : [];
-        if (existing.includes(filmID)) {
-          let index = existing.findIndex(id => id === filmID);
-
-          existing.splice(index, 1);
-          setAddedMovies(existing);
-          buttonAdd.classList.remove('hidden');
-          buttonRemove.classList.add('hidden');
-        }
-        console.log('its working');
-      }
-
-      const closeEl = document.querySelector('.modal__close');
-      closeEl.addEventListener('click', modalClose);
-    })
-    .catch(error => console.log(error));
+      console.log('its working');
+    }
+    //!---------
+    document.body.addEventListener('keyup', closeOnEsc);
+    document
+      .querySelector('.modal__close')
+      .addEventListener('click', modalClose);
+    document
+      .querySelector('.modal__wrap')
+      .addEventListener('click', closeOnOverlay);
+  });
+  // .catch(error => console.log(error));
 }
 
+//* MODAL CLOSING
+
 function modalClose(event) {
-  console.log(event.currentTarget);
-  document.querySelector('.modal__wrap').remove();
+  const modalWrap = document.querySelector('.modal__wrap');
+  if (modalWrap) {
+    modalWrap.remove();
+  }
+  return;
+  event.target.removeEventListener('click', onCatalogClick);
+}
+
+function closeOnEsc(event) {
+  if (event.keyCode === 27) {
+    const modalWrap = document.querySelector('.modal__wrap');
+    if (modalWrap) {
+      modalWrap.remove();
+    }
+    event.target.removeEventListener('keyup', onCatalogClick);
+  }
+  return;
+}
+
+function closeOnOverlay(event) {
+  const modalWrap = document.querySelector('.modal__wrap');
+  if (modalWrap && event.target === modalWrap) {
+    modalWrap.remove();
+  }
+
+  event.target.removeEventListener('click', onCatalogClick);
+  return;
 }
