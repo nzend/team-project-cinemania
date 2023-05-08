@@ -4,9 +4,10 @@ import { getAddedMovies, setAddedMovies } from './local-storage';
 
 
 const myLibGallery = document.querySelector('.mylib-gallery__list');
-const libContent = document.querySelector('#hidden');
+const libContent = document.querySelector('#is-hidden');
+const libGallery = document.querySelector('.gallery-hidden');
 // const addBtn = document.querySelector('.btn');
-console.log(libContent);
+// console.log(libContent);
 
 
 // const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true});
@@ -25,14 +26,15 @@ const libraryFilms = getAddedMovies();
 function renderLibrary(arrOfFilms) {
  Api.getArrayOfMovies(arrOfFilms)
     .then(data => { 
-      console.log(data);
+      // console.log(data);
       if (data.length === 0) {
         // renderMarkupError()
-        libContent.classList.remove('hidden')
-        return 
+        libContent.classList.remove('is-hidden')
+        return
       }
       data.map(film => {
         myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film))
+        libGallery.classList.remove('gallery-hidden')
       });
     })
     .catch(error => console.error(error));
