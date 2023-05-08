@@ -73,3 +73,16 @@ export async function getGanres() {
     })
     .catch(error => console.log(error));
 }
+
+// Отримує параметр поточної сторінки та повертає промікс фільмів які очікуються на сайті
+
+export async function getUpcoming(page = 1) {
+  const url = `${MAIN_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`;
+
+  return await axios
+    .get(url)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => console.log(error));
+}
