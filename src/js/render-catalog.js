@@ -1,4 +1,4 @@
-import { creatMarkupCatalogCard } from './catalog';
+import { createMarkupCatalogCard } from './markup-catalog';
 import * as Api from './api';
 
 const catalogRef = document.querySelector('.catalog');
@@ -7,6 +7,7 @@ const input = document.querySelector('.catalog__input');
 
 btnSearch.addEventListener('click', onBtnSearch);
 
+// Виконує запит по введеній назві
 async function onBtnSearch(e) {
   try {
     const search = input.value;
@@ -15,17 +16,20 @@ async function onBtnSearch(e) {
     const searchData = await Api.getBySearch(search, 1);
     const searchResult = searchData.results;
 
-    creatMarkupCatalogCard(searchResult).then(
+    createMarkupCatalogCard(searchResult).then(
       data => (catalogRef.innerHTML = data)
     );
   } catch (error) {
     console.log(error);
   }
 }
+
+//  Рендерить за замовчування фільми за трендом тижня
 Api.getWeekTrending(1).then(data => {
   const films = data.results;
 
-  creatMarkupCatalogCard(films)
+  createMarkupCatalogCard(films)
     .then(data => (catalogRef.innerHTML = data))
     .catch(error => console.log(error));
 });
+

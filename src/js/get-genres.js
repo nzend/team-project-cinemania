@@ -25,4 +25,4 @@ export function getNameOfGenresById(ids) {
   return nameOfGenres; //Масив з іменами жанрів
 }
 
-setGenresInStorage();
+setGenresInStorage(); 
