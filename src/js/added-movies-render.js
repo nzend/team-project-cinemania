@@ -1,6 +1,6 @@
 import * as Api from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
-import LoadMoreButton from './load-more-button';
+// import LoadMoreButton from './load-more-button';
 
 
 const myLibGallery = document.querySelector('.mylib-gallery__list');
