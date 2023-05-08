@@ -3,11 +3,11 @@ const notificationBtnClose = document.querySelector(`.notification-trailer-fail-
 const notification = document.querySelector(`.notification-trailer-fail`);
 const notificationTrailerFailOverlay = document.querySelector(`.notification-trailer-fail-overlay`);
 
-//!дата атрибут на кнопку для відкриття модалки
+//!дата атрибут та слухач на кнопку для відкриття модалки
 const trailerFailBtn = document.querySelector('button[data-btn="trailer-fail"]');
+trailerFailBtn.addEventListener(`click`, onOpenModalBtnClick);
 
-
-function onOpenModalBtnClick(e){
+function onOpenModalBtnClick(){
     notificationTrailerFailOverlay.style.display= "flex";
     notificationBtnClose.addEventListener(`click`, onNotificationTrailerFailBtnClick);
     notificationTrailerFailOverlay.addEventListener(`click`, onNotificationTrailerFailOverlay);
