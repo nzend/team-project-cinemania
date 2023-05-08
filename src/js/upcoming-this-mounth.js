@@ -29,6 +29,19 @@ Api.getUpcoming()
     const buttonAdd = document.getElementById('add');
     const buttonRemove = document.getElementById('remove');
 
+    let existing = getAddedMovies();
+    existing = existing ? existing : [];
+    if (existing.includes(filmUpcomingRelease[random].id)) {
+      buttonAdd.classList.add('hidden');
+      buttonRemove.classList.remove('hidden');
+    }
+
+    // if (added.includes(id)) {
+    //   addMovieIntoLibrary = 'Is in Library';
+    //   addMovieIntoLibrary.style.backgroundColor = 'color';
+    //   addMovieIntoLibrary.style.color = 'color';
+    // }
+
     buttonAdd.addEventListener('click', onClickAdd);
     buttonRemove.addEventListener('click', onClickRemove);
 
@@ -78,16 +91,7 @@ function createMarkup({
 }) {
   const vote = vote_average.toFixed(1);
   const populate = popularity.toFixed(1);
-  const genres = getNameOfGenresById(genre_ids).join(' ');
-
-  // let existing = getAddedMovies();
-  // existing = existing ? existing : [];
-  // if (existing.includes(id)) {
-  //   console.log(`Email address exists`);
-  // } else {
-
-  //   console.log(`Email address not found`);
-  // }
+  const genres = getNameOfGenresById(genre_ids).slice(0, 2).join(' ');
 
   return `
       <img
