@@ -14,13 +14,36 @@
     height: 100%;
 }
 
+img{
+    display: block;
+    width: 100%;
+}
+.thumb{
+    @include tablet {
+            width: 704px;
+            height: 432px;
+        }
+    
+        @include desktop {
+            width: 1215px;
+            height: 720px;
+        }
+}
 .backend {
     position: relative;
     top: 0;
-    left: 0;
+    right: 0;
     width: 320px;
     height: 380px;
     object-fit: cover;
+    @include tablet {
+            width: 482px;
+            height: 432px;
+        }
+        @include desktop {
+            width: 802px;
+                height: 720px;
+        }
 }
 
 .black {
@@ -29,6 +52,15 @@
     left: 0;
     z-index: 1;
     opacity: 0;
+    @include tablet {
+        opacity: 1;
+        width: 768px;
+        height: 432px;
+    }
+        @include desktop {
+    width: 1280px;
+    height: 720px;
+        }
 }
 
 .hero-wrap__content {
@@ -42,7 +74,7 @@
     width: 100%;
 }
 
-.hero-wrap{
+/* .hero-wrap{
     padding-top: 40px;
     padding-bottom: 28px;
     padding-left: 20px;
@@ -61,6 +93,25 @@
             padding-left: 135px;
             padding-right: 778px;
     }
+} */
+
+.hero-wrap__content{
+    padding-top: 40px;
+    padding-bottom: 28px;
+    padding-left: 20px;
+    padding-right: 10px;
+    @include tablet {
+            padding-top: 36px;
+            padding-bottom: 36px;
+            padding-left: 32px;
+            padding-right: 482px;
+        }
+                @include desktop {
+                    padding-top: 118px;
+                    padding-bottom: 178px;
+                    padding-left: 135px;
+                    padding-right: 778px;
+                }
 }
 
 .title{
@@ -99,10 +150,6 @@
         content: ' ★ ★ ★ ★ ★';
         display: block;
     }
-
-        @include desktop {
-            padding-bottom: 28px;
-        }
 }
 
 .catalog__rating-active {
@@ -132,6 +179,7 @@
         align-items: center;
         color: #F8F8F8;
         padding-bottom: 16px;
+        padding-top: 20px;
     @include desktop {
             padding-bottom: 36px;
             font-size: 16px;
