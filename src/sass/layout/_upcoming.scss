@@ -1,0 +1,373 @@
+img {
+  display: block;
+  width: 100%;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.upcoming {
+  padding-top: 32px;
+  padding-bottom: 40px;
+
+  @media (min-width: 768px) {
+    width: 768px;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 44px;
+    padding-bottom: 77px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1280px;
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  // margin-left: auto;
+  // margin-right: auto;
+  width: auto;
+
+  @media (min-width: 768px) {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1280px;
+  }
+}
+
+.upcoming__title {
+  padding-bottom: 24px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+
+  text-transform: uppercase;
+
+  color: var(--main-text-color);
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1.16;
+  }
+
+  @media (min-width: 1200px) {
+    padding-bottom: 28px;
+  }
+}
+
+.upcoming-content {
+  width: 100%;
+  // height: 400px;
+  // background-image: url('../images/hero/hero-people-mobile-1x.jpg');
+
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
+
+  // @media (min-device-pixel-ratio: 2),
+  //   (min-resolution: 192dpi),
+  //   (min-resolution: 2dppx) {
+  //   background-image: url('../images/hero/hero-people-mobile-2x.jpg');
+  // }
+
+  @media (min-width: 768px) {
+    width: 704px;
+
+    // background-image: url('../images/hero/hero-people-tablet-1x.jpg');
+
+    // @media (min-device-pixel-ratio: 2),
+    //   (min-resolution: 192dpi),
+    //   (min-resolution: 2dppx) {
+    //   background-image: url('../images/hero/hero-people-tablet-2x.jpg');
+    // }
+  }
+
+  @media (min-width: 1200px) {
+    display: flex;
+    width: 1214px;
+    // height: 460px;
+
+    // background-image: url('../images/hero/hero-people-desktop-1x.jpg');
+
+    // @media (min-device-pixel-ratio: 2),
+    //   (min-resolution: 192dpi),
+    //   (min-resolution: 2dppx) {
+    //   background-image: url('../images/hero/hero-people-desktop-2x.jpg');
+    // }
+  }
+}
+
+.upcoming-error-container {
+  padding-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error {
+  display: block;
+}
+
+.upcoming-error-container__text {
+  margin-bottom: 24px;
+  font-family: 'Roboto';
+
+  font-size: 20px;
+  line-height: 1.2;
+
+  color: #ffffff;
+
+  @media (min-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 28px;
+  }
+}
+
+.upcoming-content__desktop {
+  @media (min-width: 1200px) {
+    max-width: 400px;
+  }
+}
+
+.upcoming-error-container__button {
+  width: 160px;
+  height: 40px;
+  background-color: orange;
+  border-radius: 74px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 11px;
+  padding-left: 6px;
+}
+
+.upcoming-error-container__link {
+  color: #111111;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.upcoming-content__img {
+  border-radius: 5px;
+
+  @media (min-width: 1200px) {
+    margin-right: 16px;
+  }
+}
+
+.upcoming-content__name {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+
+  color: var(--main-text-color);
+
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.upcoming-thumb {
+  @media (min-width: 768px) {
+    display: flex;
+  }
+
+  @media (min-width: 1200px) {
+    flex-direction: column;
+  }
+}
+
+.left {
+  @media (min-width: 768px) {
+    // margin-right: auto;
+    margin-right: 118px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-right: 0px;
+  }
+}
+
+.upcoming-list__item {
+  display: flex;
+  padding-bottom: 12px;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1200px) {
+  }
+}
+
+.upcoming-list__text {
+  display: flex;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+
+  color: #b7b7b7;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1200px) {
+  }
+}
+
+.upcoming-list__date {
+  color: #f87719;
+  margin-left: 58px;
+}
+.upcoming-list__vote {
+  color: #f8f8f8;
+  margin-left: 62px;
+}
+
+.vote {
+  padding: 0 8;
+  background-color: #f8f8f8;
+  color: #111111;
+  border-radius: 5px;
+}
+.upcoming-list__pop {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  margin-left: 78px;
+}
+
+.upcoming-list__genre {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+
+  color: #ffffff;
+
+  margin-left: 108px;
+  @media (min-width: 768px) {
+    margin-left: 108px;
+  }
+
+  @media (min-width: 1200px) {
+  }
+}
+
+.upcoming-content__title {
+  margin-top: 20px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+
+  align-items: center;
+  text-transform: uppercase;
+
+  color: #b7b7b7;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1200px) {
+  }
+}
+
+.upcoming-content__text {
+  margin-top: 16px;
+  font-family: 'Roboto';
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+
+  color: #f8f8f8;
+
+  @media (min-width: 768px) {
+    min-width: 625px;
+  }
+
+  @media (min-width: 1200px) {
+    min-width: 390px;
+  }
+}
+
+.upcoming-content__btn {
+  display: block;
+  margin-top: 20px;
+  padding: 12 24;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+
+  border: none;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 74px;
+  color: #111111;
+  cursor: pointer;
+
+  // transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  //   background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1200px) {
+  }
+}
+
+.upcoming-content__btn:hover,
+.upcoming-content__btn:focus {
+  color: #f87719;
+  background: #fff;
+  border: 2px solid #f87719;
+}
+
+.error-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+//! ================================================================

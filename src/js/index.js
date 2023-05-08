@@ -2,6 +2,6 @@
 
 // import * as moduleName from './js/module-name';
 import * as oopsnotification from './oopsnotification';
-import * as Catalog from './render-catalog'
 
-
+import * as upcomingMounth from '../js/upcoming-this-mounth';
+import * as Catalog from './render-catalog';
