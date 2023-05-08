@@ -8,7 +8,8 @@ const trailerFailBtn = document.querySelector('button[data-btn="trailer-fail"]')
 trailerFailBtn.addEventListener(`click`, onOpenModalBtnClick);
 
 function onOpenModalBtnClick(){
-    notificationTrailerFailOverlay.style.display= "flex";
+       notificationTrailerFailOverlay.style.visibility= "visible";
+       notificationTrailerFailOverlay.style.transition="visibility 250ms linear 250ms";
     notificationBtnClose.addEventListener(`click`, onNotificationTrailerFailBtnClick);
     notificationTrailerFailOverlay.addEventListener(`click`, onNotificationTrailerFailOverlay);
     function onNotificationTrailerFailOverlay(event) {
@@ -25,7 +26,7 @@ function  onNotificationTrailerFailBtnClick (){
 }
 
 function onCloseModal() {
-    notificationTrailerFailOverlay.style.display= "none";
+    notificationTrailerFailOverlay.style.visibility= "hidden";
   }
 
   function onEscKeyPress(event) {
