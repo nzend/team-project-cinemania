@@ -13,11 +13,11 @@ localStorage.setItem('isLight', isLight);
 
 const currentUrl = window.location.href;
 
-// Отримати всі елементи посилань у списку
+
 const navLink = document.querySelectorAll('.mobile-menu__link, .header__nav-link');
 
 navLink.forEach(function(link) {
   if (link.href === currentUrl) {
-    link.classList.add('current__nav-link');
+    link.classList.toggle('current__nav-link');
   }
 });

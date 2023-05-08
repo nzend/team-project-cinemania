@@ -3,15 +3,26 @@ header {
 }
 
 .header__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   min-height: 48px;
   background-color: #000000;
 
+@include tel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   @include tablet {
     min-height: 60px;
+    display: flex;
   }
+
+@include desktop {
+    min-height: 60px;
+    display: flex;
+  }
+
+
 }
 
 
@@ -101,6 +112,18 @@ header {
 // MOBILE MENU NAVIGATION BLOCK
 
 .header__nav {
+  @media (min-width: 768px) {
+    margin-right: 175px;
+    margin-left: 59px;
+// position: absolute;
+// top: 50%;
+// left: 50%;
+// transform: translateY(-50%);
+// display: flex;
+// align-items: center;
+// justify-content: center;
+// margin: 22px, 509px;
+  }
   @media (max-width: 767px) {
     position: absolute;
     top: 0;
@@ -296,7 +319,7 @@ header {
 body.light {
   background-color: #ffffff;
   color: #000000;
-  transition: background-color 0.4s ease-out;
+  transition: background-color 0.25s ease-out;
 }
 
 //* HEADER
