@@ -48,7 +48,7 @@ function makeCard({
   let stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
   const date = release_date || first_air_date;
   const mediaQuery = window.matchMedia(
-    '(min-width: 768px) and (max-width: 1279px)'
+    '(min-width: 768px) and (max-width: 1199px)'
   );
 
   // На таблетці відображає один жанр

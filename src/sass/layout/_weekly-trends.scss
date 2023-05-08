@@ -4,18 +4,24 @@ ul {
     margin: 0;
 }
 
-.weekly-trends_container {
-    width: 320px;
-    padding: 40px 20px 32px 20px;
+.weekly {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 
-    @include tablet {
-        padding: 52px 32px 44px 32px;
-        width: 768px;
-    }
+    &-trends_container {
+        width: 320px;
+        padding: 40px 20px 32px 20px;
 
-    @include desktop {
-        padding: 80px 32px 60px 32px;
-        width: 1280px;
+        @include tablet {
+            padding: 52px 32px 44px 32px;
+            width: 768px;
+        }
+
+        @include desktop {
+            padding: 80px 32px 60px 32px;
+            width: 1280px;
+        }
     }
 }
 
@@ -54,8 +60,4 @@ ul {
     }
 }
 
-.weekly {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
+.weekly {}
