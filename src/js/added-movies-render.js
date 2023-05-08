@@ -4,37 +4,39 @@ import LoadMoreButton from './load-more-button';
 
 
 const myLibGallery = document.querySelector('.mylib-gallery__list');
-const addBtn = document.querySelector('.btn');
+const libContent = document.querySelector('#hidden');
+// const addBtn = document.querySelector('.btn');
+console.log(libContent);
 
 
+// const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true});
+// const loadMoreBtn = document.querySelector('.load-more');
 
-const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true});
-const loadMoreBtn = document.querySelector('.load-more');
+// //  vremenna
+// addBtn.addEventListener('click', onAddBtn);
 
-//  vremenna
-addBtn.addEventListener('click', onAddBtn);
-
-function onAddBtn() {
- const v = [447365, 447365, 420808, 420808]
- setAddedMovies(v);
-};
-
-
+// function onAddBtn() {
+//  const v = [447365, 447365, 420808, 420808]
+//  setAddedMovies(v);
+// };
 
 const libraryFilms = getAddedMovies();
 
-
-
 function renderLibrary(arrOfFilms) {
  Api.getArrayOfMovies(arrOfFilms)
-    .then(data => {
+    .then(data => { 
+      console.log(data);
+      if (data.length === 0) {
+        // renderMarkupError()
+        libContent.classList.remove('hidden')
+        return 
+      }
       data.map(film => {
-        myLibGallery.insertAdjacentHTML('beforEend', makeCard(film))
+        myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film))
       });
     })
     .catch(error => console.error(error));
 }
-
 
 renderLibrary(libraryFilms);
 
@@ -51,7 +53,6 @@ renderLibrary(libraryFilms);
    
   const date = release_date || first_air_date;
  
-
   return `<li class="catalog__card" data-id="${id}">
     <div class="catalog__img-wrapper">
       <img src="https://image.tmdb.org/t/p/w500${
@@ -60,18 +61,18 @@ renderLibrary(libraryFilms);
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
-      <ul class="info__list">
+  <div class="info__wrap">
+  <ul class="info__list">
       <li class="info__descr">${getNameOfGenres(genres)}</li>
       <li class="info__descr">${convertReleaseDate(date)}</li>
+      </ul>
   <div class="catalog__stars-wrap">
   <div class="catalog__rating-active" style="width:${vote_average / 2 / 0.05}%"></div>
   </div>
-      </ul>
-  
+  </div>
     </div>
   </li>`;
 }
-  
   
   function convertReleaseDate(date) {
     if (date) {
@@ -79,10 +80,22 @@ renderLibrary(libraryFilms);
     } else return '';
   }
 
-function getNameOfGenres(arrGenres) {
- const arr = [];
-   arrGenres.map(genre => {
-  arr.push(genre.name)
-   })
- return arr.slice(0,2).join(', ');
-  }
+  function getNameOfGenres(arrGenres) {
+    const arr = [];
+    arrGenres.map(genre => {
+    //  console.log(genre.name);
+      genre.name === 'Science Fiction' ? (genre.name = 'Sci-Fi') : genre.name;
+     arr.push(genre.name)
+      })
+    return arr.slice(0,2).join(', ');
+     }
+
+    //  function renderMarkupError() {
+    //   container.innerHTML = `<div class="upcoming-error-container">
+    //         <p class="upcoming-error-container__text">
+    //           OOPS...<br />
+    //           We are very sorry!<br />
+    //           But we couldn't find any upcoming movies this month.
+    //         </p>
+    //       </div>`;
+    // }
