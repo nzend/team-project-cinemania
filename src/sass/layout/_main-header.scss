@@ -318,7 +318,7 @@ body.light {
     }
   }
 
-  .link__current {
+  .current__nav-link {
     color: #f87719;
   }
 
@@ -329,18 +329,19 @@ body.light {
     }
   }
 
-  .mobile-menu__link.link__current {
+  .mobile-menu__link.current__nav-link {
     color: #f87719;
   }
 
   .mobile-menu__link {
-    color: #ffffff;
+    color: #000000;
 
     &:hover,
     &:focus {
       color: #f87719;
     }
   }
+
 
   #menu-button {
     color: #595959;
