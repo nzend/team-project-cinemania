@@ -1,4 +1,5 @@
 import { getInfoMovie } from '../api';
+import { getAddedMovies, setAddedMovies } from '../local-storage';
 
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
 
@@ -62,28 +63,78 @@ function createCardMarkup({
       ${overview}
     </p>
 
-    <button type="button" class="film__button">Add to my library</button>
+    <button type="button" class="upcoming-content__btn" id="add">
+  Remind me
+</button>   
+ <button type="button" class="upcoming-content__btn hidden" id="remove">
+  Remove
+</button>
   </div>
 </div></div>`;
 }
-
-
-
 
 function onCatalogClick(event) {
   event.preventDefault();
 
   const filmID = event.target.getAttribute('data-id');
   const catalog = event.currentTarget;
-  console.log("🚀catalog:", catalog)
+  console.log('🚀catalog:', catalog);
 
-  getInfoMovie(filmID).then(data => {
-    // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
-    document
-      .querySelector('body')
-      .insertAdjacentHTML('beforeend', createCardMarkup(data));
-      const closeEle = document.querySelector('.modal__wrap');
-      const addToLibrary = document.querySelector('.film__button');
-      console.log("🚀 ~ file: modal-info.js:87 ~ getInfoMovie ~ addToLibrary:", addToLibrary)
-  }).catch((error)=>console.log(error));
+  getInfoMovie(filmID)
+    .then(data => {
+      // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
+      document
+        .querySelector('body')
+        .insertAdjacentHTML('beforeend', createCardMarkup(data));
+
+      const buttonAdd = document.getElementById('add');
+      const buttonRemove = document.getElementById('remove');
+
+      let existing = getAddedMovies();
+      existing = existing ? existing : [];
+      if (existing.includes(filmID)) {
+        buttonAdd.classList.add('hidden');
+        buttonRemove.classList.remove('hidden');
+      }
+      buttonAdd.addEventListener('click', onClickAdd);
+      buttonRemove.addEventListener('click', onClickRemove);
+
+      function onClickAdd() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(filmID)) {
+          buttonAdd.classList.add('hidden');
+          buttonRemove.classList.remove('hidden');
+          return;
+        }
+        existing.push(filmID);
+        setAddedMovies(existing);
+        buttonAdd.classList.add('hidden');
+        buttonRemove.classList.remove('hidden');
+        console.log('its working');
+      }
+
+      function onClickRemove() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(filmID)) {
+          let index = existing.findIndex(id => id === filmID);
+
+          existing.splice(index, 1);
+          setAddedMovies(existing);
+          buttonAdd.classList.remove('hidden');
+          buttonRemove.classList.add('hidden');
+        }
+        console.log('its working');
+      }
+
+      const closeEl = document.querySelector('.modal__close');
+      closeEl.addEventListener('click', modalClose);
+    })
+    .catch(error => console.log(error));
+}
+
+function modalClose(event) {
+  console.log(event.currentTarget);
+  document.querySelector('.modal__wrap').remove();
 }
