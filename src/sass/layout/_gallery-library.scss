@@ -136,6 +136,14 @@
 }
 // -- my-library gallery -- //
 
+// .visually-hidden {
+//   @extend %visually-hidden;
+// }
+
+.hidden {
+  display: none;
+}
+
 .library-content {
     width: 100%;
     padding: 40px 20px;
@@ -145,7 +153,6 @@
     @media screen and (min-width: 1280px) {
         padding: 117px 32px 96px;
     }
-
 }
 
 .library-content__text {
@@ -198,6 +205,7 @@
     }
 }
 
+
 // img {
 //     display: block;
 //     width: 100%;
@@ -206,8 +214,19 @@
 
 // --  my-library Gallery styles -- //
 
-.mylib-gallery {
+.library-content__section {
   background-color: #111111;
+}
+
+.mylib-gallery {
+  position: relative;
+}
+
+.load-more {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .catalog {

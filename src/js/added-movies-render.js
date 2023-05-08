@@ -8,20 +8,31 @@ const addBtn = document.querySelector('button');
 const LOCALSTORAGE_KEY = 'movieId';
 const libraryFilms = getAddedMovies();
 console.log(libraryFilms);
-const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true})
+const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true});
+const loadMoreBtn = document.querySelector('.load-more');
 
 
 addBtn.addEventListener('click', onAddBtn);
+loadMoreBtn.addEventListener('click', onLoadMore);
+
+function onLoadMore(evt) {
+  // if(arrIds.lendth < 9) {
+  //   loadMoreButton.disabled()
+  // }
+    loadMoreButton.enabled()
+    console.log('hello');
+}
 
 
 function onAddBtn(evt) {
- const v = [447365, 447365, 420808]
+ const v = [447365, 447365, 420808, 420808, 420808, 420808, 420808, 
+  420808, 420808, 420808, 420808, 420808, 420808, 420808, 420808, 420808, 420808]
  setAddedMovies(v)
 };
 
 function renderLibrary(arrIds) {
  console.log(arrIds);
- arrIds.map(id => {
+ arrIds.slice(0, 9).map(id => {
   console.log(id);
   Api.getInfoMovie(id)
  .then(data => {
