@@ -1,39 +1,35 @@
-// console.log('modal info module work!!');
-
-import SimpleLightbox from 'simplelightbox';
-import { setGenresInStorage, getNameOfGenresById } from '../get-genres';
 import { getInfoMovie } from '../api';
 
-setGenresInStorage();
+document.querySelector('.catalog').addEventListener('click', onCatalogClick);
 
-function getElement(selector) {
-  console.log(document.querySelector(selector));
-  return document.querySelector(selector);
+function makeGenres(objArray) {
+  const genres = [];
+  objArray.map(obj => {
+    genres.push(obj.name);
+  });
+  if (genres.length === 0) {
+    return '';
+  }
+  // console.log(genres.join(' '));
+  return genres.join(' ');
 }
-
-function filmData(filmId) {
-  
-}
-
- function modalMarkup(movieId) {
-  const {
-    original_title,
-    vote_average,
-    vote_count,
-    popularity,
-    overview,
-    genres,
-  } = getInfoMovie(movieId)
-    .then(data => {
-      return data;
-    })
-    .catch(error => console.error(error));
-
-  // console.log('🚀 movieData:', original_title, vote_average, vote_count, popularity, overview);
-  console.log(genres);
-  const markup = `<div class="modal-film">
+function createCardMarkup({
+  original_title,
+  vote_average,
+  poster_path,
+  vote_count,
+  popularity,
+  overview,
+  genres,
+}) {
+  return `<div class="modal__wrap"><div class="modal-film">
+   <button class="modal__close">
+    <svg class="modal__svg" width="24" height="24">
+      <use width="24" height="24" class="svg__use" href="./images/sprite.svg#icon-close"></use>
+    </svg>
+  </button>
   <img
-    src=""
+    src="https://image.tmdb.org/t/p/w500${poster_path}"
     alt="john"
     class="film__preview"
   />
@@ -44,7 +40,7 @@ function filmData(filmId) {
         <p class="stats__key">Vote / Votes</p>
         <div class="stats__wrap">
           <span class="stats__vote">${vote_average.toFixed(1)}</span>
-          <span class="stats__values">/</span>
+          <span class="stats__values stats__values--slash">/</span>
           <span class="stats__vote">${vote_count}</span>
         </div>
       </li>
@@ -67,27 +63,22 @@ function filmData(filmId) {
 
     <button type="button" class="film__button">Add to my library</button>
   </div>
-</div>
-`;
-  console.log(markup);
-  return markup;
+</div></div>`;
 }
+function onCatalogClick(event) {
+  event.preventDefault();
+  console.log('sda');
+  const filmID = event.target.getAttribute('data-id');
+  const catalog = event.currentTarget;
 
-function makeGenres(objArray) {
-  const genres = [];
-  objArray.map(obj => {
-    genres.push(obj.name);
+  getInfoMovie(filmID).then(data => {
+    // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
+    document
+      .querySelector('body')
+      .insertAdjacentHTML('beforeend', createCardMarkup(data));
   });
-  if (genres.length === 0) {
-    return '';
-  }
-  // console.log(genres.join(' '));
-  return genres.join(' ');
 }
-console.log(modalMarkup(12));
 
-function renderMarkup(markup) {
-  document.body.innerHTML = markup;
+function modalClose(params) {
+  
 }
-const qwerty = modalMarkup(12);
-renderMarkup(qwerty);
