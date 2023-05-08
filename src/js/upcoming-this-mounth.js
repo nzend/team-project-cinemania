@@ -15,6 +15,8 @@ Api.getUpcoming()
     );
 
     if (filmUpcomingRelease.length === 0) {
+      renderMarkupError();
+
       return;
     }
     const random = Math.floor(Math.random() * filmUpcomingRelease.length);
@@ -35,12 +37,6 @@ Api.getUpcoming()
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
     }
-
-    // if (added.includes(id)) {
-    //   addMovieIntoLibrary = 'Is in Library';
-    //   addMovieIntoLibrary.style.backgroundColor = 'color';
-    //   addMovieIntoLibrary.style.color = 'color';
-    // }
 
     buttonAdd.addEventListener('click', onClickAdd);
     buttonRemove.addEventListener('click', onClickRemove);
@@ -148,17 +144,12 @@ function renderMarkup(markup) {
   container.innerHTML = markup;
 }
 
-// const section = document.querySelector('.upcoming-content__desktop');
-// section.addEventListener('load', checkButton);
-
-// function checkButton() {
-//   let existing = getAddedMovies();
-//   existing = existing ? existing : [];
-//   if (existing.includes(id)) {
-//     console.log(`Email address exists`);
-//     buttonAdd.classList.add('hidden');
-//     buttonRemove.classList.remove('hidden');
-//   } else {
-//     console.log(`Email address not found`);
-//   }
-// }
+function renderMarkupError() {
+  container.innerHTML = `<div class="upcoming-error-container">
+        <p class="upcoming-error-container__text">
+          OOPS...<br />
+          We are very sorry!<br />
+          But we couldn't find any upcoming movies this month.
+        </p>
+      </div>`;
+}
