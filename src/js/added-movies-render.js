@@ -4,7 +4,7 @@ import LoadMoreButton from './load-more-button';
 
 
 const myLibGallery = document.querySelector('.mylib-gallery');
-const addBtn = document.querySelector('button');
+const addBtn = document.querySelector('.addButton');
 const LOCALSTORAGE_KEY = 'movieId';
 const libraryFilms = getAddedMovies();
 console.log(libraryFilms);
@@ -44,7 +44,6 @@ function renderLibrary(arrIds) {
 .catch(error => console.log(error))
  })
 }
-
 
 renderLibrary(libraryFilms);
 
