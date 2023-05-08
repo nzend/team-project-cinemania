@@ -1,12 +1,14 @@
+'use strict'
+
 import sprite from '../../src/images/sprite-stars.svg';
 import { setGenresInStorage, getNameOfGenresById } from './get-genres';
 import * as Api from './api';
 // import * as moduleName from './js/module-name';
 
-const filmList = document.querySelector('.catalog');
+const filmList = document.querySelector('.weekly');
 
 // функція яка перевіряє ширину екрану, якщо менше 768px то завантажує тільки один фільм
-function renderCatalogFilms() {
+function renderWeeklyFilms() {
   if (window.innerWidth < 768) {
     Api.getWeekTrending(1).then(data => {
       const films = [data.results[0]];
@@ -24,8 +26,8 @@ function renderCatalogFilms() {
   }
 }
 
-window.addEventListener('resize', renderCatalogFilms);
-renderCatalogFilms();
+window.addEventListener('resize', renderWeeklyFilms);
+renderWeeklyFilms();
 
 async function creatMarkupCatalogCard(data) {
   const markUp = data.reduce((markup, film) => markup + makeCard(film), '');
@@ -58,26 +60,26 @@ function makeCard({
   });
 
   return `<li class="catalog__card" data-id="${id}">
-    <div class="catalog__img-wrapper">
-      <img src="https://image.tmdb.org/t/p/w500${
-        poster_path || 'Oops. There is no poster to this movie'
-      }" alt="${name || title}" class="catalog__img" />
-    </div>
-    <div class="catalog__info info">
-      <p class="info__title">${name || title}</p>
-      <ul class="info__list">
-      <li class="info__descr">${currentGenres()}</li>
-      <li class="info__descr">${convertReleaseDate(date)}</li>
-		<div class="catalog__stars-wrap">
-		<div class="catalog__rating-active" style="width:${
-      vote_average / 2 / 0.05
-    }%"></div>
-		</div>
-      </ul>
-		
-    </div>
-  </li>`;
-}
+  <div class="catalog__img-wrapper">
+    <img src="https://image.tmdb.org/t/p/w500${
+      poster_path || 'Oops. There is no poster to this movie'
+    }" alt="${name || title}" width="395" height="574" class="catalog__img" />
+  </div>
+  <div class="catalog__info info">
+    <p class="info__title">${name || title}</p>
+<div class="info__wrap">
+<ul class="info__list">
+    <li class="info__descr">${stringOfGenres}</li>
+    <li class="info__descr">${convertReleaseDate(date)}</li>
+    </ul>
+<div class="catalog__stars-wrap">
+<div class="catalog__rating-active" style="width:${
+    vote_average / 2 / 0.05
+  }%"></div>
+</div>
+</div>
+  </div>
+</li>`};
 
 function convertReleaseDate(date) {
   if (date) {
