@@ -15,6 +15,8 @@ function createPagination(totalItems, visiblePages) {
     itemsPerPage: 20,
     totalItems: totalItems,
     visiblePages: visiblePages < 3 ? visiblePages : TUI_VISIBLE_PAGES,
+    prev: '<',
+    next: '>',
   };
 
   const pagination = new Pagination(pag, options);
@@ -33,12 +35,16 @@ const TUI_VISIBLE_PAGES = 3;
 
 const galleryMovie = document.querySelector('.catalog');
 getWeekTrending().then(data => {
+  console.log(data.results);
   galleryMovie.insertAdjacentHTML(
     'beforeend',
     createMarkupCatalogCard(data.results)
   );
+  console.log(data.total_results);
+  console.log(data.total_pages);
 
   const pagination = createPagination(data.total_results, data.total_pages);
+  console.log(pagination);
   pagination.on('beforeMove', ({ page }) => {
     gallery.innerHTML = '';
     getWeekTrending(page).then(data => {

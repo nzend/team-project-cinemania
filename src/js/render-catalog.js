@@ -34,10 +34,10 @@ async function onBtnSearch(e) {
 }
 
 //  Рендерить за замовчування фільми за трендом тижня
-Api.getWeekTrending(1).then(data => {
-  const films = data.results;
+// Api.getWeekTrending(1).then(data => {
+//   const films = data.results;
 
-  createMarkupCatalogCard(films)
-    .then(data => (catalogRef.innerHTML = data))
-    .catch(error => console.log(error));
-});
+//   createMarkupCatalogCard(films)
+//     .then(data => (catalogRef.innerHTML = data))
+//     .catch(error => console.log(error));
+// });
