@@ -1,6 +1,3 @@
-.hero-wrap {
-    //   position: relative;
-}
 
 .thumb {
     position: relative;
@@ -103,14 +100,14 @@ img{
     @include tablet {
             padding-top: 36px;
             padding-bottom: 36px;
-            padding-left: 32px;
-            padding-right: 482px;
+            padding-left: 20px;
+            padding-right: 300px;
         }
                 @include desktop {
-                    padding-top: 118px;
+                    padding-top: 62px;
                     padding-bottom: 178px;
-                    padding-left: 135px;
-                    padding-right: 778px;
+                    padding-left: 30px;
+                    padding-right: 650px;
                 }
 }
 
@@ -128,12 +125,14 @@ img{
         padding-bottom: 12px;
 
     @include tablet {
-            font-size: 44px;
-            line-height: 52px;
+            width: 250px;
+            font-size: 30px;
+            line-height: 31px;
         }
 
     @include desktop {
-            font-size: 64px;
+            width: 420px;
+            font-size: 60px;
             line-height: 75px;
             padding-bottom: 16px;
         }
@@ -180,9 +179,41 @@ img{
         color: #F8F8F8;
         padding-bottom: 16px;
         padding-top: 20px;
+
+    @include tablet {
+            width: 260px;
+        }
     @include desktop {
+            width: 450px;
             padding-bottom: 36px;
             font-size: 16px;
             line-height: 19px;
         }
+}
+
+.watch-trailer__btn{
+    display: block;
+    margin-top: 20px;
+    padding: 12 24;
+
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+
+    border: none;
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+    border-radius: 74px;
+    color: #111111;
+    cursor: pointer;
+
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.watch-trailer__btn:hover,
+.watch-trailer__btn:focus {
+    color: #f87719;
+    background: #fff;
+    border: 1px solid #f87719;
 }
