@@ -1,6 +1,6 @@
 console.log('Hello');
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+
 import { getBySearch, getWeekTrending } from './api';
 import { createMarkupCatalogCard } from './markup-catalog';
 import * as Api from './api';
@@ -11,7 +11,16 @@ const pag = document.querySelector('#pagination');
 const gallery = document.querySelector('.catalog');
 
 function createPagination(totalItems, visiblePages) {
+  const myTheme = {
+    color: '#333',
+    activeColor: '#fff',
+    borderColor: '#ddd',
+    activeBorderColor: '#ccc',
+    marginLeft: '500px',
+    marginRight: 'auto',
+  };
   const options = {
+    myTheme: myTheme,
     itemsPerPage: 20,
     totalItems: totalItems,
     visiblePages: visiblePages < 3 ? visiblePages : TUI_VISIBLE_PAGES,
