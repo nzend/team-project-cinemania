@@ -3,7 +3,10 @@ import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
 
 const hero = document.querySelector('.hero');
+const LightSwitcher = document.querySelector('.switcher');
+
 /* const LightSwitcher = document.querySelector('.switcher'); */
+console.log("Is Hero");
 
 LightSwitcher.addEventListener('click', switchPhoto);
 
@@ -51,7 +54,6 @@ function createTrendingMarkup(movieOfDay) {
 </div>
     `;
     hero.innerHTML = markup;
-    const LightSwitcher = document.querySelector('.switcher');
     LightSwitcher.addEventListener('click', switchPhoto);
 }
 
