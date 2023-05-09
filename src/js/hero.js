@@ -46,7 +46,19 @@ getDayTrending(1).then(({ results }) => {
         instance.show(() => console.log('lightbox now visible'));
       })
       .catch(error => {
-        onOpenModalBtnClick();
+        const instance = basicLightbox.create(`    
+<div class="notification-trailer-fail">
+<button type="button" class="btn-close">
+      <svg class="btn-close--svg" >
+        <use width="24" heigth="24" href="./images/sprite.svg#icon-close" ></use>
+      </svg>
+    </button>
+    <p class="notification-trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
+        <div class="bg-box"></div>
+</div>
+
+`);
+        instance.show(() => console.log('lightbox now visible'));
         console.log(error);
       });
   }
