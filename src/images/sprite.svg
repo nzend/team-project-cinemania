@@ -15,8 +15,8 @@
 <path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M16 26c5.523 0 10-4.477 10-10s-4.477-10-10-10c-5.523 0-10 4.477-10 10s4.477 10 10 10z"></path>
 <path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M25.814 6.186l0.182-0.182M6.004 25.996l0.182-0.182M16 2.112v-0.112M16 30v-0.112M2.112 16h-0.112M30 16h-0.112M6.186 6.186l-0.182-0.182M25.996 25.996l-0.182-0.182"></path>
 </symbol>
-<symbol id="icon-close" viewBox="0 0 32 32">
-<path fill="none" stroke="#f8f8f8" style="stroke: var(--color3, #f8f8f8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3333" d="M23 23l-14-14M23 9l-14 14"></path>
+<symbol id="icon-close"  viewBox="0 0 18 18" >
+<path d="M15 4.10786L13.8921 3L9.5 7.39214L5.10786 3L4 4.10786L8.39214 8.5L4 12.8921L5.10786 14L9.5 9.60786L13.8921 14L15 12.8921L10.6079 8.5L15 4.10786Z"></path>
 </symbol>
 <symbol id="icon-heart" viewBox="0 0 34 32">
 <path fill="#f87719" style="fill: var(--color4, #f87719)" d="M17.231 31.705l-2.412-2.412c-8.96-7.926-14.818-13.268-14.818-19.815 0-5.342 4.135-9.477 9.477-9.477 2.929 0 5.858 1.378 7.754 3.618 1.895-2.24 4.825-3.618 7.754-3.618 5.342 0 9.477 4.135 9.477 9.477 0 6.548-5.858 11.889-14.818 19.815l-2.412 2.412z"></path>
@@ -26,9 +26,9 @@
 </symbol>
 <symbol id="icon-heart" viewBox="0 0 34 32">
 <path fill="#f87719" style="fill: var(--color1, #f87719)" d="M17.231 31.705l-2.412-2.412c-8.96-7.926-14.818-13.268-14.818-19.815 0-5.342 4.135-9.477 9.477-9.477 2.929 0 5.858 1.378 7.754 3.618 1.895-2.24 4.825-3.618 7.754-3.618 5.342 0 9.477 4.135 9.477 9.477 0 6.548-5.858 11.889-14.818 19.815l-2.412 2.412z"></path>
+</symbol>
 <symbol id="icon-Ellipse-2" viewBox="0 0 13 32">
 <path stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M4.193 3.795c6.868 6.797 6.863 17.82-0.011 24.622"></path>
-</symbol>
 </symbol>
 </defs>
 </svg>

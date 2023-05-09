@@ -246,8 +246,8 @@ header {
     }
 
     @include desktop {
-      width: 13px;
-      height: 13px;
+      width: 14px;
+      height: 14px;
     }
 }
 
@@ -267,36 +267,45 @@ header {
 }
 
 .switcher__ball {
+  transition-duration: 500ms;
   position: absolute;
-    left: 24px;
-    width: 14px;
-    height: 14px;
+width: 12px;
+  height: 12px;
+  left: 25px;
+  top: 2px;
+  right: 2px;
+  background-repeat: no-repeat;
     // background-image: url('/src/images/sprite.svg#ball');
-    background-size: cover;
+    // background-size: cover;
     cursor: pointer;
+    fill: #595959;
+    background-image: url('/src/images/header/Group\ 770831.svg');
+      background-size: contain;
   
     @include tablet {
-      left: 36px;
+      left: 34px;
       width: 16px;
       height: 16px;
     }
   
     @include desktop {
-      left: 39px;
+      left: 41px;
+      top: 3px;
       width: 18px;
       height: 18px;
     }
 }
 
-.switcher__ball {
-  transform: translateX(-21px) rotate(-180deg);
+.light .switcher__ball {
+  transform: translateX(-25px) rotate(-180deg);
+  // transition-duration: 500ms;
 
   @include tablet {
-    transform: translateX(-32px) rotate(-180deg);
+    transform: translateX(-33px) rotate(-180deg);
   }
 
   @include desktop {
-    transform: translateX(-35px) rotate(-180deg);
+    transform: translateX(-38px) rotate(-180deg);
   }
 }
 
@@ -329,7 +338,7 @@ body.light  {
   }
 
   a {
-    color: #000000;
+    color: #f87719;
   }
 
   p {
@@ -390,5 +399,38 @@ body.light  {
   #overlay {
     background: rgba(0, 0, 0, 0.2);
   }
+// MODAL WINDOW
+.modal-film {
+
+  background-color: #ffffff;
+
+  a {
+    color: #f87719;
+  }
+
+  p {
+    color: #000000;
+  }
+
+  h2, h3, h4, h5 {
+    color: #000000;
+  }
+span {
+    color: #000000;
+}
+
+.stats__vote {
+  background-color: #F8F8F8;
+}
+svg {
+  color: #000000;
+}
+
+
+  div {
+    color: #000000;
+  }
+}
+
 }
 
