@@ -1,7 +1,19 @@
 import { getDayTrending } from './api.js';
 import black from '../../src/images/hero/hero-desktop-1x.png';
+import white from '../../src/images/hero/hero-white-desktop-2x.png';
 
 const hero = document.querySelector('.hero');
+/* const LightSwitcher = document.querySelector('.switcher'); */
+
+LightSwitcher.addEventListener('click', switchPhoto);
+
+function switchPhoto() {
+    const blackImage = document.querySelector('.black');
+    const currentImageSrc = blackImage.getAttribute('src');
+    const newImageSrc = currentImageSrc === black ? white : black;
+    blackImage.setAttribute('src', newImageSrc);
+}
+
 
 getDayTrending(1).then(({ results }) => {
     const random = Math.floor(Math.random() * (results.length - 1));
@@ -38,8 +50,9 @@ function createTrendingMarkup(movieOfDay) {
     </div>
 </div>
     `;
-  /*     hero.style.backgroundImage = url('https://image.tmdb.org/t/p/w500${movieOfDay.backdrop_path}'); */
     hero.innerHTML = markup;
+    const LightSwitcher = document.querySelector('.switcher');
+    LightSwitcher.addEventListener('click', switchPhoto);
 }
 
 
