@@ -1,8 +1,19 @@
+.modal__wrap--team {
+}
 .modal-team {
+  position: relative;
+  background-color: var(--grey-text-color);
+  padding: 40px 10px;
 }
 .team__title {
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
 }
 .team__list {
+  display: grid;
 }
 .team__member {
 }
