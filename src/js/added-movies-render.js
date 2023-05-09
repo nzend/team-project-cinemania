@@ -2,14 +2,14 @@ import * as Api from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
 
 
-const myLibGallery = document.querySelector('.mylib-gallery__list');
+export const myLibGallery = document.querySelector('.mylib-gallery__list');
 const libContent = document.querySelector('#is-hidden');
 const libGallery = document.querySelector('.gallery-hidden');
 
 
 const libraryFilms = getAddedMovies();
 
-function renderLibrary(arrOfFilms) {
+ function renderLibrary(arrOfFilms) {
  Api.getArrayOfMovies(arrOfFilms)
     .then(data => { 
       if (data.length === 0) {
@@ -17,8 +17,8 @@ function renderLibrary(arrOfFilms) {
         return
       }
       data.map(film => {
-        myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film))
-        libGallery.classList.remove('gallery-hidden')
+			myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+			libGallery.classList.remove('gallery-hidden');
       });
     })
     .catch(error => console.error(error));
@@ -26,7 +26,7 @@ function renderLibrary(arrOfFilms) {
 
 renderLibrary(libraryFilms);
 
-  function makeCard({
+  export function makeCard({
   id,
   poster_path,
   title,

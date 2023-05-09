@@ -1,9 +1,12 @@
 import { getInfoMovie } from '../api';
 import { getAddedMovies, setAddedMovies } from '../local-storage';
 import sprite from '../../images/sprite.svg';
+import { makeCard, myLibGallery } from '../added-movies-render';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
+const url = window.location.href;
+console.log(url);
 
 function makeGenres(objArray) {
   const genres = [];
@@ -83,7 +86,6 @@ function onCatalogClick(event) {
   const catalog = event.currentTarget;
 
   getInfoMovie(filmID).then(data => {
-    // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
     document
       .querySelector('body')
       .insertAdjacentHTML('beforeend', createCardMarkup(data));
@@ -111,6 +113,21 @@ function onCatalogClick(event) {
       }
       existing.push(filmID);
       setAddedMovies(existing);
+
+      getInfoMovie(filmID).then(film => {
+        console.log(film);
+        myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+      });
+
+      //  if (!url) {
+      // 	 console.log(window.location.href === url);
+      // 	 console.log('working');
+      // 	  getInfoMovie(filmID).then(film => {
+      //     console.log(film);
+      //     myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+      //   });
+      //  }
+
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
       console.log('its working');
