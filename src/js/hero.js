@@ -1,6 +1,6 @@
 import { getDayTrending, getVideos } from './api.js';
-import * as basicLightbox from 'basiclightbox';
-import 'basiclightbox/dist/basiclightbox.min.css';
+// import * as basicLightbox from 'basiclightbox';
+// import 'basiclightbox/dist/basiclightbox.min.css';
 import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
 
