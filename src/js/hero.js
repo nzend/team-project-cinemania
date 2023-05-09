@@ -1,8 +1,8 @@
 import { getDayTrending, getVideos } from './api.js';
-// import * as basicLightbox from 'basiclightbox';
+import * as basicLightbox from 'basiclightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
-
 
 const hero = document.querySelector('.hero');
 const LightSwitcher = document.querySelector('.switcher');
@@ -10,63 +10,68 @@ const LightSwitcher = document.querySelector('.switcher');
 LightSwitcher.addEventListener('click', switchPhoto);
 
 function switchPhoto() {
-    const blackImage = document.querySelector('.black');
-    const currentImageSrc = blackImage.getAttribute('src');
-    const newImageSrc = currentImageSrc === black ? white : black;
-    blackImage.setAttribute('src', newImageSrc);
+  const blackImage = document.querySelector('.black');
+  const currentImageSrc = blackImage.getAttribute('src');
+  const newImageSrc = currentImageSrc === black ? white : black;
+  blackImage.setAttribute('src', newImageSrc);
 
-    localStorage.setItem('imageColor', newImageSrc);
+  localStorage.setItem('imageColor', newImageSrc);
 }
 
 
 getDayTrending(1).then(({ results }) => {
-    const random = Math.floor(Math.random() * (results.length - 1));
-    console.log(results[random]);
-    hero.innerHTML = '';
-    const movieOfDay = results[random];
-    createTrendingMarkup(movieOfDay);
+  const random = Math.floor(Math.random() * (results.length - 1));
+  hero.innerHTML = '';
+  const movieOfDay = results[random];
+  createTrendingMarkup(movieOfDay);
+	
+	const trailerBtn = hero.querySelector('#trailer-btn');
 
-    getVideos(movieOfDay.id).then(videos => {
-    const trailerBtn = hero.querySelector('#trailer-btn');
-    const trailerVideo = videos.find(video => video.type === 'Trailer') || videos[0];
-    if (trailerVideo && trailerVideo.key) {
-        trailerBtn.addEventListener('click', () => {
-            const keyTrailer = trailerVideo.key;
-            basicLightbox
-                .create(
-                    `<iframe width="640" height="360"
-                    src="https://www.youtube.com/embed/${keyTrailer}"
-                    title="" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>`
-                )
-                .show();
-        });
-    } else {
-        const modalBtn = document.querySelector('[data-btn="trailer-fail"]');
-        modalBtn.addEventListener('click', () => {
-            basicLightbox.create('<p>Sorry, no trailer available for this movie.</p>').show();
-        });
-        trailerBtn.classList.add('is-hidden');
-    }
+		getVideos(movieOfDay.id).then(videos => {
+    console.log(videos);
+    const infoTr = videos.find(el => el.name === 'Official Trailer');
+    const keyTr = infoTr.key;
+    console.log(infoTr);
+    console.log(keyTr);
+
+			
+			
+			const instance = basicLightbox.create(`
+
+     <iframe class="iframe" src="https://www.youtube.com/embed/${keyTr}" width="560" height="315" frameborder="0"></iframe>
+`);
+			console.log(instance);
+			
+    instance.show(() => console.log('lightbox now visible'));
+  }).catch(error => console.log(error));
+	
+// -----------------------------------------
+  
 });
 
-});
+
+
 
 function createTrendingMarkup(movieOfDay) {
-    const markup = `
+  const markup = `
         <div class="hero-wrap">
             <div class="thumb">
                 <div class="background-image">
-                    <img src="https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path}"
+                    <img src="https://image.tmdb.org/t/p/original${
+                      movieOfDay.backdrop_path
+                    }"
                     alt="Hero image" class="backend" />
                     <img src="${black}" class="black" />
                 </div>
                 <div class="hero-wrap__content">
-                    <h1 class="title">${movieOfDay.title || movieOfDay.name}</h1>
+                    <h1 class="title">${
+                      movieOfDay.title || movieOfDay.name
+                    }</h1>
                     <div class="catalog__stars-wrap">
                         <div class="catalog__rating-active"
-                        style="width:${movieOfDay.vote_average / 2 / 0.05}%"></div>
+                        style="width:${
+                          movieOfDay.vote_average / 2 / 0.05
+                        }%"></div>
                     </div>
                     <p class="description">${movieOfDay.overview}</p>
                     <button class="watch-trailer__btn" id="trailer-btn" data-btn="trailer-fail" >Watch trailer</button>
@@ -74,11 +79,8 @@ function createTrendingMarkup(movieOfDay) {
             </div>
         </div>
     `;
-    hero.innerHTML = markup;
+  hero.innerHTML = markup;
 }
-
-
-
 
 /* function createTrendingMarkup(movieOfDay) {
     const markup = `
