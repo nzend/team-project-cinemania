@@ -4,7 +4,7 @@
 // const notificationTrailerFailOverlay = document.querySelector(`.notification-trailer-fail-overlay`);
 
 // //!дата атрибут та слухач на кнопку для відкриття модалки
-// const trailerFailBtn = document.querySelector('button[data-btn="trailer-fail"]');
+const trailerFailBtn = document.querySelector('button[data-btn="trailer-fail"]');
 // trailerFailBtn.addEventListener(`click`, onOpenModalBtnClick);
 
 // function onOpenModalBtnClick(){

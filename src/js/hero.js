@@ -48,17 +48,16 @@ getDayTrending(1).then(({ results }) => {
       .catch(error => {
         const instance = basicLightbox.create(`    
 <div class="notification-trailer-fail">
-<button type="button" class="btn-close">
-      <svg class="btn-close--svg" >
-        <use width="24" heigth="24" href="./images/sprite.svg#icon-close" ></use>
-      </svg>
-    </button>
+
     <p class="notification-trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
         <div class="bg-box"></div>
 </div>
 
 `);
+        const closeBtn = document.querySelector('.btn-close');
+        console.log(closeBtn);
         instance.show(() => console.log('lightbox now visible'));
+
         console.log(error);
       });
   }
@@ -121,38 +120,38 @@ const notificationTrailerFailOverlay = document.querySelector(
   `.notification-trailer-fail-overlay`
 );
 
-function onOpenModalBtnClick() {
-  notificationTrailerFailOverlay.style.visibility = 'visible';
-  notificationTrailerFailOverlay.style.transition =
-    'visibility 250ms linear 250ms';
-  notificationBtnClose.addEventListener(
-    `click`,
-    onNotificationTrailerFailBtnClick
-  );
-  notificationTrailerFailOverlay.addEventListener(
-    `click`,
-    onNotificationTrailerFailOverlay
-  );
-  function onNotificationTrailerFailOverlay(event) {
-    if (event.currentTarget === event.target) {
-      onCloseModal();
-    }
-  }
-  document.addEventListener('keydown', onEscKeyPress);
-}
+// function onOpenModalBtnClick() {
+//   notificationTrailerFailOverlay.style.visibility = 'visible';
+//   notificationTrailerFailOverlay.style.transition =
+//     'visibility 250ms linear 250ms';
+//   notificationBtnClose.addEventListener(
+//     `click`,
+//     onNotificationTrailerFailBtnClick
+//   );
+//   notificationTrailerFailOverlay.addEventListener(
+//     `click`,
+//     onNotificationTrailerFailOverlay
+//   );
+//   function onNotificationTrailerFailOverlay(event) {
+//     if (event.currentTarget === event.target) {
+//       onCloseModal();
+//     }
+//   }
+//   document.addEventListener('keydown', onEscKeyPress);
+// }
 
-function onNotificationTrailerFailBtnClick() {
-  onCloseModal();
-}
+// function onNotificationTrailerFailBtnClick() {
+//   onCloseModal();
+// }
 
-function onCloseModal() {
-  notificationTrailerFailOverlay.style.visibility = 'hidden';
-}
+// function onCloseModal() {
+//   notificationTrailerFailOverlay.style.visibility = 'hidden';
+// }
 
-function onEscKeyPress(event) {
-  if (event.code !== 'Escape') {
-    return;
-  }
-  document.removeEventListener('keydown', onEscKeyPress);
-  onCloseModal();
-}
+// function onEscKeyPress(event) {
+//   if (event.code !== 'Escape') {
+//     return;
+//   }
+//   document.removeEventListener('keydown', onEscKeyPress);
+//   onCloseModal();
+// }
