@@ -15,7 +15,8 @@ async function onBtnSearch(e) {
     const searchData = await Api.getBySearch(search, 1);
     const searchResult = searchData.results;
 
-    createMarkupCatalogCard(searchResult).then(
+	  createMarkupCatalogCard(searchResult).then(
+		
       data => (catalogRef.innerHTML = data)
 	 );
 	  
@@ -38,9 +39,10 @@ async function onBtnSearch(e) {
 Api.getWeekTrending(1).then(data => {
   const films = data.results;
 	
-	
   createMarkupCatalogCard(films)
     .then(data => (catalogRef.innerHTML = data))
     .catch(error => console.log(error));
 });
+
+
 

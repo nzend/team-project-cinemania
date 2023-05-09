@@ -10,3 +10,4 @@ import * as Hero from './hero'
 import * as mobilMenu from './mobile-menu';
 import * as switcher from './switcher';
 // import * as moduleName from './js/module-name';
+import * as modal from './modal-info/modal-info';

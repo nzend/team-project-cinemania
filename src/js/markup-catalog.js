@@ -1,4 +1,5 @@
 import { getNameOfGenresById } from './get-genres';
+import errorWallpaper from '../../src/images/catalog/wallpaper-error.jpeg';
 
 // Створює строку розмітки усих карточок фільмів
 export async function createMarkupCatalogCard(data) {
@@ -7,7 +8,6 @@ export async function createMarkupCatalogCard(data) {
     .reduce((markup, film) => markup + makeCard(film), '');
   return markUp;
 }
-
 
 // Створює розмітку карточки фільму
 function makeCard({
@@ -23,14 +23,11 @@ function makeCard({
   const arrOfGenres = getNameOfGenresById(genre_ids);
   let stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
   const date = release_date || first_air_date;
-  const mediaQuery = window.matchMedia(
-    '(min-width: 768px) and (max-width: 1199px)'
-  );
 
-  // На таблетці відображає один жанр
-  if (mediaQuery.matches) {
-    stringOfGenres = arrOfGenres.slice(0, 1).join(', ');
-  }
+  //Якшо постер не прийшов, ставить заглушку
+  if (poster_path)
+    poster_path = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  else poster_path = errorWallpaper;
 
   // Якшо строка жанрів більша, рендерити один жанр
   if (stringOfGenres.length > 18)
@@ -38,9 +35,9 @@ function makeCard({
 
   return `<li class="catalog__card" data-id="${id}">
     <div class="catalog__img-wrapper">
-      <img src="https://image.tmdb.org/t/p/w500${
-        poster_path || 'Oops. There is no poster to this movie'
-      }" alt="${name || title}" width="395" height="574" class="catalog__img" />
+      <img src=${poster_path} alt="${
+    name || title
+  }" width="395" height="574" class="catalog__img" />
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
