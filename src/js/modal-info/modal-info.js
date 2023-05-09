@@ -83,7 +83,6 @@ function onCatalogClick(event) {
   const catalog = event.currentTarget;
 
   getInfoMovie(filmID).then(data => {
-    // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
     document
       .querySelector('body')
       .insertAdjacentHTML('beforeend', createCardMarkup(data));
@@ -140,7 +139,6 @@ function onCatalogClick(event) {
       .querySelector('.modal__wrap')
       .addEventListener('click', closeOnOverlay);
   });
-  // .catch(error => console.log(error));
 }
 
 //* MODAL CLOSING
