@@ -64,10 +64,10 @@ function createCardMarkup({
     <p class="film__text">
       ${overview}
     </p>
-    <button type="button" class="upcoming-content__btn" id="add">
+    <button type="button" class="upcoming-content__btn weekly__btn--add"  id="add">
   Add to my library
 </button>   
- <button type="button" class="upcoming-content__btn-remove hidden" id="remove">
+ <button type="button" class="upcoming-content__btn-remove weekly__btn--remove hidden" id="remove">
   Remove from my library
 </button>
 
@@ -88,8 +88,8 @@ function onCatalogClick(event) {
       .querySelector('body')
       .insertAdjacentHTML('beforeend', createCardMarkup(data));
 
-    const buttonAdd = document.getElementById('add');
-    const buttonRemove = document.getElementById('remove');
+    const buttonAdd = document.querySelector('.weekly__btn--add');
+    const buttonRemove = document.querySelector('.weekly__btn--remove');
     //!---------
     let existing = getAddedMovies();
     existing = existing ? existing : [];
@@ -99,6 +99,7 @@ function onCatalogClick(event) {
     }
     buttonAdd.addEventListener('click', onClickAdd);
     buttonRemove.addEventListener('click', onClickRemove);
+    console.log(buttonAdd);
 
     function onClickAdd() {
       let existing = getAddedMovies();
