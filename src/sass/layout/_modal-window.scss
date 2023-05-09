@@ -1,8 +1,8 @@
 .modal__wrap {
   position: fixed;
-  // filter: blur(2px);
+  backdrop-filter: blur(2px);
   background-color: var(--main-background-rgba);
-
+  overflow: auto;
   left: 0;
   top: 0;
 
