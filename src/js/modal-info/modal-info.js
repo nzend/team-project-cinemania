@@ -88,6 +88,8 @@ function onCatalogClick(event) {
       .querySelector('body')
       .insertAdjacentHTML('beforeend', createCardMarkup(data));
 
+    document.querySelector('body').classList.add('modal-open');
+
     const buttonAdd = document.querySelector('.weekly__btn--add');
     const buttonRemove = document.querySelector('.weekly__btn--remove');
     //!---------
@@ -148,8 +150,9 @@ function modalClose(event) {
   if (modalWrap) {
     modalWrap.remove();
   }
-  return;
   event.target.removeEventListener('click', onCatalogClick);
+  document.querySelector('body').classList.remove('modal-open');
+  return;
 }
 
 function closeOnEsc(event) {
@@ -158,6 +161,7 @@ function closeOnEsc(event) {
     if (modalWrap) {
       modalWrap.remove();
     }
+    document.querySelector('body').classList.remove('modal-open');
     event.target.removeEventListener('keyup', onCatalogClick);
   }
   return;
@@ -168,7 +172,7 @@ function closeOnOverlay(event) {
   if (modalWrap && event.target === modalWrap) {
     modalWrap.remove();
   }
-
+  document.querySelector('body').classList.remove('modal-open');
   event.target.removeEventListener('click', onCatalogClick);
   return;
 }
