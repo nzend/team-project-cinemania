@@ -1,6 +1,7 @@
 const backHomeBtn = document.querySelector('.back-home');
-const firstSection = document.querySelector('.hero');
+const firstSection = document.querySelector('.header');
 const firstSectionPosition = firstSection.offsetTop;
+backHomeBtn.classList.add('hidden');
 
 window.addEventListener('scroll', () => {
   if (window.pageYOffset > firstSectionPosition) {
