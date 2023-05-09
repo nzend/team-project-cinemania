@@ -95,23 +95,6 @@ function createTrendingMarkup(movieOfDay) {
   hero.innerHTML = markup;
 }
 
-/* function createTrendingMarkup(movieOfDay) {
-    const markup = `
-    <div class="hero-wrap">
-        <div class="background-image">
-            <img src="https://image.tmdb.org/t/p/w500${movieOfDay.backdrop_path}" alt="Hero image">
-        </div>
-        <h1 class="title">${movieOfDay.title || movieOfDay.name}</h1>
-        <div class="catalog__stars-wrap">
-            <div class="catalog__rating-active" style="width:${movieOfDay.vote_average / 2 / 0.05}%"></div>
-        </div> 
-        <p class="description">${movieOfDay.overview}</p>
-        <button class="button-mob">Watch trailer</button>
-    </div>
-    `
-    hero.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500${movieOfDay.backdrop_path}')`;
-    hero.innerHTML = markup;
-} */
 const notificationBtnClose = document.querySelector(
   `.notification-trailer-fail-btn-close`
 );
@@ -119,39 +102,3 @@ const notification = document.querySelector(`.notification-trailer-fail`);
 const notificationTrailerFailOverlay = document.querySelector(
   `.notification-trailer-fail-overlay`
 );
-
-// function onOpenModalBtnClick() {
-//   notificationTrailerFailOverlay.style.visibility = 'visible';
-//   notificationTrailerFailOverlay.style.transition =
-//     'visibility 250ms linear 250ms';
-//   notificationBtnClose.addEventListener(
-//     `click`,
-//     onNotificationTrailerFailBtnClick
-//   );
-//   notificationTrailerFailOverlay.addEventListener(
-//     `click`,
-//     onNotificationTrailerFailOverlay
-//   );
-//   function onNotificationTrailerFailOverlay(event) {
-//     if (event.currentTarget === event.target) {
-//       onCloseModal();
-//     }
-//   }
-//   document.addEventListener('keydown', onEscKeyPress);
-// }
-
-// function onNotificationTrailerFailBtnClick() {
-//   onCloseModal();
-// }
-
-// function onCloseModal() {
-//   notificationTrailerFailOverlay.style.visibility = 'hidden';
-// }
-
-// function onEscKeyPress(event) {
-//   if (event.code !== 'Escape') {
-//     return;
-//   }
-//   document.removeEventListener('keydown', onEscKeyPress);
-//   onCloseModal();
-// }
