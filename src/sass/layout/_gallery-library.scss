@@ -1,0 +1,475 @@
+.library-hero__container {
+  margin: 0 auto;
+  width: 100%;
+    background-color: var( --main-background);
+    background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+    rgba(14, 14, 14, 0) 60.07%), 
+    url('/src/images/library/hero-hall-mobile-1x.jpg');
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-mobile-2x.jpg');
+            }
+        }
+        @media (min-device-pixel-ratio: 3),
+        (-webkit-min-device-pixel-ratio: 3),
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-mobile-3x.jpg');
+            }
+        }    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media screen and (min-width: 768px) {
+        background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+    rgba(14, 14, 14, 0) 60.07%), 
+    url('/src/images/library/hero-hall-tablet-1x.jpg');
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-tablet-2x.jpg');
+            }
+          }
+            @media (min-device-pixel-ratio: 3),
+            (-webkit-min-device-pixel-ratio: 3),
+            (min-resolution: 288dpi),
+            (min-resolution: 3dppx) {
+                & {
+                background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+                rgba(14, 14, 14, 0) 60.07%), 
+                url('/src/images/library/hero-hall-tablet-3x.jpg');
+                }
+            }    
+        }    
+    
+    @media screen and (min-width: 1280px) {
+        background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+    rgba(14, 14, 14, 0) 60.07%), 
+    url('/src/images/library/hero-hall-desktop-1x.jpg');
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-desktop-2x.jpg');
+            }
+            @media (min-device-pixel-ratio: 3),
+        (-webkit-min-device-pixel-ratio: 3),
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            & {
+            background-image: linear-gradient(83.48deg, #0E0E0E 25.78%, 
+            rgba(14, 14, 14, 0) 60.07%), 
+            url('/src/images/library/hero-hall-desktop-3x.jpg');
+            }
+        }    
+    }
+}
+}
+
+.library-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    @media screen and (min-width: 768px) {
+        padding: 60px 32px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding: 169px 117px;
+    }
+}
+
+.library-text__wrap {
+    padding-bottom: 100px;
+    @media screen and (min-width: 768px) {
+        padding-bottom: 60px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding-bottom: 80px;
+    }
+}
+
+.library-header {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    @media screen and (min-width: 768px) {
+        font-size: 44px;
+        line-height: 52px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 64px;
+        line-height: 75px;
+    }
+}
+
+.library-text {
+    font-size: 14px;
+    line-height: 16px;
+    color: #F8F8F8;
+    width: 249px;
+    @media screen and (min-width: 768px) {
+        width: 357px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 16px;
+        line-height: 19px;
+        width: 464px;
+    }
+}
+// -- my-library gallery -- //
+
+// .visually-hidden {
+//   @extend %visually-hidden;
+// }
+
+.is-hidden {
+  display: none;
+}
+
+.gallery-hidden {
+  display: none;
+}
+
+.library-content {
+    width: 100%;
+    padding: 40px 20px;
+    @media screen and (min-width: 768px) {
+        padding: 92px 32px 60px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding: 117px 32px 96px;
+    }
+}
+
+.library-content__text {
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 1.33;
+        margin-bottom: 24px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 32px;
+        line-height: 1.12;
+        margin-bottom: 28px;
+    }
+}
+
+.library-btn {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+    text-align: center;
+    color: #111111;
+    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+    border-radius: 74px;
+    border: 1px solid;
+    width: 123px;
+    padding: 12px 24px;
+    margin: 0 auto;
+    transition: color 250ms var(--cubic), background 250ms var(--cubic);
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+        line-height: 16px;
+        width: 135px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 18px;
+        line-height: 1.56;
+        width: 160px;
+    }
+    &:hover {
+      color: #F87719;
+      background: #FFFFFF;
+    }
+}
+
+// --  my-library Gallery styles -- //
+
+.mylib-gallery {
+  position: relative;
+}
+
+// .load-more {
+//   position: absolute;
+//   bottom: 0;
+//   left: 50%;
+//   transform: translateX(-50%);
+// }
+
+.catalog {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
+
+  &__card {
+    position: relative;
+    display: inline-block;
+    color: aliceblue;
+    width: 280px;
+    height: 406px;
+    cursor: pointer;
+
+    transition: scale 0.3s var(--cubic);
+    scale: 1;
+    scale: 1;
+    @include tablet {
+      width: 224px;
+      height: 325px;
+    }
+
+    @include desktop {
+      width: 395px;
+      height: 574px;
+    }
+
+    &:hover {
+      scale: 1.03;
+    }
+  }
+
+  &__img-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 0, 0, 0) 63.48%,
+        rgba(0, 0, 0, 0.9) 92.16%
+      );
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+  &__info {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    width: 256px;
+
+    @include tablet {
+      width: 200px;
+    }
+    @include desktop {
+      left: 20px;
+      width: 355px;
+    }
+  }
+}
+
+.info {
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__title {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.67;
+    text-transform: uppercase;
+
+    margin-bottom: 14px;
+
+    @include tablet {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    @include desktop {
+      font-size: 20px;
+      line-height: 1.17;
+    }
+  }
+
+  &__descr {
+    color: #b7b7b7;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.67;
+    position: relative;
+
+    @include tablet {
+      line-height: 1.5;
+    }
+
+    @include desktop {
+      font-size: 20px;
+      line-height: 1.17;
+    }
+
+    &:not(:last-child) {
+      margin-right: 14px;
+    }
+
+    &:first-child::after {
+      position: absolute;
+      right: -7px;
+      display: inline-block;
+      content: '';
+      height: 100%;
+      width: 1px;
+      background-color: rgb(255, 255, 255);
+    }
+  }
+}
+
+.catalog__stars-wrap {
+  margin-right: 0px;
+  width: 80px;
+  height: 14px;
+  font-size: 12px;
+  position: relative;
+
+  @include tablet {
+    width: 66px;
+    height: 10px;
+    font-size: 10px;
+  }
+  @include desktop {
+    width: 106px;
+    height: 18px;
+    font-size: 16px;
+  }
+
+  &::before {
+    content: ' ★ ★ ★ ★ ★';
+    display: block;
+  }
+}
+
+.catalog__rating-active {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  &::before {
+    content: ' ★ ★ ★ ★ ★';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: var(--brend-color);
+  }
+}
+
+.catalog__filter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.catalog__input {
+  background-color: var(--main-background);
+  color: var(--main-white-color);
+
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  width: 224px;
+  height: 40px;
+  padding-left: 24px;
+  padding-top: 14.5px;
+  padding-bottom: 14.5px;
+
+  margin-right: 16px;
+
+  @include tablet {
+    width: 204px;
+  }
+
+  @include desktop {
+    width: 334px;
+  }
+}
+
+.catalog__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--btn-background);
+  border: none;
+  position: relative;
+  color: var(--main-text-color);
+  transition: color 350ms var(--cubic);
+
+  @include tablet {
+    width: 44px;
+    height: 44px;
+  }
+  @include desktop {
+    width: 48px;
+    height: 48px;
+  }
+  &-svg {
+    fill: currentColor;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    color: var(--main-background);
+  }
+}
