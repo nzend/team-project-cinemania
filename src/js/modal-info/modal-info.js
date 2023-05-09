@@ -127,8 +127,10 @@ function onCatalogClick(event) {
         buttonAdd.classList.remove('hidden');
         buttonRemove.classList.add('hidden');
       }
-      console.log('its working');
+
+      removeFromPage(filmID);
     }
+
     //!---------
     document.body.addEventListener('keyup', closeOnEsc);
     document
@@ -171,4 +173,17 @@ function closeOnOverlay(event) {
 
   event.target.removeEventListener('click', onCatalogClick);
   return;
+}
+
+function removeFromPage(id) {
+  const el = document.querySelector(`[data-id="${id}"]`);
+  console.dir(el);
+  console.dir(el.parentElement);
+  console.log(el.parentElement.className === 'mylib-gallery__list catalog');
+  if (el.parentElement.className === 'mylib-gallery__list catalog') {
+    console.log(11111);
+    el.remove();
+  } else {
+    console.log(2222);
+  }
 }

@@ -1,3 +1,4 @@
+import { rawListeners } from 'process';
 import * as Api from './api';
 import { setGenresInStorage } from './get-genres';
 import { getNameOfGenresById } from './get-genres';
@@ -64,15 +65,21 @@ Api.getUpcoming()
         );
 
         existing.splice(index, 1);
-        setAddedMovies(existing);
+		  setAddedMovies(existing);
+			
         buttonAdd.classList.remove('hidden');
-        buttonRemove.classList.add('hidden');
-      }
+		  buttonRemove.classList.add('hidden');
+		}
+		 
     }
   })
   .catch(error => console.log(error));
 
 setGenresInStorage();
+
+
+
+
 
 function createMarkup({
   backdrop_path,
