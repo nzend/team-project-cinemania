@@ -4,6 +4,7 @@ import * as basicLightbox from 'basiclightbox';
 import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
 
+
 const hero = document.querySelector('.hero');
 const LightSwitcher = document.querySelector('.switcher');
 
@@ -26,24 +27,34 @@ getDayTrending(1).then(({ results }) => {
   createTrendingMarkup(movieOfDay);
 	
 	const trailerBtn = hero.querySelector('#trailer-btn');
+	trailerBtn.addEventListener('click', onBtnClick);
 
-		getVideos(movieOfDay.id).then(videos => {
-    console.log(videos);
-    const infoTr = videos.find(el => el.name === 'Official Trailer');
-    const keyTr = infoTr.key;
-    console.log(infoTr);
-    console.log(keyTr);
 
+	function onBtnClick(params) {
+		getVideos(movieOfDay.id)
+      .then(videos => {
+        console.log(videos);
+        const infoTr = videos.find(el => el.name === 'Official Trailer');
+			const keyTr = infoTr.key;
 			
-			
-			const instance = basicLightbox.create(`
+        console.log(infoTr);
+        console.log(keyTr);
+
+        const instance = basicLightbox.create(`
 
      <iframe class="iframe" src="https://www.youtube.com/embed/${keyTr}" width="560" height="315" frameborder="0"></iframe>
 `);
-			console.log(instance);
-			
-    instance.show(() => console.log('lightbox now visible'));
-  }).catch(error => console.log(error));
+        console.log(instance);
+
+        instance.show(() => console.log('lightbox now visible'));
+      })
+			.catch(error => {
+ 			onOpenModalBtnClick();
+				console.log(error)
+			});
+	}
+
+		
 	
 // -----------------------------------------
   
@@ -99,3 +110,40 @@ function createTrendingMarkup(movieOfDay) {
     hero.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500${movieOfDay.backdrop_path}')`;
     hero.innerHTML = markup;
 } */
+const notificationBtnClose = document.querySelector(
+  `.notification-trailer-fail-btn-close`
+);
+const notification = document.querySelector(`.notification-trailer-fail`);
+const notificationTrailerFailOverlay = document.querySelector(
+  `.notification-trailer-fail-overlay`
+);
+
+function onOpenModalBtnClick(){
+       notificationTrailerFailOverlay.style.visibility= "visible";
+       notificationTrailerFailOverlay.style.transition="visibility 250ms linear 250ms";
+    notificationBtnClose.addEventListener(`click`, onNotificationTrailerFailBtnClick);
+    notificationTrailerFailOverlay.addEventListener(`click`, onNotificationTrailerFailOverlay);
+    function onNotificationTrailerFailOverlay(event) {
+        if (event.currentTarget === event.target) {
+          onCloseModal();
+        }
+      }
+     document.addEventListener("keydown", onEscKeyPress); 
+            
+}
+
+ function  onNotificationTrailerFailBtnClick (){
+    onCloseModal();
+}
+
+function onCloseModal() {
+    notificationTrailerFailOverlay.style.visibility= "hidden";
+  }
+
+  function onEscKeyPress(event) {
+    if (event.code !== 'Escape') {
+      return;
+    }
+    document.removeEventListener('keydown', onEscKeyPress);
+    onCloseModal();
+  }
