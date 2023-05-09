@@ -1,5 +1,5 @@
 import { getNameOfGenresById } from './get-genres';
-import errorWallpaper from '../../src/images/catalog/wallpaper-error.jpeg'
+import errorWallpaper from '../../src/images/catalog/wallpaper-error.jpeg';
 
 // Створює строку розмітки усих карточок фільмів
 export async function createMarkupCatalogCard(data) {
@@ -28,8 +28,6 @@ function makeCard({
   if (poster_path)
     poster_path = `https://image.tmdb.org/t/p/w500${poster_path}`;
   else poster_path = errorWallpaper;
-
- 
 
   // Якшо строка жанрів більша, рендерити один жанр
   if (stringOfGenres.length > 18)

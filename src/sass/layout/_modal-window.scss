@@ -1,5 +1,5 @@
 .modal__wrap {
-  position: absolute;
+  position: fixed;
   // filter: blur(2px);
   background-color: var(--main-background-rgba);
 
@@ -13,16 +13,19 @@
 }
 .modal-film {
   background-color: var(--grey-text-color);
-
   position: relative;
-  top: 50%;
+  top: 70%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
 
+  transform: translateX(-50%) translateY(-50%);
   width: 280px;
   padding: 52px 16px;
   z-index: 100;
-  border-radius:16px ;
+  border-radius: 16px;
+  @include tablet {
+    top: 50%;
+    left: 50%;
+  }
 }
 .modal__close {
   position: absolute;
@@ -148,4 +151,66 @@
     border-radius: 5px;
     margin-bottom: 22px;
   }
+}
+
+//? ======  кнопка добавления =========
+
+.upcoming-content__btn {
+  display: block;
+  margin-top: 20px;
+  padding: 12 24;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+
+  border: none;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 74px;
+  color: #111111;
+  cursor: pointer;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upcoming-content__btn:hover,
+.upcoming-content__btn:focus {
+  color: #f87719;
+  background: #fff;
+  border: 1px solid #f87719;
+}
+
+//? ======  кнопка удаления =========
+
+.upcoming-content__btn-remove {
+  display: block;
+  margin-top: 20px;
+  padding: 12 24;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+
+  border: 1px solid #f87719;
+  background-color: #111111;
+  border-radius: 74px;
+  color: #fff;
+  cursor: pointer;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upcoming-content__btn-remove:hover,
+.upcoming-content__btn-remove:focus {
+  color: #f87719;
+  background-color: #fff;
+  border: 1px solid #f87719;
+}
+
+.hidden {
+  display: none;
 }

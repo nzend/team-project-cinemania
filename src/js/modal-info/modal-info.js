@@ -64,22 +64,23 @@ function createCardMarkup({
     <p class="film__text">
       ${overview}
     </p>
-
     <button type="button" class="upcoming-content__btn" id="add">
-  Remind me
+  Add to my library
 </button>   
- <button type="button" class="upcoming-content__btn hidden" id="remove">
-  Remove
+ <button type="button" class="upcoming-content__btn-remove hidden" id="remove">
+  Remove from my library
 </button>
+
+    
+ 
   </div>
 </div></div>`;
 }
 function onCatalogClick(event) {
   event.preventDefault();
 
-  const filmID = event.target.getAttribute('data-id');
+  const filmID = event.target.offsetParent.getAttribute('data-id');
   const catalog = event.currentTarget;
-  console.log('🚀catalog:', catalog);
 
   getInfoMovie(filmID).then(data => {
     // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
