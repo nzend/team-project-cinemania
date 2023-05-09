@@ -323,9 +323,21 @@ body.light {
 }
 
 //* HEADER
-body.light {
+body.light  {
   .header__container {
     background-color: #ffffff;
+  }
+
+  a {
+    color: #000000;
+  }
+
+  p {
+    color: #000000;
+  }
+
+  h2 {
+    color: #000000;
   }
 
   .logo-text {
