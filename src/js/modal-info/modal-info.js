@@ -5,8 +5,9 @@ import { makeCard, myLibGallery } from '../added-movies-render';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
-const url = window.location.href;
-console.log(url);
+const url = window.location.href; // Бере поточну сторінку 
+
+
 
 function makeGenres(objArray) {
   const genres = [];
@@ -16,9 +17,10 @@ function makeGenres(objArray) {
   if (genres.length === 0) {
     return '';
   }
-  // console.log(genres.join(' '));
   return genres.join(' ');
 }
+
+
 function createCardMarkup({
   original_title,
   vote_average,
@@ -83,7 +85,6 @@ function onCatalogClick(event) {
   event.preventDefault();
 
   const filmID = event.target.offsetParent.getAttribute('data-id');
-  const catalog = event.currentTarget;
 
   getInfoMovie(filmID).then(data => {
     document
@@ -93,16 +94,22 @@ function onCatalogClick(event) {
     const buttonAdd = document.querySelector('.weekly__btn--add');
     const buttonRemove = document.querySelector('.weekly__btn--remove');
     //!---------
+
+    //
     let existing = getAddedMovies();
-    existing = existing ? existing : [];
+    existing = existing ? existing : []; // Робить перевірку на данні в локал сторедж
+
+    //Якшо є даний фільм приховує кнопку «додати», показує «видалити»
     if (existing.includes(filmID)) {
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
     }
+
+	  
     buttonAdd.addEventListener('click', onClickAdd);
     buttonRemove.addEventListener('click', onClickRemove);
-    console.log(buttonAdd);
 
+	  
     function onClickAdd() {
       let existing = getAddedMovies();
       existing = existing ? existing : [];
@@ -110,27 +117,22 @@ function onCatalogClick(event) {
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
         return;
-      }
+		}
+		 
+      // Записує новий айді, відправляє данні в локал сторедж
       existing.push(filmID);
       setAddedMovies(existing);
 
-      getInfoMovie(filmID).then(film => {
-        console.log(film);
-        myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-      });
-
-      //  if (!url) {
-      // 	 console.log(window.location.href === url);
-      // 	 console.log('working');
-      // 	  getInfoMovie(filmID).then(film => {
-      //     console.log(film);
-      //     myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-      //   });
-      //  }
-
-      buttonAdd.classList.add('hidden');
-      buttonRemove.classList.remove('hidden');
-      console.log('its working');
+		buttonAdd.classList.add('hidden');
+		buttonRemove.classList.remove('hidden');
+		 console.log('its working');
+		 
+		 //Робить рендеринг картки, якшо знаходимося на сторінці library 
+      if (url.includes('library')) {
+        getInfoMovie(filmID).then(film => {
+          myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+        });
+      }
     }
 
     function onClickRemove() {

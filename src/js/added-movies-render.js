@@ -1,30 +1,34 @@
 import * as Api from './api';
-import { getAddedMovies, setAddedMovies } from './local-storage';
+import { getAddedMovies } from './local-storage';
 
 
 export const myLibGallery = document.querySelector('.mylib-gallery__list');
 const libContent = document.querySelector('#is-hidden');
 const libGallery = document.querySelector('.gallery-hidden');
-
+const url = window.location.href;
 
 const libraryFilms = getAddedMovies();
 
- function renderLibrary(arrOfFilms) {
- Api.getArrayOfMovies(arrOfFilms)
-    .then(data => { 
-      if (data.length === 0) {
-        libContent.classList.remove('is-hidden')
-        return
-      }
-      data.map(film => {
-			myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-			libGallery.classList.remove('gallery-hidden');
-      });
-    })
-    .catch(error => console.error(error));
-}
 
-renderLibrary(libraryFilms);
+if (url.includes('library')) {
+	function renderLibrary(arrOfFilms) {
+    Api.getArrayOfMovies(arrOfFilms)
+      .then(data => {
+        if (data.length === 0) {
+          libContent.classList.remove('is-hidden');
+          return;
+        }
+        data.map(film => {
+          myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+          libGallery.classList.remove('gallery-hidden');
+        });
+      })
+      .catch(error => console.error(error));
+  }
+
+  renderLibrary(libraryFilms);
+}
+ 
 
   export function makeCard({
   id,
