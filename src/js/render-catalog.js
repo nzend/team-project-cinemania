@@ -4,6 +4,7 @@ import * as Api from './api';
 const catalogRef = document.querySelector('.catalog');
 const btnSearch = document.querySelector('.catalog__btn');
 const input = document.querySelector('.catalog__input');
+const notFound = document.querySelector('.text-sorry');
 
 btnSearch.addEventListener('click', onBtnSearch);
 
@@ -13,9 +14,13 @@ async function onBtnSearch(e) {
     const search = input.value.trim();
 
     const searchData = await Api.getBySearch(search, 1);
-    const searchResult = searchData.results;
-
-    createMarkupCatalogCard(searchResult).then(
+	  const searchResult = searchData.results;
+	 
+	  if (searchResult.length === 0) {
+      notFound.style.display = 'block';
+	  }
+	  
+	  createMarkupCatalogCard(searchResult).then(
       data => (catalogRef.innerHTML = data)
     );
 
@@ -24,7 +29,10 @@ async function onBtnSearch(e) {
         const films = data.results;
 
         createMarkupCatalogCard(films)
-          .then(data => (catalogRef.innerHTML = data))
+			  .then(data => {
+				  catalogRef.innerHTML = data;
+				  notFound.style.display = 'none';
+			  })
           .catch(error => console.log(error));
       });
     }
