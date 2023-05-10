@@ -6,7 +6,7 @@ header {
   min-height: 48px;
   background-color: #000000;
 
-@include tel {
+  @include tel {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,14 +17,11 @@ header {
     display: flex;
   }
 
-@include desktop {
+  @include desktop {
     min-height: 60px;
     display: flex;
   }
-
-
 }
-
 
 .link {
   text-decoration: none;
@@ -48,19 +45,19 @@ header {
 }
 
 .container__logo {
-    display: flex;
-      align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo-img {
   max-width: 32px;
-    height: 32px;
-  
-    @include tablet {
-      height: 48px;
-      max-width: 48px;
-      margin-right: 8px;
-    }
+  height: 32px;
+
+  @include tablet {
+    height: 48px;
+    max-width: 48px;
+    margin-right: 8px;
+  }
 }
 
 .logo-text {
@@ -88,14 +85,18 @@ header {
   }
 }
 
+.header__item {
+  // padding: 200px;
+}
+
 .header__nav-link {
   display: block;
   text-align: center;
-  color: #B7B7B7;
+  color: #b7b7b7;
 
   &:hover,
   &:focus {
-    transition: color 0.60s, transform 0.60s;
+    transition: color 0.6s, transform 0.6s;
     transform: scale(1.2);
     color: #f87719;
   }
@@ -113,16 +114,16 @@ header {
 
 .header__nav {
   @media (min-width: 768px) {
-    margin-right: 175px;
+    margin-right: 120px;
     margin-left: 59px;
-// position: absolute;
-// top: 50%;
-// left: 50%;
-// transform: translateY(-50%);
-// display: flex;
-// align-items: center;
-// justify-content: center;
-// margin: 22px, 509px;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translateY(-50%);
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // margin: 22px, 509px;
   }
   @media (max-width: 767px) {
     position: absolute;
@@ -153,7 +154,6 @@ header {
   margin-top: 40px;
 }
 
-
 .mobile-menu__item {
   padding: 10px;
   text-align: left;
@@ -161,42 +161,41 @@ header {
 
   &:hover,
   &:focus {
-    transition: color 0.60s;
+    transition: color 0.6s;
     color: #f87719;
   }
 }
 
 .mobile-menu__link {
-    padding: 10px;
-    text-align: left;
-    color: #FFFFFF;
-    text-decoration: none;
+  padding: 10px;
+  text-align: left;
+  color: #ffffff;
+  text-decoration: none;
 
-    &:hover,
-    &:focus {
-      transition: color 0.75s;
-      color: #f87719;
-    }
-  }
-
-  .current__nav-link {
+  &:hover,
+  &:focus {
+    transition: color 0.75s;
     color: #f87719;
   }
+}
 
+.current__nav-link {
+  color: #f87719;
+}
 
 #menu {
   padding: 17px 0;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  color: #B7B7B7;
+  color: #b7b7b7;
   background-color: transparent;
   border: none;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    transition: color 0.60s;
+    transition: color 0.6s;
     color: #f87719;
   }
 
@@ -211,21 +210,21 @@ header {
   width: 38px;
   height: 16px;
   padding: 2px;
-  background: linear-gradient(141.22deg, #f8bb20 9.4%, #f53f16 92.90%);
+  background: linear-gradient(141.22deg, #f8bb20 9.4%, #f53f16 92.9%);
   position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 50px;
   cursor: pointer;
 
   @include tablet {
-        height: 20px;
-        width: 54px;
+    height: 20px;
+    width: 54px;
   }
 
   @include desktop {
-        padding: 3px;
+    padding: 3px;
     width: 60px;
     height: 24px;
   }
@@ -238,65 +237,74 @@ header {
 
 .header__icon-moon {
   width: 8px;
-    height: 8px;
-  
-    @include tablet {
-      width: 10px;
-      height: 10px;
-    }
+  height: 8px;
 
-    @include desktop {
-      width: 13px;
-      height: 13px;
-    }
+  @include tablet {
+    width: 10px;
+    height: 10px;
+  }
+
+  @include desktop {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .header__icon-sun {
   width: 8px;
-    height: 8px;
-  
-    @include tablet {
-      width: 11px;
-      height: 11px;
-    }
-  
-    @include desktop {
-      width: 14px;
-      height: 14px;
-    }
-}
-
-.switcher__ball {
-  position: absolute;
-    left: 24px;
-    width: 14px;
-    height: 14px;
-    // background-image: url('/src/images/sprite.svg#ball');
-    background-size: cover;
-    cursor: pointer;
-  
-    @include tablet {
-      left: 36px;
-      width: 16px;
-      height: 16px;
-    }
-  
-    @include desktop {
-      left: 39px;
-      width: 18px;
-      height: 18px;
-    }
-}
-
-.switcher__ball {
-  transform: translateX(-21px) rotate(-180deg);
+  height: 8px;
 
   @include tablet {
-    transform: translateX(-32px) rotate(-180deg);
+    width: 11px;
+    height: 11px;
   }
 
   @include desktop {
-    transform: translateX(-35px) rotate(-180deg);
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.switcher__ball {
+  transition-duration: 500ms;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 25px;
+  top: 2px;
+  right: 2px;
+  background-repeat: no-repeat;
+  // background-image: url('/src/images/sprite.svg#ball');
+  // background-size: cover;
+  cursor: pointer;
+  fill: #595959;
+  background-image: url('/src/images/header/Group\ 770831.svg');
+  background-size: contain;
+
+  @include tablet {
+    left: 34px;
+    width: 16px;
+    height: 16px;
+  }
+
+  @include desktop {
+    left: 41px;
+    top: 3px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.light .switcher__ball {
+  transform: translateX(-25px) rotate(-180deg);
+  // transition-duration: 500ms;
+
+  @include tablet {
+    transform: translateX(-33px) rotate(-180deg);
+  }
+
+  @include desktop {
+    transform: translateX(-38px) rotate(-180deg);
   }
 }
 
@@ -326,6 +334,18 @@ body.light {
 body.light {
   .header__container {
     background-color: #ffffff;
+  }
+
+  a {
+    color: #f87719;
+  }
+
+  p {
+    color: #000000;
+  }
+
+  h2 {
+    color: #000000;
   }
 
   .logo-text {
@@ -365,7 +385,6 @@ body.light {
     }
   }
 
-
   #menu-button {
     color: #595959;
 
@@ -378,5 +397,37 @@ body.light {
   #overlay {
     background: rgba(0, 0, 0, 0.2);
   }
-}
+  // MODAL WINDOW
+  .modal-film {
+    background-color: #ffffff;
 
+    a {
+      color: #f87719;
+    }
+
+    p {
+      color: #000000;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5 {
+      color: #000000;
+    }
+    span {
+      color: #000000;
+    }
+
+    .stats__vote {
+      background-color: #f8f8f8;
+    }
+    svg {
+      color: #000000;
+    }
+
+    div {
+      color: #000000;
+    }
+  }
+}

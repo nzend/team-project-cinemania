@@ -1,0 +1,125 @@
+.footer {
+    @include tel {
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    @include tablet {
+        margin-top: 60px;
+        margin-bottom: 40px;
+    }
+
+    @include desktop {
+        margin-top: 100px;
+        margin-bottom: 80px;
+    }
+}
+
+.footer__container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+
+        .footer__desc {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer__desc {
+            margin-top: 10px;
+        }
+
+        .footer__text {
+            margin-right: 5px;
+        }
+    }
+}
+
+.footer__copyright {
+    color: #B7B7B7;
+    margin-right: 5px;
+}
+
+.footer__desc {
+    color: #B7B7B7;
+}
+//  //////////////////////////////////////////////
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.heart {
+    animation: heartbeat 0.4s infinite;
+    @include tel {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    @include tablet {
+    margin-left: 8px;
+        margin-right: 8px;
+        }
+
+                 @include desktop {
+                     margin-left: 5px;
+                     margin-right: 5px;
+                 }
+}
+////////////////////////////////////
+
+
+.footer__text {
+    color: #B7B7B7;
+}
+
+.footer__link {
+    color: #B7B7B7;
+}
+
+.footer__link:hover {
+    transition: color 0.60s, transform 0.60s;
+    transform: scale(1.2);
+    color: #f87719;
+}
+
+// FOOTER LIGHT
+
+body.light {
+    .footer__copyright {
+        color: #595959;
+    }
+
+    .footer__desc {
+        color: #595959;
+    }
+
+    .footer__text {
+        color: #595959;
+    }
+
+    .footer__link {
+        color: #595959;
+
+    }
+
+    .footer__link:hover {
+        color: #f87719;
+    }
+    
+}

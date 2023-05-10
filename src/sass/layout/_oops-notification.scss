@@ -1,0 +1,110 @@
+.notification-trailer-fail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 280px;
+  height: 289px;
+  background-color: #111111;
+
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 16px;
+  @include tablet {
+    display: block;
+    width: 609px;
+    height: 400px;
+    padding: 132px 144px 176px 44px;
+  }
+  @include desktop {
+    display: block;
+    width: 700px;
+    height: 400px;
+    padding: 150px 329px 150px 50px;
+  }
+}
+.bg-box {
+  width: 150px;
+  height: 150px;
+  background-image: url(../images/modals/error-mobile-1x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: auto;
+  margin-right: auto;
+  @include tablet {
+    background-image: url(../images/modals/error-tablet-1x.png);
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+  @include desktop {
+    background-image: url(../images/modals/error-desktop-1x.png);
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+}
+.btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-image: url(../images/modals/icon-close.svg);
+  background-color: transparent;
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  @include tablet {
+    top: 24px;
+    right: 24px;
+  }
+  @include desktop {
+    top: 28px;
+    right: 28px;
+  }
+}
+
+.btn-close--svg {
+  width: 24px;
+  height: 24px;
+}
+.notification-trailer-fail-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  width: 214px;
+  height: 65px;
+  @include tablet {
+    width: 321px;
+    height: 92px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    /* White */
+
+    color: #ffffff;
+  }
+}
+.iframe {
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 16px;
+}

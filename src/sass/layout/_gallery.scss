@@ -26,8 +26,6 @@
     position: relative;
     display: inline-block;
     color: aliceblue;
-   //  width: 280px;
-   //  height: 406px;
 
     cursor: pointer;
 
@@ -147,7 +145,7 @@
     &:first-child::after {
       position: absolute;
       right: -7px;
-      display: inline-block;
+      // display: inline-block;
       content: '';
       height: 100%;
       width: 1px;
@@ -260,4 +258,23 @@
   &:hover {
     color: var(--main-background);
   }
+}
+
+.text-sorry {
+	display: none;
+	font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 1.33;
+        margin-bottom: 24px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 32px;
+        line-height: 1.12;
+        margin-bottom: 28px;
+    }
 }
