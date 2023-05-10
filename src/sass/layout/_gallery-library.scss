@@ -411,65 +411,6 @@
   }
 }
 
-.catalog__filter-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 36px;
-}
 
-.catalog__input {
-  background-color: var(--main-background);
-  color: var(--main-white-color);
 
-  border: 1px solid var(--main-text-color);
-  border-radius: 8px;
-  width: 224px;
-  height: 40px;
-  padding-left: 24px;
-  padding-top: 14.5px;
-  padding-bottom: 14.5px;
 
-  margin-right: 16px;
-
-  @include tablet {
-    width: 204px;
-  }
-
-  @include desktop {
-    width: 334px;
-  }
-}
-
-.catalog__btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--btn-background);
-  border: none;
-  position: relative;
-  color: var(--main-text-color);
-  transition: color 350ms var(--cubic);
-
-  @include tablet {
-    width: 44px;
-    height: 44px;
-  }
-  @include desktop {
-    width: 48px;
-    height: 48px;
-  }
-  &-svg {
-    fill: currentColor;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &:hover {
-    color: var(--main-background);
-  }
-}
