@@ -50,7 +50,7 @@ img {
   top: 0;
   right: 0;
   width: 320px;
-  height: 380px;
+  height: 400px;
   object-fit: cover;
   @include tablet {
     width: 482px;
@@ -95,7 +95,7 @@ img {
 }
 
 .hero-wrap__content {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 28px;
   padding-left: 20px;
   padding-right: 10px;
@@ -115,8 +115,8 @@ img {
 
 .title {
   font-weight: 700;
-  font-size: 32px;
-  line-height: 38px;
+  font-size: 24px;
+  line-height: 28px;
 
   display: flex;
   align-items: center;
@@ -128,13 +128,13 @@ img {
 
   @include tablet {
     width: 250px;
-    font-size: 30px;
-    line-height: 31px;
+    font-size: 44px;
+    line-height: 52px;
   }
 
   @include desktop {
     width: 420px;
-    font-size: 60px;
+    font-size: 64px;
     line-height: 75px;
     padding-bottom: 16px;
   }
@@ -179,7 +179,7 @@ img {
   display: flex;
   align-items: center;
   color: #f8f8f8;
-  padding-bottom: 16px;
+
   padding-top: 20px;
 
   @include tablet {
