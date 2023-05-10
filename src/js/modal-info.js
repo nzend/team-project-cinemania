@@ -1,6 +1,5 @@
 import { getInfoMovie } from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
-import sprite from '../../images/sprite.svg';
 import { makeCard, myLibGallery } from './added-movies-render';
 
 //* INTERACTION WITH CATALOG
