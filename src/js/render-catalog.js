@@ -15,12 +15,11 @@ async function onBtnSearch(e) {
     const searchData = await Api.getBySearch(search, 1);
     const searchResult = searchData.results;
 
-	  createMarkupCatalogCard(searchResult).then(
-		
+    createMarkupCatalogCard(searchResult).then(
       data => (catalogRef.innerHTML = data)
-	 );
-	  
-	  if (input.value === '') {
+    );
+
+    if (input.value === '') {
       Api.getWeekTrending(1).then(data => {
         const films = data.results;
 
@@ -29,20 +28,16 @@ async function onBtnSearch(e) {
           .catch(error => console.log(error));
       });
     }
-
   } catch (error) {
     console.log(error);
   }
 }
 
 //  Рендерить за замовчування фільми за трендом тижня
-Api.getWeekTrending(1).then(data => {
-  const films = data.results;
-	
-  createMarkupCatalogCard(films)
-    .then(data => (catalogRef.innerHTML = data))
-    .catch(error => console.log(error));
-});
+// Api.getWeekTrending(1).then(data => {
+//   const films = data.results;
 
-
-
+//   createMarkupCatalogCard(films)
+//     .then(data => (catalogRef.innerHTML = data))
+//     .catch(error => console.log(error));
+// });

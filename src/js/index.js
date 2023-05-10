@@ -2,6 +2,8 @@
 import * as mobilMenu from './mobile-menu';
 import * as switcher from './switcher';
 // import * as moduleName from './js/module-name';
+// import * as Catalog from './render-catalog'
+import * as Hero from './hero';
 import * as oopsnotification from './oopsnotification';
 
 import * as WeeklyTrends from './render_weeklytrends';
