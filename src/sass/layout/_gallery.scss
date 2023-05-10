@@ -147,7 +147,7 @@
     &:first-child::after {
       position: absolute;
       right: -7px;
-      display: inline-block;
+      // display: inline-block;
       content: '';
       height: 100%;
       width: 1px;
