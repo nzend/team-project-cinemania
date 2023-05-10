@@ -39,13 +39,6 @@ async function onBtnSearch(e) {
     // console.log(searchDatas);
     const searchResult = searchDatas.results;
 
-    if (searchResult.length === 0) {
-      catalogRef.innerHTML = '';
-      pag.innerHTML = '';
-      notFound.style.display = 'block';
-      pag.innerHTML = '';
-    }
-
     createMarkupCatalogCard(searchResult).then(data => {
       catalogRef.innerHTML = data;
     });
