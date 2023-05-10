@@ -91,7 +91,7 @@ function createMarkup({
   return `
       <img
         class="upcoming-content__img"
-        src="https://image.tmdb.org/t/p/w500${backdrop_path}"
+        src="https://image.tmdb.org/t/p/original${backdrop_path}"
         alt="${title}"
        
       
