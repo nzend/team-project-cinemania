@@ -4,6 +4,7 @@ import * as Api from './api';
 const catalogRef = document.querySelector('.catalog');
 const btnSearch = document.querySelector('.catalog__btn');
 const input = document.querySelector('.catalog__input');
+const notFound = document.querySelector('.text-sorry');
 
 btnSearch.addEventListener('click', onBtnSearch);
 
@@ -13,36 +14,38 @@ async function onBtnSearch(e) {
     const search = input.value.trim();
 
     const searchData = await Api.getBySearch(search, 1);
-    const searchResult = searchData.results;
-
-	  createMarkupCatalogCard(searchResult).then(
-		
-      data => (catalogRef.innerHTML = data)
-	 );
+	  const searchResult = searchData.results;
+	 
+	  if (searchResult.length === 0) {
+      notFound.style.display = 'block';
+	  }
 	  
-	  if (input.value === '') {
+	  createMarkupCatalogCard(searchResult).then(
+      data => (catalogRef.innerHTML = data)
+    );
+
+    if (input.value === '') {
       Api.getWeekTrending(1).then(data => {
         const films = data.results;
 
         createMarkupCatalogCard(films)
-          .then(data => (catalogRef.innerHTML = data))
+			  .then(data => {
+				  catalogRef.innerHTML = data;
+				  notFound.style.display = 'none';
+			  })
           .catch(error => console.log(error));
       });
     }
-
   } catch (error) {
     console.log(error);
   }
 }
 
 //  Рендерить за замовчування фільми за трендом тижня
-Api.getWeekTrending(1).then(data => {
-  const films = data.results;
-	
-  createMarkupCatalogCard(films)
-    .then(data => (catalogRef.innerHTML = data))
-    .catch(error => console.log(error));
-});
+// Api.getWeekTrending(1).then(data => {
+//   const films = data.results;
 
-
-
+//   createMarkupCatalogCard(films)
+//     .then(data => (catalogRef.innerHTML = data))
+//     .catch(error => console.log(error));
+// });

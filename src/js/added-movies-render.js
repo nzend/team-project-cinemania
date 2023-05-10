@@ -1,48 +1,36 @@
 import * as Api from './api';
-import { getAddedMovies, setAddedMovies } from './local-storage';
-// import LoadMoreButton from './load-more-button';
+import { getAddedMovies } from './local-storage';
 
 
-const myLibGallery = document.querySelector('.mylib-gallery__list');
+export const myLibGallery = document.querySelector('.mylib-gallery__list');
 const libContent = document.querySelector('#is-hidden');
 const libGallery = document.querySelector('.gallery-hidden');
-// const addBtn = document.querySelector('.btn');
-// console.log(libContent);
-
-
-// const loadMoreButton = new LoadMoreButton({ selector: '.load-more', isHidden: true});
-// const loadMoreBtn = document.querySelector('.load-more');
-
-// //  vremenna
-// addBtn.addEventListener('click', onAddBtn);
-
-// function onAddBtn() {
-//  const v = [447365, 447365, 420808, 420808]
-//  setAddedMovies(v);
-// };
+const url = window.location.href;
 
 const libraryFilms = getAddedMovies();
 
-function renderLibrary(arrOfFilms) {
- Api.getArrayOfMovies(arrOfFilms)
-    .then(data => { 
-      // console.log(data);
-      if (data.length === 0) {
-        // renderMarkupError()
-        libContent.classList.remove('is-hidden')
-        return
-      }
-      data.map(film => {
-        myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film))
-        libGallery.classList.remove('gallery-hidden')
-      });
-    })
-    .catch(error => console.error(error));
+
+if (url.includes('library')) {
+	function renderLibrary(arrOfFilms) {
+    Api.getArrayOfMovies(arrOfFilms)
+      .then(data => {
+        if (data.length === 0) {
+          libContent.classList.remove('is-hidden');
+          return;
+        }
+        data.map(film => {
+          myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+          libGallery.classList.remove('gallery-hidden');
+        });
+      })
+      .catch(error => console.error(error));
+  }
+
+  renderLibrary(libraryFilms);
 }
+ 
 
-renderLibrary(libraryFilms);
-
-  function makeCard({
+  export function makeCard({
   id,
   poster_path,
   title,
@@ -85,7 +73,6 @@ renderLibrary(libraryFilms);
   function getNameOfGenres(arrGenres) {
     const arr = [];
     arrGenres.map(genre => {
-    //  console.log(genre.name);
       genre.name === 'Science Fiction' ? (genre.name = 'Sci-Fi') : genre.name;
      arr.push(genre.name)
       })
