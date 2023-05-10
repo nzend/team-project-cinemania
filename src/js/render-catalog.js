@@ -1,5 +1,6 @@
 import { createMarkupCatalogCard } from './markup-catalog';
 import * as Api from './api';
+import * as Loader from './loader/loader';
 
 const catalogRef = document.querySelector('.catalog');
 const btnSearch = document.querySelector('.catalog__btn');
@@ -13,14 +14,18 @@ async function onBtnSearch(e) {
   try {
     const search = input.value.trim();
 
+    Loader.show(catalogRef);
+
     const searchData = await Api.getBySearch(search, 1);
-	  const searchResult = searchData.results;
-	 
-	  if (searchResult.length === 0) {
+    const searchResult = searchData.results;
+
+    Loader.hide(catalogRef);
+
+    if (searchResult.length === 0) {
       notFound.style.display = 'block';
-	  }
-	  
-	  createMarkupCatalogCard(searchResult).then(
+    }
+
+    createMarkupCatalogCard(searchResult).then(
       data => (catalogRef.innerHTML = data)
     );
 
@@ -29,10 +34,10 @@ async function onBtnSearch(e) {
         const films = data.results;
 
         createMarkupCatalogCard(films)
-			  .then(data => {
-				  catalogRef.innerHTML = data;
-				  notFound.style.display = 'none';
-			  })
+          .then(data => {
+            catalogRef.innerHTML = data;
+            notFound.style.display = 'none';
+          })
           .catch(error => console.log(error));
       });
     }
