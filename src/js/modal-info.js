@@ -1,6 +1,7 @@
 import { getInfoMovie } from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
 import { makeCard, myLibGallery } from './added-movies-render';
+import sprite from '../images/sprite.svg';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
