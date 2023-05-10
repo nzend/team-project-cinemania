@@ -1,9 +1,13 @@
 import { getInfoMovie } from '../api';
 import { getAddedMovies, setAddedMovies } from '../local-storage';
 import sprite from '../../images/sprite.svg';
+import { makeCard, myLibGallery } from '../added-movies-render';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
+const url = window.location.href; // Бере поточну сторінку 
+
+
 
 function makeGenres(objArray) {
   const genres = [];
@@ -13,9 +17,10 @@ function makeGenres(objArray) {
   if (genres.length === 0) {
     return '';
   }
-  // console.log(genres.join(' '));
   return genres.join(' ');
 }
+
+
 function createCardMarkup({
   original_title,
   vote_average,
@@ -80,27 +85,33 @@ function onCatalogClick(event) {
   event.preventDefault();
 
   const filmID = event.target.offsetParent.getAttribute('data-id');
-  const catalog = event.currentTarget;
 
   getInfoMovie(filmID).then(data => {
-    // document.querySelector('.catalog').innerHTML = createCardMarkup(data);
     document
       .querySelector('body')
       .insertAdjacentHTML('beforeend', createCardMarkup(data));
 
+    document.querySelector('body').classList.add('modal-open');
+
     const buttonAdd = document.querySelector('.weekly__btn--add');
     const buttonRemove = document.querySelector('.weekly__btn--remove');
     //!---------
+
+    //
     let existing = getAddedMovies();
-    existing = existing ? existing : [];
+    existing = existing ? existing : []; // Робить перевірку на данні в локал сторедж
+
+    //Якшо є даний фільм приховує кнопку «додати», показує «видалити»
     if (existing.includes(filmID)) {
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
     }
+
+	  
     buttonAdd.addEventListener('click', onClickAdd);
     buttonRemove.addEventListener('click', onClickRemove);
-    console.log(buttonAdd);
 
+	  
     function onClickAdd() {
       let existing = getAddedMovies();
       existing = existing ? existing : [];
@@ -108,12 +119,22 @@ function onCatalogClick(event) {
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
         return;
-      }
+		}
+		 
+      // Записує новий айді, відправляє данні в локал сторедж
       existing.push(filmID);
       setAddedMovies(existing);
-      buttonAdd.classList.add('hidden');
-      buttonRemove.classList.remove('hidden');
-      console.log('its working');
+
+		buttonAdd.classList.add('hidden');
+		buttonRemove.classList.remove('hidden');
+		 console.log('its working');
+		 
+		 //Робить рендеринг картки, якшо знаходимося на сторінці library 
+      if (url.includes('library')) {
+        getInfoMovie(filmID).then(film => {
+          myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+        });
+      }
     }
 
     function onClickRemove() {
@@ -127,8 +148,10 @@ function onCatalogClick(event) {
         buttonAdd.classList.remove('hidden');
         buttonRemove.classList.add('hidden');
       }
-      console.log('its working');
+
+      removeFromPage(filmID);
     }
+
     //!---------
     document.body.addEventListener('keyup', closeOnEsc);
     document
@@ -138,7 +161,6 @@ function onCatalogClick(event) {
       .querySelector('.modal__wrap')
       .addEventListener('click', closeOnOverlay);
   });
-  // .catch(error => console.log(error));
 }
 
 //* MODAL CLOSING
@@ -148,8 +170,9 @@ function modalClose(event) {
   if (modalWrap) {
     modalWrap.remove();
   }
-  return;
   event.target.removeEventListener('click', onCatalogClick);
+  document.querySelector('body').classList.remove('modal-open');
+  return;
 }
 
 function closeOnEsc(event) {
@@ -158,6 +181,7 @@ function closeOnEsc(event) {
     if (modalWrap) {
       modalWrap.remove();
     }
+    document.querySelector('body').classList.remove('modal-open');
     event.target.removeEventListener('keyup', onCatalogClick);
   }
   return;
@@ -168,7 +192,20 @@ function closeOnOverlay(event) {
   if (modalWrap && event.target === modalWrap) {
     modalWrap.remove();
   }
-
+  document.querySelector('body').classList.remove('modal-open');
   event.target.removeEventListener('click', onCatalogClick);
   return;
+}
+
+function removeFromPage(id) {
+  const el = document.querySelector(`[data-id="${id}"]`);
+  console.dir(el);
+  console.dir(el.parentElement);
+  console.log(el.parentElement.className === 'mylib-gallery__list catalog');
+  if (el.parentElement.className === 'mylib-gallery__list catalog') {
+    console.log(11111);
+    el.remove();
+  } else {
+    console.log(2222);
+  }
 }
