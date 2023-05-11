@@ -26,8 +26,6 @@
     position: relative;
     display: inline-block;
     color: aliceblue;
-   //  width: 280px;
-   //  height: 406px;
 
     cursor: pointer;
 
@@ -147,7 +145,7 @@
     &:first-child::after {
       position: absolute;
       right: -7px;
-      display: inline-block;
+      // display: inline-block;
       content: '';
       height: 100%;
       width: 1px;

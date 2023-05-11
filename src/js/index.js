@@ -8,5 +8,5 @@ import * as oopsnotification from './oopsnotification';
 
 import * as WeeklyTrends from './render_weeklytrends';
 import * as upcomingMounth from '../js/upcoming-this-mounth';
-import * as modal from './modal-info/modal-info';
+import * as modal from './modal-info';
 import * as scrollUpBtn from './scroll-up-btn';

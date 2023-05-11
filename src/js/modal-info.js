@@ -1,13 +1,11 @@
-import { getInfoMovie } from '../api';
-import { getAddedMovies, setAddedMovies } from '../local-storage';
-import sprite from '../../images/sprite.svg';
-import { makeCard, myLibGallery } from '../added-movies-render';
+import { getInfoMovie } from './api';
+import { getAddedMovies, setAddedMovies } from './local-storage';
+import { makeCard, myLibGallery } from './added-movies-render';
+import sprite from '../images/sprite.svg';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
-const url = window.location.href; // Бере поточну сторінку 
-
-
+const url = window.location.href; // Бере поточну сторінку
 
 function makeGenres(objArray) {
   const genres = [];
@@ -19,7 +17,6 @@ function makeGenres(objArray) {
   }
   return genres.join(' ');
 }
-
 
 function createCardMarkup({
   original_title,
@@ -107,11 +104,9 @@ function onCatalogClick(event) {
       buttonRemove.classList.remove('hidden');
     }
 
-	  
     buttonAdd.addEventListener('click', onClickAdd);
     buttonRemove.addEventListener('click', onClickRemove);
 
-	  
     function onClickAdd() {
       let existing = getAddedMovies();
       existing = existing ? existing : [];
@@ -119,17 +114,17 @@ function onCatalogClick(event) {
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
         return;
-		}
-		 
+      }
+
       // Записує новий айді, відправляє данні в локал сторедж
       existing.push(filmID);
       setAddedMovies(existing);
 
-		buttonAdd.classList.add('hidden');
-		buttonRemove.classList.remove('hidden');
-		 console.log('its working');
-		 
-		 //Робить рендеринг картки, якшо знаходимося на сторінці library 
+      buttonAdd.classList.add('hidden');
+      buttonRemove.classList.remove('hidden');
+      console.log('its working');
+
+      //Робить рендеринг картки, якшо знаходимося на сторінці library
       if (url.includes('library')) {
         getInfoMovie(filmID).then(film => {
           myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
@@ -207,5 +202,6 @@ function removeFromPage(id) {
     el.remove();
   } else {
     console.log(2222);
+    el.remove();
   }
 }
