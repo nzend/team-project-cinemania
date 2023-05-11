@@ -66,9 +66,6 @@ export async function getInfoMovie(movie_id) {
 		 
 		 instance.show();
 
-      const closeBtn = document.querySelector('.modal__close');
-		 console.log(closeBtn);
-		 closeBtn.addEventListener('click', instance.close());
      
     });
 }

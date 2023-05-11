@@ -1,6 +1,6 @@
 import { getInfoMovie } from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
-import { makeCard, myLibGallery } from './added-movies-render';
+import { makeCard, myLibGallery, errorContainer } from './added-movies-render';
 import sprite from '../images/sprite.svg';
 
 //* INTERACTION WITH CATALOG
@@ -145,25 +145,30 @@ function onCatalogClick(event) {
           }
       }
 
-      function onClickRemove() {
-        let existing = getAddedMovies();
-        existing = existing ? existing : [];
+		 function onClickRemove() {
+			let existing = getAddedMovies();
+      existing = existing ? existing : [];
+      if (existing.includes(filmID)) {
+        let index = existing.findIndex(id => id === filmID);
 
-        console.log(existing);
+        existing.splice(index, 1);
+        setAddedMovies(existing);
+        buttonAdd.classList.remove('hidden');
+        buttonRemove.classList.add('hidden');
+      }
+   
 
-        if (existing.includes(filmID)) {
-          let index = existing.findIndex(id => id === filmID);
-
-          existing.splice(index, 1);
-          console.log(existing.splice(index, 1));
-          setAddedMovies(existing);
-          buttonAdd.classList.remove('hidden');
-          buttonRemove.classList.add('hidden');
-
-          if (url.includes('library')) {
+			  if (url.includes('library')) {
+				  const libraryFilms = getAddedMovies() || [];
+				console.log(libraryFilms.length === 0);
+				  if (libraryFilms.length === 0) {
+					  console.log('container');
+					  errorContainer.style.display = 'block';
+        }
+         
             removeFromPage(filmID);
           }
-        }
+      
       }
 
       //!---------
@@ -214,9 +219,8 @@ function closeOnOverlay(event) {
 
 function removeFromPage(id) {
   const el = document.querySelector(`[data-id="${id}"]`);
-  console.dir(el);
-  console.dir(el.parentElement);
-  console.log(el.parentElement.className === 'mylib-gallery__list catalog');
+         
+
   if (el.parentElement.className === 'mylib-gallery__list catalog') {
     console.log(11111);
     el.remove();
@@ -225,3 +229,16 @@ function removeFromPage(id) {
     el.remove();
   }
 }
+
+  function renderMarkupError() {
+    return `<div class="library-content" id="is-hidden">
+      <div class="library-content__wrap">
+        <p class="library-content__text">
+          OOPS... <br />
+          We are very sorry! <br />
+          You don’t have any movies at your library.
+        </p>
+      </div>
+      <a class="library-btn" href="./catalog.html">Search movie</a>
+    </div>`;
+  }
