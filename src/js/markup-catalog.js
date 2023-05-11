@@ -40,9 +40,9 @@ function makeCard({
 
   return `<li class="catalog__card" data-id="${id}">
     <div class="catalog__img-wrapper">
-      <img src=${poster_path} alt="${
+      <img data-src=${poster_path} alt="${
     name || title
-  }" width="395" height="574" class="catalog__img" />
+  }" width="395" height="574" class="catalog__img lazyload" />
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
