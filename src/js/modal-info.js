@@ -1,6 +1,7 @@
 import { getInfoMovie } from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
 import { makeCard, myLibGallery } from './added-movies-render';
+import sprite from '../images/sprite.svg';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
@@ -29,8 +30,8 @@ function createCardMarkup({
   return `<div class="modal__wrap">
   <div class="modal-film">
   <button class="modal__close">
-    <svg class="modal__svg" width="24" height="24">
-      <use width="24" height="24" class="svg__use" href="${sprite}#icon-close"></use>
+    <svg class="modal__svg" width="10" height="10">
+      <use width="10" height="10" class="svg__use" href="${sprite}#icon-close2"></use>
     </svg>
   </button>
   <img

@@ -1,5 +1,8 @@
 import * as Api from './api';
 
+const savedGenres = localStorage.getItem('genres');
+const parsedGenres = JSON.parse(savedGenres);
+
 export function setGenresInStorage() {
   Api.getGanres().then(data => {
     localStorage.setItem('genres', JSON.stringify(data.genres));
@@ -9,8 +12,8 @@ export function setGenresInStorage() {
 export function getNameOfGenresById(ids) {
   // Приймає масив з айді, повертає масив з назвами жанрів
 
-  const savedGenres = localStorage.getItem('genres');
-  const parsedGenres = JSON.parse(savedGenres);
+  // const savedGenres = localStorage.getItem('genres');
+  // const parsedGenres = JSON.parse(savedGenres);
   const nameOfGenres = ids.map(id => {
     const filmById = parsedGenres.find(film => {
       return film.id === id;
@@ -24,5 +27,6 @@ export function getNameOfGenresById(ids) {
   });
   return nameOfGenres; //Масив з іменами жанрів
 }
-
-setGenresInStorage(); 
+if (!parsedGenres) {
+  setGenresInStorage();
+}
