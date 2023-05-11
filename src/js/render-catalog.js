@@ -10,19 +10,26 @@ const notFound = document.querySelector('.text-sorry');
 
 btnSearch.addEventListener('click', onBtnSearch);
 
+Loader.show(catalogRef)
+
 // Виконує запит по введеній назві
 async function onBtnSearch(e) {
+  catalogRef.innerHTML = '';
   pag.innerHTML = '';
   try {
     const search = input.value.trim();
-
+    // catalogRef.innerHTML = '';
+    Loader.show(catalogRef); // додаємо спінер перед запитом
+    
     await Api.getBySearch(search, 1).then(data => {
       console.log(data);
       const pagination = createPagination(data.total_results, data.total_pages);
+      // catalogRef.innerHTML = '';
+
       pagination.on('beforeMove', ({ page }) => {
         console.log(page);
         catalogRef.innerHTML = '';
-
+        Loader.show(catalogRef); // додаємо спінер перед запитом
         Api.getBySearch(search, page).then(res => {
           console.log(res.page);
           console.log(res);
@@ -32,7 +39,7 @@ async function onBtnSearch(e) {
             .then(data => (catalogRef.innerHTML = data))
             .catch(error => console.log(error));
           //   gallery.innerHTML = createMarkupCatalogCard(data.results);
-        });
+        }).finally(() => Loader.hide(catalogRef)); // ховаємо спінер
       });
     });
 
@@ -68,6 +75,7 @@ async function onBtnSearch(e) {
         console.log(pagination);
         pagination.on('beforeMove', ({ page }) => {
           catalogRef.innerHTML = '';
+          Loader.show(catalogRef) // додаємо спінер
           Api.getWeekTrending(page).then(data => {
             const films = data.results;
 
@@ -75,7 +83,7 @@ async function onBtnSearch(e) {
               .then(data => (catalogRef.innerHTML = data))
               .catch(error => console.log(error));
             //   gallery.innerHTML = createMarkupCatalogCard(data.results);
-          });
+          }).finally(() => Loader.hide(catalogRef)); // ховаємо спінер
         });
 
         createMarkupCatalogCard(films)
@@ -145,13 +153,16 @@ Api.getWeekTrending().then(data => {
   console.log(data.results);
 });
 
-Api.getWeekTrending(1).then(data => {
-  const films = data.results;
+Loader.show(galleryMovie) // показуємо спінер
 
+Api.getWeekTrending(1).then(data => {
+  Loader.show(galleryMovie)
+  const films = data.results;
   galleryMovie.insertAdjacentHTML(
     'beforeend',
     createMarkupCatalogCard(data.results)
   );
+  Loader.hide(galleryMovie) // ховаємо спінер
   console.log(data.total_results);
   console.log(data.total_pages);
 
@@ -159,11 +170,14 @@ Api.getWeekTrending(1).then(data => {
   console.log(pagination);
   pagination.on('beforeMove', ({ page }) => {
     catalogRef.innerHTML = '';
+    Loader.show(galleryMovie); // показуємо спінер
     Api.getWeekTrending(page).then(data => {
       const films = data.results;
 
       createMarkupCatalogCard(films)
-        .then(data => (catalogRef.innerHTML = data))
+        .then(data => {
+          Loader.hide(galleryMovie); // ховаємо спінер
+          catalogRef.innerHTML = data})
         .catch(error => console.log(error));
       //   gallery.innerHTML = createMarkupCatalogCard(data.results);
     });
