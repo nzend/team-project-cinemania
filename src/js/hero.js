@@ -98,7 +98,7 @@ function createTrendingMarkup(movieOfDay) {
                     <h1 class="title">${
                       movieOfDay.title || movieOfDay.name
                     }</h1>
-                    <div class="catalog__stars-wrap">
+                    <div class="catalog__stars-wrap-hero">
                         <div class="catalog__rating-active"
                         style="width:${
                           movieOfDay.vote_average / 2 / 0.05
