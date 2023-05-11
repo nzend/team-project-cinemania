@@ -58,7 +58,8 @@ ul {
     color: #f87719;
     transition: scale 0.3s var(--cubic);
 
-    &:hover,&:focus {
+    &:hover,
+    &:focus {
       scale: 1.1;
     }
 
