@@ -11,6 +11,80 @@ const LightSwitcher = document.querySelector('.switcher');
 const url = window.location.href;
 console.log(url);
 hero.style.backgroundImage = `url(${people})`;
+// hero.style.backgroundImage = `linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+// url('${people}');
+//     @media (min-device-pixel-ratio: 2),
+//     (-webkit-min-device-pixel-ratio: 2),
+//     (min-resolution: 192dpi),
+//     (min-resolution: 2dppx) {
+//         & {
+//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('${people}');
+//         }
+//     }
+//     @media (min-device-pixel-ratio: 3),
+//     (-webkit-min-device-pixel-ratio: 3),
+//     (min-resolution: 288dpi),
+//     (min-resolution: 3dppx) {
+//         & {
+//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%), 
+//         url('${people}');
+//         }
+//     }
+
+// @media screen and (min-width: 768px) {
+//   width: 768px;
+//   height: 432px;
+//   margin-left: auto;
+//   margin-right: auto;
+
+//     background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//     url('${people}');
+//     @media (min-device-pixel-ratio: 2),
+//     (-webkit-min-device-pixel-ratio: 2),
+//     (min-resolution: 192dpi),
+//     (min-resolution: 2dppx) {
+//         & {
+//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('${people}');
+//         }
+//       }
+//         @media (min-device-pixel-ratio: 3),
+//         (-webkit-min-device-pixel-ratio: 3),
+//         (min-resolution: 288dpi),
+//         (min-resolution: 3dppx) {
+//             & {
+//             background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//             url('${people}');
+//             }
+//         }    
+//     }    
+
+// @media screen and (min-width: 1280px) {
+//   width: 1280px;
+//   height: 720px;
+
+//     background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//     url('${people}');
+//     @media (min-device-pixel-ratio: 2),
+//     (-webkit-min-device-pixel-ratio: 2),
+//     (min-resolution: 192dpi),
+//     (min-resolution: 2dppx) {
+//         & {
+//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('${people}');
+//         }
+//         @media (min-device-pixel-ratio: 3),
+//     (-webkit-min-device-pixel-ratio: 3),
+//     (min-resolution: 288dpi),
+//     (min-resolution: 3dppx) {
+//         & {
+//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('${people}');
+//         }
+//     }    
+// }
+// }`;
 
 if (url.includes('library')) {
   hero.innerHTML = '';

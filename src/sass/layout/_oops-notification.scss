@@ -26,13 +26,45 @@
 .bg-box {
   width: 150px;
   height: 150px;
-  background-image: url(../images/modals/error-mobile-1x.png);
+  background-image: url(/src/images/modals/error-mobile-1x.png);
+          @media (min-device-pixel-ratio: 2),
+          (-webkit-min-device-pixel-ratio: 2),
+          (min-resolution: 192dpi),
+          (min-resolution: 2dppx) {
+              & {
+                background-image: url(/src/images/modals/error-mobile-2x.png);
+              }
+          }
+          @media (min-device-pixel-ratio: 3),
+          (-webkit-min-device-pixel-ratio: 3),
+          (min-resolution: 288dpi),
+          (min-resolution: 3dppx) {
+              & {
+              background-image: url(/src/images/modals/error-mobile-3x.png);
+              }
+          }       
   background-repeat: no-repeat;
   background-size: contain;
   margin-left: auto;
   margin-right: auto;
   @include tablet {
-    background-image: url(../images/modals/error-tablet-1x.png);
+    background-image: url(/src/images/modals/error-tablet-1x.png);
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        & {
+          background-image: url(/src/images/modals/error-tablet-2x.png);
+        }
+    }
+    @media (min-device-pixel-ratio: 3),
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+        & {
+          background-image: url(/src/images/modals/error-tablet-3x.png);
+        }
+    }
     position: fixed;
     right: 10px;
     bottom: 16px;
@@ -42,7 +74,23 @@
     height: 260px;
   }
   @include desktop {
-    background-image: url(../images/modals/error-desktop-1x.png);
+    background-image: url(/src/images/modals/error-desktop-1x.png);
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        & {
+          background-image: url(/src/images/modals/error-desktop-2x.png);
+        }
+    }
+    @media (min-device-pixel-ratio: 3),
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+        & {
+          background-image: url(/src/images/modals/error-desktop-3x.png);
+        }
+    }
     position: fixed;
     right: 10px;
     bottom: 16px;
