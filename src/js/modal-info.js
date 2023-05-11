@@ -122,7 +122,6 @@ function onCatalogClick(event) {
 
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
-      console.log('its working');
 
       //Робить рендеринг картки, якшо знаходимося на сторінці library
       if (url.includes('library')) {
@@ -194,14 +193,10 @@ function closeOnOverlay(event) {
 
 function removeFromPage(id) {
   const el = document.querySelector(`[data-id="${id}"]`);
-  console.dir(el);
-  console.dir(el.parentElement);
   console.log(el.parentElement.className === 'mylib-gallery__list catalog');
   if (el.parentElement.className === 'mylib-gallery__list catalog') {
-    console.log(11111);
     el.remove();
   } else {
-    console.log(2222);
     el.remove();
   }
 }

@@ -60,16 +60,6 @@ function makeCard({
   if (stringOfGenres.length > 18)
     stringOfGenres = arrOfGenres.slice(0, 1).join(', ');
 
-  // const currentGenres = () => {
-  //   if (window.innerWidth < 1280) {
-  //     return stringOfGenres[0];
-  //   }
-  //   return stringOfGenres.join(', ');
-  // };
-
-  // window.addEventListener('resize', () => {
-  //   currentGenres();
-  // });
 
   return `<li class="catalog__card" data-id="${id}">
   <div class="catalog__img-wrapper">

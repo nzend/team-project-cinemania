@@ -3,7 +3,6 @@ import errorWallpaper from '../../src/images/catalog/wallpaper-error.jpeg';
 
 // Створює строку розмітки усих карточок фільмів
 export async function createMarkupCatalogCard(data) {
-	console.log(data);
   const markUp = data
     .reduce((markup, film) => markup + makeCard(film), '');
   return markUp;

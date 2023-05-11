@@ -4,7 +4,6 @@ img {
 }
 
 .hero {
-  // background-image: url(../images/hero/hero-people-desktop-1x.jpg);
   padding: 40px 0px 28px;
   min-width: 320px;
   height: 380px;
@@ -45,8 +44,6 @@ img {
 .black-span {
   opacity: 100%;
   display: flex;
-  // flex-direction: column;
-  // justify-content: center;
   @include tablet {
     display: block;
     width: 100%;
@@ -86,7 +83,6 @@ img {
   line-height: 38px;
 
   color: #ffffff;
-  // text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   margin-bottom: 12px;
 
@@ -160,7 +156,6 @@ img {
 }
 
 .watch-trailer__btn {
-  // display: block;
   padding: 12px 24px;
 
   font-family: 'Roboto';
