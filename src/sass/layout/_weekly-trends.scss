@@ -58,7 +58,7 @@ ul {
     color: #f87719;
     transition: scale 0.3s var(--cubic);
 
-    &:hover {
+    &:hover,&:focus {
       scale: 1.1;
     }
 
@@ -73,8 +73,7 @@ ul {
       opacity: 0;
       transition: opacity 300ms, transform 300ms;
     }
-    &:hover::after,
-    &:focus::after {
+    &:hover::after {
       opacity: 1;
       transform: translate3d(0, 0.2em, 0);
     }
