@@ -9,7 +9,6 @@ import people from '../../src/images/hero/hero-people-desktop-1x.jpg';
 const hero = document.querySelector('.hero');
 const LightSwitcher = document.querySelector('.switcher');
 const url = window.location.href;
-console.log(url);
 hero.style.backgroundImage = `url(${people})`;
 
 if (url.includes('library')) {

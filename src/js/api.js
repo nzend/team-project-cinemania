@@ -63,9 +63,13 @@ export async function getInfoMovie(movie_id) {
 </div>
 
 `);
-      const closeBtn = document.querySelector('.btn-close');
-      console.log(closeBtn);
-      instance.show();
+		 
+		 instance.show();
+
+      const closeBtn = document.querySelector('.modal__close');
+		 console.log(closeBtn);
+		 closeBtn.addEventListener('click', instance.close());
+     
     });
 }
 

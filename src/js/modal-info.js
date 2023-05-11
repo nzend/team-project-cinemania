@@ -72,12 +72,10 @@ function createCardMarkup({
  <button type="button" class="upcoming-content__btn-remove weekly__btn--remove hidden" id="remove">
   Remove from my library
 </button>
-
-    
- 
   </div>
 </div></div>`;
 }
+
 function onCatalogClick(event) {
   event.preventDefault();
 
@@ -87,13 +85,20 @@ function onCatalogClick(event) {
     .then(data => {
       document
         .querySelector('body')
-        .insertAdjacentHTML('beforeend', createCardMarkup(data));
+        .insertAdjacentHTML('beforeend', createCardMarkup(data)); // finish render
+      //--------------------------------------------------------------
 
       document.querySelector('body').classList.add('modal-open');
 
       const buttonAdd = document.querySelector('.weekly__btn--add');
       const buttonRemove = document.querySelector('.weekly__btn--remove');
-      //!---------
+      //-----------------------------------------------------------------------
+
+      // CHECKED IF LIBRARY
+      if (url.includes('library')) {
+        buttonAdd.classList.add('hidden');
+        buttonRemove.classList.remove('hidden');
+      }
 
       //
       let existing = getAddedMovies();
@@ -105,12 +110,19 @@ function onCatalogClick(event) {
         buttonRemove.classList.remove('hidden');
       }
 
+      // SHOOSE DOM ELEMENTS
       buttonAdd.addEventListener('click', onClickAdd);
       buttonRemove.addEventListener('click', onClickRemove);
 
       function onClickAdd() {
         let existing = getAddedMovies();
         existing = existing ? existing : [];
+
+        if (url.includes('library')) {
+          buttonAdd.classList.remove('hidden');
+          buttonRemove.classList.add('hidden');
+        }
+
         if (existing.includes(filmID)) {
           buttonAdd.classList.add('hidden');
           buttonRemove.classList.remove('hidden');
@@ -125,27 +137,33 @@ function onCatalogClick(event) {
         buttonRemove.classList.remove('hidden');
         console.log('its working');
 
-        //Робить рендеринг картки, якшо знаходимося на сторінці library
-        if (url.includes('library')) {
-          getInfoMovie(filmID).then(film => {
-            myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-          });
-        }
+      //   Робить рендеринг картки, якшо знаходимося на сторінці library
+          if (url.includes('library')) {
+            getInfoMovie(filmID).then(film => {
+              myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+            });
+          }
       }
 
       function onClickRemove() {
         let existing = getAddedMovies();
         existing = existing ? existing : [];
+
+        console.log(existing);
+
         if (existing.includes(filmID)) {
           let index = existing.findIndex(id => id === filmID);
 
           existing.splice(index, 1);
+          console.log(existing.splice(index, 1));
           setAddedMovies(existing);
           buttonAdd.classList.remove('hidden');
           buttonRemove.classList.add('hidden');
-        }
 
-        removeFromPage(filmID);
+          if (url.includes('library')) {
+            removeFromPage(filmID);
+          }
+        }
       }
 
       //!---------

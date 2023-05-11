@@ -34,7 +34,7 @@ Api.getUpcoming()
 
     let existing = getAddedMovies();
     existing = existing ? existing : [];
-    if (existing.includes(filmUpcomingRelease[random].id)) {
+    if (existing.includes(filmUpcomingRelease[random].id.toString())) {
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
     }
@@ -50,7 +50,7 @@ Api.getUpcoming()
         buttonRemove.classList.remove('hidden');
         return;
       }
-      existing.push(filmUpcomingRelease[random].id);
+		 existing.push(filmUpcomingRelease[random].id.toString());
       setAddedMovies(existing);
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
@@ -58,8 +58,9 @@ Api.getUpcoming()
 
     function onClickRemove() {
       let existing = getAddedMovies();
-      existing = existing ? existing : [];
-      if (existing.includes(filmUpcomingRelease[random].id)) {
+		 existing = existing ? existing : [];
+
+      if (existing.includes(filmUpcomingRelease[random].id.toString())) {
         let index = existing.findIndex(
           id => id === filmUpcomingRelease[random].id
         );

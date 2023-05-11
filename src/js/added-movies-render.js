@@ -5,9 +5,10 @@ import { getAddedMovies } from './local-storage';
 export const myLibGallery = document.querySelector('.mylib-gallery__list');
 const libContent = document.querySelector('#is-hidden');
 const libGallery = document.querySelector('.gallery-hidden');
-const url = window.location.href;
 
-const libraryFilms = getAddedMovies();
+const url = window.location.href;
+const libraryFilms = getAddedMovies() || [];
+
 
 
 if (url.includes('library')) {
@@ -79,12 +80,12 @@ if (url.includes('library')) {
     return arr.slice(0,2).join(', ');
      }
 
-    //  function renderMarkupError() {
-    //   container.innerHTML = `<div class="upcoming-error-container">
-    //         <p class="upcoming-error-container__text">
-    //           OOPS...<br />
-    //           We are very sorry!<br />
-    //           But we couldn't find any upcoming movies this month.
-    //         </p>
-    //       </div>`;
-    // }
+   //   function renderMarkupError() {
+   //    libContent.innerHTML = `<div class="upcoming-error-container">
+   //          <p class="upcoming-error-container__text">
+   //            OOPS...<br />
+   //            We are very sorry!<br />
+   //            But we couldn't find any upcoming movies this month.
+   //          </p>
+   //        </div>`;
+   //  }
