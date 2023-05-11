@@ -3,7 +3,6 @@ body.modal-open {
 }
 .modal__wrap {
   position: fixed;
-  // filter: blur(2px);
   background-color: var(--main-background-rgba);
 
   left: 0;
@@ -34,9 +33,14 @@ body.modal-open {
 }
 .modal__close {
   position: absolute;
-  right: 47px;
-  top: 47px;
 
+  right: 16px;
+  top: 20px;
+
+  @include tablet {
+    right: 24px;
+    top: 24px;
+  }
   width: 25px;
   height: 25px;
 
@@ -58,8 +62,9 @@ body.modal-open {
 .modal__svg {
   fill: #fff;
   transition: fill 250ms var(--cubic);
-  
-  &:hover,&:focus {
+
+  &:hover,
+  &:focus {
     fill: var(--brend-color);
   }
 }
