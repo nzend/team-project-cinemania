@@ -83,79 +83,81 @@ function onCatalogClick(event) {
 
   const filmID = event.target.offsetParent.getAttribute('data-id');
 
-  getInfoMovie(filmID).then(data => {
-    document
-      .querySelector('body')
-      .insertAdjacentHTML('beforeend', createCardMarkup(data));
+  getInfoMovie(filmID)
+    .then(data => {
+      document
+        .querySelector('body')
+        .insertAdjacentHTML('beforeend', createCardMarkup(data));
 
-    document.querySelector('body').classList.add('modal-open');
+      document.querySelector('body').classList.add('modal-open');
 
-    const buttonAdd = document.querySelector('.weekly__btn--add');
-    const buttonRemove = document.querySelector('.weekly__btn--remove');
-    //!---------
+      const buttonAdd = document.querySelector('.weekly__btn--add');
+      const buttonRemove = document.querySelector('.weekly__btn--remove');
+      //!---------
 
-    //
-    let existing = getAddedMovies();
-    existing = existing ? existing : []; // Робить перевірку на данні в локал сторедж
-
-    //Якшо є даний фільм приховує кнопку «додати», показує «видалити»
-    if (existing.includes(filmID)) {
-      buttonAdd.classList.add('hidden');
-      buttonRemove.classList.remove('hidden');
-    }
-
-    buttonAdd.addEventListener('click', onClickAdd);
-    buttonRemove.addEventListener('click', onClickRemove);
-
-    function onClickAdd() {
+      //
       let existing = getAddedMovies();
-      existing = existing ? existing : [];
+      existing = existing ? existing : []; // Робить перевірку на данні в локал сторедж
+
+      //Якшо є даний фільм приховує кнопку «додати», показує «видалити»
       if (existing.includes(filmID)) {
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
-        return;
       }
 
-      // Записує новий айді, відправляє данні в локал сторедж
-      existing.push(filmID);
-      setAddedMovies(existing);
+      buttonAdd.addEventListener('click', onClickAdd);
+      buttonRemove.addEventListener('click', onClickRemove);
 
-      buttonAdd.classList.add('hidden');
-      buttonRemove.classList.remove('hidden');
-      console.log('its working');
+      function onClickAdd() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(filmID)) {
+          buttonAdd.classList.add('hidden');
+          buttonRemove.classList.remove('hidden');
+          return;
+        }
 
-      //Робить рендеринг картки, якшо знаходимося на сторінці library
-      if (url.includes('library')) {
-        getInfoMovie(filmID).then(film => {
-          myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-        });
-      }
-    }
-
-    function onClickRemove() {
-      let existing = getAddedMovies();
-      existing = existing ? existing : [];
-      if (existing.includes(filmID)) {
-        let index = existing.findIndex(id => id === filmID);
-
-        existing.splice(index, 1);
+        // Записує новий айді, відправляє данні в локал сторедж
+        existing.push(filmID);
         setAddedMovies(existing);
-        buttonAdd.classList.remove('hidden');
-        buttonRemove.classList.add('hidden');
+
+        buttonAdd.classList.add('hidden');
+        buttonRemove.classList.remove('hidden');
+        console.log('its working');
+
+        //Робить рендеринг картки, якшо знаходимося на сторінці library
+        if (url.includes('library')) {
+          getInfoMovie(filmID).then(film => {
+            myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+          });
+        }
       }
 
-      removeFromPage(filmID);
-    }
+      function onClickRemove() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(filmID)) {
+          let index = existing.findIndex(id => id === filmID);
 
-    //!---------
-    document.body.addEventListener('keyup', closeOnEsc);
-    document
-      .querySelector('.modal__close')
-      .addEventListener('click', modalClose);
-    document
-      .querySelector('.modal__wrap')
-      .addEventListener('click', closeOnOverlay);
-  });
+          existing.splice(index, 1);
+          setAddedMovies(existing);
+          buttonAdd.classList.remove('hidden');
+          buttonRemove.classList.add('hidden');
+        }
+
+        removeFromPage(filmID);
+      }
+
+      //!---------
+      document.body.addEventListener('keyup', closeOnEsc);
+      document
+        .querySelector('.modal__close')
+        .addEventListener('click', modalClose);
+      document
+        .querySelector('.modal__wrap')
+        .addEventListener('click', closeOnOverlay);
+    })
+    .catch(error => console.log(error));
 }
 
 //* MODAL CLOSING
