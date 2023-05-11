@@ -7,19 +7,22 @@ import hall from '../../src/images/library/hero-hall-desktop-1x.jpg';
 import people from '../../src/images/hero/hero-people-desktop-1x.jpg';
 
 const hero = document.querySelector('.hero');
+// const heroLib = document.querySelector('.library-hero__container');
+
 const LightSwitcher = document.querySelector('.switcher');
 const url = window.location.href;
 console.log(url);
+const people = hero.style.backgroundImage;
 hero.style.backgroundImage = `url(${people})`;
-// hero.style.backgroundImage = `linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-// url('${people}');
+// hero.style.backgroundImage = `background-Image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+// url('/src/images/hero/hero-people-mobile-1x.jpg');
 //     @media (min-device-pixel-ratio: 2),
 //     (-webkit-min-device-pixel-ratio: 2),
 //     (min-resolution: 192dpi),
 //     (min-resolution: 2dppx) {
 //         & {
-//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('${people}');
+//       linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('/src/images/hero/hero-people-mobile-2x.jpg');
 //         }
 //     }
 //     @media (min-device-pixel-ratio: 3),
@@ -27,26 +30,23 @@ hero.style.backgroundImage = `url(${people})`;
 //     (min-resolution: 288dpi),
 //     (min-resolution: 3dppx) {
 //         & {
-//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%), 
-//         url('${people}');
+//        linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%), 
+//         url('/src/images/hero/hero-people-mobile-3x.jpg');
 //         }
 //     }
 
 // @media screen and (min-width: 768px) {
-//   width: 768px;
-//   height: 432px;
-//   margin-left: auto;
-//   margin-right: auto;
+ 
 
-//     background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//     url('${people}');
+//      linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+// url('/src/images/hero/hero-people-tablet-1x.jpg');
 //     @media (min-device-pixel-ratio: 2),
 //     (-webkit-min-device-pixel-ratio: 2),
 //     (min-resolution: 192dpi),
 //     (min-resolution: 2dppx) {
 //         & {
-//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('${people}');
+//       linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('/src/images/hero/hero-people-tablet-2x.jpg');
 //         }
 //       }
 //         @media (min-device-pixel-ratio: 3),
@@ -54,37 +54,36 @@ hero.style.backgroundImage = `url(${people})`;
 //         (min-resolution: 288dpi),
 //         (min-resolution: 3dppx) {
 //             & {
-//             background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//             url('${people}');
+//           linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//             url('/src/images/hero/hero-people-tablet-3x.jpg');
 //             }
 //         }    
 //     }    
 
 // @media screen and (min-width: 1280px) {
-//   width: 1280px;
-//   height: 720px;
+ 
 
-//     background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//     url('${people}');
+//    linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+// url('/src/images/hero/hero-people-desktop-1x.jpg');
 //     @media (min-device-pixel-ratio: 2),
 //     (-webkit-min-device-pixel-ratio: 2),
 //     (min-resolution: 192dpi),
 //     (min-resolution: 2dppx) {
 //         & {
-//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('${people}');
+//      linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('/src/images/hero/hero-people-desktop-2x.jpg');
 //         }
 //         @media (min-device-pixel-ratio: 3),
 //     (-webkit-min-device-pixel-ratio: 3),
 //     (min-resolution: 288dpi),
 //     (min-resolution: 3dppx) {
 //         & {
-//         background-image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('${people}');
+//        linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
+//         url('/src/images/hero/hero-people-desktop-3x.jpg');
 //         }
 //     }    
 // }
-// }`;
+// }`
 
 if (url.includes('library')) {
   hero.innerHTML = '';
