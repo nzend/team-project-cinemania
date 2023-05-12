@@ -1,6 +1,6 @@
 import { getInfoMovie } from './api';
 import { getAddedMovies, setAddedMovies } from './local-storage';
-import { makeCard, myLibGallery } from './added-movies-render';
+import { makeCard, myLibGallery, errorContainer } from './added-movies-render';
 import sprite from '../images/sprite.svg';
 
 //* INTERACTION WITH CATALOG
@@ -72,89 +72,115 @@ function createCardMarkup({
  <button type="button" class="upcoming-content__btn-remove weekly__btn--remove hidden" id="remove">
   Remove from my library
 </button>
-
-    
- 
   </div>
 </div></div>`;
 }
+
 function onCatalogClick(event) {
   event.preventDefault();
 
   const filmID = event.target.offsetParent.getAttribute('data-id');
 
-  getInfoMovie(filmID).then(data => {
-    document
-      .querySelector('body')
-      .insertAdjacentHTML('beforeend', createCardMarkup(data));
+  getInfoMovie(filmID)
+    .then(data => {
+      document
+        .querySelector('body')
+        .insertAdjacentHTML('beforeend', createCardMarkup(data)); // finish render
+      //--------------------------------------------------------------
 
-    document.querySelector('body').classList.add('modal-open');
+      document.querySelector('body').classList.add('modal-open');
 
-    const buttonAdd = document.querySelector('.weekly__btn--add');
-    const buttonRemove = document.querySelector('.weekly__btn--remove');
-    //!---------
+      const buttonAdd = document.querySelector('.weekly__btn--add');
+      const buttonRemove = document.querySelector('.weekly__btn--remove');
+      //-----------------------------------------------------------------------
 
-    //
-    let existing = getAddedMovies();
-    existing = existing ? existing : []; // Робить перевірку на данні в локал сторедж
+      // CHECKED IF LIBRARY
+      if (url.includes('library')) {
+        buttonAdd.classList.add('hidden');
+        buttonRemove.classList.remove('hidden');
+      }
 
-    //Якшо є даний фільм приховує кнопку «додати», показує «видалити»
-    if (existing.includes(filmID)) {
-      buttonAdd.classList.add('hidden');
-      buttonRemove.classList.remove('hidden');
-    }
-
-    buttonAdd.addEventListener('click', onClickAdd);
-    buttonRemove.addEventListener('click', onClickRemove);
-
-    function onClickAdd() {
+      //
       let existing = getAddedMovies();
-      existing = existing ? existing : [];
+      existing = existing ? existing : []; // Робить перевірку на данні в локал сторедж
+
+      //Якшо є даний фільм приховує кнопку «додати», показує «видалити»
       if (existing.includes(filmID)) {
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
-        return;
       }
 
-      // Записує новий айді, відправляє данні в локал сторедж
-      existing.push(filmID);
-      setAddedMovies(existing);
+      // SHOOSE DOM ELEMENTS
+      buttonAdd.addEventListener('click', onClickAdd);
+      buttonRemove.addEventListener('click', onClickRemove);
 
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
+      function onClickAdd() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
 
-      //Робить рендеринг картки, якшо знаходимося на сторінці library
-      if (url.includes('library')) {
-        getInfoMovie(filmID).then(film => {
-          myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-        });
-      }
-    }
+        if (url.includes('library')) {
+          buttonAdd.classList.remove('hidden');
+          buttonRemove.classList.add('hidden');
+        }
 
-    function onClickRemove() {
-      let existing = getAddedMovies();
-      existing = existing ? existing : [];
-      if (existing.includes(filmID)) {
-        let index = existing.findIndex(id => id === filmID);
+        if (existing.includes(filmID)) {
+          buttonAdd.classList.add('hidden');
+          buttonRemove.classList.remove('hidden');
+          return;
+        }
 
-        existing.splice(index, 1);
+        // Записує новий айді, відправляє данні в локал сторедж
+        existing.push(filmID);
         setAddedMovies(existing);
-        buttonAdd.classList.remove('hidden');
-        buttonRemove.classList.add('hidden');
+
+        buttonAdd.classList.add('hidden');
+        buttonRemove.classList.remove('hidden');
+        console.log('its working');
+
+        //   Робить рендеринг картки, якшо знаходимося на сторінці library
+        if (url.includes('library')) {
+          getInfoMovie(filmID).then(film => {
+            myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+          });
+        }
       }
 
-      removeFromPage(filmID);
-    }
+      function onClickRemove() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(filmID)) {
+          let index = existing.findIndex(id => id === filmID);
 
-    //!---------
-    document.body.addEventListener('keyup', closeOnEsc);
-    document
-      .querySelector('.modal__close')
-      .addEventListener('click', modalClose);
-    document
-      .querySelector('.modal__wrap')
-      .addEventListener('click', closeOnOverlay);
-  });
+          existing.splice(index, 1);
+          setAddedMovies(existing);
+          buttonAdd.classList.remove('hidden');
+          buttonRemove.classList.add('hidden');
+        }
+
+        if (url.includes('library')) {
+          const libraryFilms = getAddedMovies() || [];
+          console.log(libraryFilms.length === 0);
+          if (libraryFilms.length === 0) {
+            console.log('container');
+            errorContainer.style.display = 'block';
+          }
+
+          removeFromPage(filmID);
+        }
+      }
+
+      //!---------
+      document.body.addEventListener('keyup', closeOnEsc);
+      document
+        .querySelector('.modal__close')
+        .addEventListener('click', modalClose);
+      document
+        .querySelector('.modal__wrap')
+        .addEventListener('click', closeOnOverlay);
+    })
+    .catch(error => console.log(error));
 }
 
 //* MODAL CLOSING
@@ -194,9 +220,23 @@ function closeOnOverlay(event) {
 function removeFromPage(id) {
   const el = document.querySelector(`[data-id="${id}"]`);
   console.log(el.parentElement.className === 'mylib-gallery__list catalog');
+
   if (el.parentElement.className === 'mylib-gallery__list catalog') {
     el.remove();
   } else {
     el.remove();
   }
+}
+
+function renderMarkupError() {
+  return `<div class="library-content" id="is-hidden">
+      <div class="library-content__wrap">
+        <p class="library-content__text">
+          OOPS... <br />
+          We are very sorry! <br />
+          You don’t have any movies at your library.
+        </p>
+      </div>
+      <a class="library-btn" href="./catalog.html">Search movie</a>
+    </div>`;
 }

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import * as basicLightbox from 'basiclightbox';
+import sprite from '../images/sprite.svg';
 
 const MAIN_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'c9873e67c5e03bd61e79d852c2fd46a6';
@@ -45,7 +47,27 @@ export async function getInfoMovie(movie_id) {
     .then(response => {
       return response.data;
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      console.log(error.response.status === 404);
+
+      const instance = basicLightbox.create(`
+		<div class="notification-trailer-fail">
+		 <button class="modal__close">
+    <svg class="modal__svg" width="24" height="24">
+      <use width="24" height="24" class="svg__use" href="${sprite}#icon-close"></use>
+    </svg>
+  </button>
+    	<p class="notification-trailer-fail-text">OOPS...<br/> We are very sorry!<br /> There is no info of this film</p>
+        <div class="bg-box"></div>
+</div>
+
+`);
+		 
+		 instance.show();
+
+     
+    });
 }
 
 // Отримує масив індексів збережених фільмів з LocalStorage та повертає промікс

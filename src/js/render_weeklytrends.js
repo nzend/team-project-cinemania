@@ -63,9 +63,9 @@ function makeCard({
 
   return `<li class="catalog__card" data-id="${id}">
   <div class="catalog__img-wrapper">
-    <img src="https://image.tmdb.org/t/p/w500${
+    <img data-src="https://image.tmdb.org/t/p/w500${
       poster_path || 'Oops. There is no poster to this movie'
-    }" alt="${name || title}" width="395" height="574" class="catalog__img" />
+    }" alt="${name || title}" width="395" height="574" class="catalog__img lazyload" />
   </div>
   <div class="catalog__info info">
     <p class="info__title">${name || title}</p>

@@ -12,6 +12,10 @@ img {
   background-size: cover;
 
   @include tablet {
+    background-position-x: 120px;
+  }
+
+  @include tablet {
     width: 768px;
     height: 432px;
     margin-left: auto;
