@@ -4,7 +4,6 @@ import errorWallpaper from '../../src/images/catalog/wallpaper-error.jpeg';
 // Створює строку розмітки усих карточок фільмів
 export async function createMarkupCatalogCard(data) {
   const markUp = data
-    .slice(0, 10)
     .reduce((markup, film) => markup + makeCard(film), '');
   return markUp;
 }
@@ -20,8 +19,13 @@ function makeCard({
   first_air_date,
   vote_average,
 }) {
-  const arrOfGenres = getNameOfGenresById(genre_ids);
-  let stringOfGenres = arrOfGenres.slice(0, 2).join(', ');
+	const arrOfGenres = getNameOfGenresById(genre_ids);
+	const filtredGenres = getNameOfGenresById(genre_ids).filter(
+    genre => genre.length > 0
+  );	
+	let stringOfGenres = filtredGenres.slice(0, 2).join(', ');
+	const style = stringOfGenres.length === 0 ? 'none' : 'inline-block';
+
   const date = release_date || first_air_date;
 
   //Якшо постер не прийшов, ставить заглушку
@@ -35,15 +39,15 @@ function makeCard({
 
   return `<li class="catalog__card" data-id="${id}">
     <div class="catalog__img-wrapper">
-      <img src=${poster_path} alt="${
+      <img data-src=${poster_path} alt="${
     name || title
-  }" width="395" height="574" class="catalog__img" />
+  }" width="395" height="574" class="catalog__img lazyload" />
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
 		<div class="info__wrap">
 		<ul class="info__list">
-      <li class="info__descr">${stringOfGenres}</li>
+      <li class="info__descr" style="display:${style}">${stringOfGenres}</li>
       <li class="info__descr">${convertReleaseDate(date)}</li>
       </ul>
 		<div class="catalog__stars-wrap">

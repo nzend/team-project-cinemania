@@ -1,3 +1,4 @@
+import { rawListeners } from 'process';
 import * as Api from './api';
 import { setGenresInStorage } from './get-genres';
 import { getNameOfGenresById } from './get-genres';
@@ -23,9 +24,6 @@ Api.getUpcoming()
     const random = Math.floor(Math.random() * filmUpcomingRelease.length);
     const render = createMarkup(filmUpcomingRelease[random]);
 
-    // const random = Math.floor(Math.random() * (results.length-1));
-    // const render = createMarkup(results[random]);
-
     renderMarkup(render);
 
     const buttonAdd = document.getElementById('add');
@@ -33,7 +31,7 @@ Api.getUpcoming()
 
     let existing = getAddedMovies();
     existing = existing ? existing : [];
-    if (existing.includes(filmUpcomingRelease[random].id)) {
+    if (existing.includes(filmUpcomingRelease[random].id.toString())) {
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
     }
@@ -49,7 +47,7 @@ Api.getUpcoming()
         buttonRemove.classList.remove('hidden');
         return;
       }
-      existing.push(filmUpcomingRelease[random].id);
+		 existing.push(filmUpcomingRelease[random].id.toString());
       setAddedMovies(existing);
       buttonAdd.classList.add('hidden');
       buttonRemove.classList.remove('hidden');
@@ -57,22 +55,22 @@ Api.getUpcoming()
 
     function onClickRemove() {
       let existing = getAddedMovies();
-      existing = existing ? existing : [];
-      if (existing.includes(filmUpcomingRelease[random].id)) {
+		 existing = existing ? existing : [];
+
+      if (existing.includes(filmUpcomingRelease[random].id.toString())) {
         let index = existing.findIndex(
           id => id === filmUpcomingRelease[random].id
         );
 
         existing.splice(index, 1);
         setAddedMovies(existing);
+
         buttonAdd.classList.remove('hidden');
         buttonRemove.classList.add('hidden');
       }
     }
   })
   .catch(error => console.log(error));
-
-setGenresInStorage();
 
 function createMarkup({
   backdrop_path,
@@ -90,8 +88,8 @@ function createMarkup({
 
   return `
       <img
-        class="upcoming-content__img"
-        src="https://image.tmdb.org/t/p/w500${backdrop_path}"
+        class="upcoming-content__img lazyload"
+        data-src="https://image.tmdb.org/t/p/original${backdrop_path}"
         alt="${title}"
        
       

@@ -1,126 +1,108 @@
-.notification-trailer-fail-overlay {
+.notification-trailer-fail {
   display: flex;
-  visibility: hidden;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  overflow-y: scroll;
-}
 
-.notification-trailer-fail {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
   width: 280px;
   height: 289px;
-  background: var(--grey-text-color);
-  box-shadow: var(--modal-box-shadow);
-  border-radius: 16px;
-  z-index: 10;
-}
+  background-color: #111111;
 
-@include tablet {
-  .notification-trailer-fail {
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 16px;
+  @include tablet {
+    display: block;
     width: 609px;
     height: 400px;
-    z-index: 10;
+    padding: 132px 144px 176px 44px;
+  }
+  @include desktop {
+    display: block;
+    width: 700px;
+    height: 400px;
+    padding: 150px 329px 150px 50px;
+  }
+}
+.bg-box {
+  width: 150px;
+  height: 150px;
+  background-image: url(../images/modals/error-mobile-1x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: auto;
+  margin-right: auto;
+  @include tablet {
+    background-image: url(../images/modals/error-tablet-1x.png);
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+  @include desktop {
+    background-image: url(../images/modals/error-desktop-1x.png);
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+}
+.btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-image: url(../images/modals/icon-close.svg);
+  background-color: transparent;
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  @include tablet {
+    top: 24px;
+    right: 24px;
+  }
+  @include desktop {
+    top: 28px;
+    right: 28px;
   }
 }
 
-@include desktop-notification {
-  .notification-trailer-fail {
-    width: 700px;
-    height: 400px;
-    border-radius: 20px;
-    z-index: 10;
-  }
+.btn-close--svg {
+  width: 24px;
+  height: 24px;
 }
 .notification-trailer-fail-text {
-  width: 214px;
-  height: 65px;
-  margin-top: 3px;
-  margin-left: 33px;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: var(--second-text-color);
-}
-
-@include tablet {
-  .notification-trailer-fail-text {
+  color: #ffffff;
+  width: 214px;
+  height: 65px;
+  @include tablet {
     width: 321px;
     height: 92px;
-    margin-top: 84px;
-    margin-left: 44px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
     font-size: 24px;
     line-height: 28px;
+
+    color: #ffffff;
   }
 }
-
-@include desktop-notification {
-  .notification-trailer-fail-text {
-    margin-top: 98px;
-    margin-left: 50px;
-    width: 321px;
-    height: 100px;
-  }
-}
-
-.notification-trailer-fail-label {
-  margin-top: 24px;
-  margin-left: 61px;
-}
-
-@include tablet {
-  .notification-trailer-fail-label {
-    margin-left: 303px;
-    margin-top: -100px;
-  }
-}
-
-@include desktop-notification {
-  .notification-trailer-fail-label {
-    margin-left: 337px;
-    margin-top: -173px;
-  }
-}
-.notification-trailer-fail-btn-close {
-  width: 16px;
-  height: 16px;
-  padding: 0;
-  border: none;
-  margin-top: 20px;
-  margin-left: 244px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  cursor: pointer;
-}
-
-@include tablet {
-  .notification-trailer-fail-btn-close {
-    width: 24px;
-    height: 24px;
-    margin-top: 24px;
-    margin-left: 561px;
-  }
-}
-
-@include desktop-notification {
-  .notification-trailer-fail-btn-close {
-    margin-top: 28px;
-    margin-left: 648px;
-  }
-}
-
-.notification-trailer-fail-btn-close__icon {
-  width: 16px;
-  height: 16px;
+.iframe {
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 16px;
 }

@@ -1,24 +1,41 @@
+.hidden {
+  display: none;
+}
+
 .back-home {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: var(--btn-background);
-  padding: 15px 18px;
+  padding: 5px;
+  margin: 30px auto;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  opacity: 0.5;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
-  z-index: 3;
+  transition: all 0.2s linear;
   border: none;
 
-  opacity: 0.5;
-
   &:hover {
-    opacity: 0.9;
-  }
-}
-.back-home__icon {
-  transform: rotate(270deg);
-  transform-origin: center;
+  transform: translate3d(0, -10px, 0);
+  opacity: 0.9;
 }
 
-.hidden {
-  display: none;
+&::after {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  transform: rotate(45deg);
+  z-index: 11;
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-top: 3px solid rgb(0, 0, 0);
+  border-left: 3px solid rgb(0, 0, 0);
 }
+}
+
+
+
+

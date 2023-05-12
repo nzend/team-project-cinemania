@@ -1,63 +1,82 @@
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .weekly {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 
-    &-trends_container {
-        width: 320px;
-        padding: 40px 20px 32px 20px;
+  &-trends_container {
+    width: 320px;
+    padding: 40px 20px 32px 20px;
 
-        @include tablet {
-            padding: 52px 32px 44px 32px;
-            width: 768px;
-        }
-
-        @include desktop {
-            padding: 80px 32px 60px 32px;
-            width: 1280px;
-        }
+    @include tablet {
+      padding: 52px 32px 44px 32px;
+      width: 768px;
     }
+
+    @include desktop {
+      padding: 80px 32px 60px 32px;
+      width: 1280px;
+    }
+  }
 }
 
 .head-weeklytrends {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
+  margin-bottom: 24px;
+
+  @include tablet {
     margin-bottom: 24px;
+  }
 
-    @include tablet {
-        margin-bottom: 24px;
-    }
-
-    @include desktop {
-        margin-bottom: 28px;
-    }
+  @include desktop {
+    margin-bottom: 28px;
+  }
 }
 
 .weeklytrends-title {
-    color: #fff;
-    font-size: 16px;
-    line-height: 1.17;
-    font-weight: 500;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.17;
+  font-weight: 500;
 
-    @include tablet {
-        font-size: 24px;
+  @include tablet {
+    font-size: 24px;
+  }
+
+  @include desktop {
+    font-size: 28px;
+  }
+
+  &__orange {
+    color: #f87719;
+    transition: scale 0.3s var(--cubic);
+
+    &:hover,
+    &:focus {
+      scale: 1.1;
     }
 
-    @include desktop {
-        font-size: 28px;
-
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.1em;
+      background-color: var(--brend-color);
+      opacity: 0;
+      transition: opacity 300ms, transform 300ms;
     }
-
-    &__orange {
-        color: #F87719;
+    &:hover::after {
+      opacity: 1;
+      transform: translate3d(0, 0.2em, 0);
     }
+  }
 }
-
-.weekly {}
