@@ -30,7 +30,6 @@ async function onBtnSearch(e) {
           createMarkupCatalogCard(films)
             .then(data => (catalogRef.innerHTML = data))
             .catch(error => console.log(error));
-          //   gallery.innerHTML = createMarkupCatalogCard(data.results);
         });
       });
     });
