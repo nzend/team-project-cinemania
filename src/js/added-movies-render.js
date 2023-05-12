@@ -6,7 +6,6 @@ const libContent = document.querySelector('#is-hidden');
 export const errorContainer = document.querySelector('.error-lib');
 const libGallery = document.querySelector('.gallery-hidden');
 
-console.log(errorContainer);
 const url = window.location.href;
 const libraryFilms = getAddedMovies() || [];
 
@@ -39,12 +38,12 @@ export function makeCard({
   first_air_date,
   vote_average,
 }) {
-	const arrOfGenres = getNameOfGenres(genres);
-	let stringOfGenres = arrOfGenres.join(', ');
-	const style = stringOfGenres.length === 0 ? 'none' : 'inline-block';
-	if (stringOfGenres.length > 18) {
-		stringOfGenres = arrOfGenres.slice(0, 1).join(', ')
-	};
+  const arrOfGenres = getNameOfGenres(genres);
+  let stringOfGenres = arrOfGenres.join(', ');
+  const style = stringOfGenres.length === 0 ? 'none' : 'inline-block';
+  if (stringOfGenres.length > 18) {
+    stringOfGenres = arrOfGenres.slice(0, 1).join(', ');
+  }
 
   const date = release_date || first_air_date;
 
@@ -52,7 +51,9 @@ export function makeCard({
     <div class="catalog__img-wrapper">
       <img data-src="https://image.tmdb.org/t/p/w500${
         poster_path || 'Oops. There is no poster to this movie'
-      }" alt="${name || title}" width="395" height="574" class="catalog__img lazyload" />
+      }" alt="${
+    name || title
+  }" width="395" height="574" class="catalog__img lazyload" />
     </div>
     <div class="catalog__info info">
       <p class="info__title">${name || title}</p>
@@ -85,7 +86,6 @@ function getNameOfGenres(arrGenres) {
   });
   return arr.slice(0, 2);
 }
-
 
 // function renderMarkupError() {
 //   libContent.innerHTML = `<div class="upcoming-error-container">
