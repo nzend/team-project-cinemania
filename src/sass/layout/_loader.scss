@@ -10,7 +10,7 @@
   content: '';
   box-sizing: border-box;
   position: fixed;
-  top: 57%;
+  top: 50%;
   left: 50%;
   width: 50px;
   height: 50px;
@@ -21,14 +21,6 @@
   border-top-color: var(--brend-color);
   animation: spinner .6s linear infinite;
   z-index: 5;
-
-  @include tablet {
-    top: 65%;
-  }
-
-  @include desktop {
-    top: 92%;
-  }
 }
 
 @keyframes spinner {
