@@ -5,6 +5,7 @@ import sprite from '../images/sprite.svg';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
+
 const url = window.location.href; // Бере поточну сторінку
 
 function makeGenres(objArray) {
@@ -77,8 +78,9 @@ function createCardMarkup({
 }
 
 function onCatalogClick(event) {
-  event.preventDefault();
-
+	event.preventDefault();
+	console.dir(event.target);
+console.log(event.target.offsetParent);
   const filmID = event.target.offsetParent.getAttribute('data-id');
 
   getInfoMovie(filmID)

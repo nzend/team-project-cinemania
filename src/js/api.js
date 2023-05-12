@@ -48,8 +48,6 @@ export async function getInfoMovie(movie_id) {
       return response.data;
     })
     .catch(error => {
-      console.log(error);
-      console.log(error.response.status === 404);
 
       const instance = basicLightbox.create(`
 		<div class="notification-trailer-fail">
