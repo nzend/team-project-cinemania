@@ -1,5 +1,6 @@
 import { createMarkupCatalogCard } from './markup-catalog';
 import * as Api from './api';
+import * as Loader from './loader/loader';
 import Pagination from 'tui-pagination';
 
 const catalogRef = document.querySelector('.catalog');
@@ -9,25 +10,32 @@ const notFound = document.querySelector('.text-sorry');
 
 btnSearch.addEventListener('click', onBtnSearch);
 
+Loader.show(catalogRef)
+
 // Виконує запит по введеній назві
 async function onBtnSearch(e) {
+  catalogRef.innerHTML = '';
   pag.innerHTML = '';
   try {
     const search = input.value.trim();
-
+    // catalogRef.innerHTML = '';
+    Loader.show(catalogRef); // додаємо спінер перед запитом
+    
     await Api.getBySearch(search, 1).then(data => {
       const pagination = createPagination(data.total_results, data.total_pages);
+      // catalogRef.innerHTML = '';
+
       pagination.on('beforeMove', ({ page }) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         catalogRef.innerHTML = '';
-
+        Loader.show(catalogRef); // додаємо спінер перед запитом
         Api.getBySearch(search, page).then(res => {
           const films = res.results;
 
           createMarkupCatalogCard(films)
             .then(data => (catalogRef.innerHTML = data))
             .catch(error => console.log(error));
-        });
+        }).finally(() => Loader.hide(catalogRef)); // ховаємо спінер
       });
     });
 
@@ -60,13 +68,14 @@ async function onBtnSearch(e) {
         pagination.on('beforeMove', ({ page }) => {
           document.documentElement.scrollTop = 0;
           catalogRef.innerHTML = '';
+          Loader.show(catalogRef) // додаємо спінер
           Api.getWeekTrending(page).then(data => {
             const films = data.results;
             createMarkupCatalogCard(films)
               .then(data => (catalogRef.innerHTML = data))
               .catch(error => console.log(error));
             //   gallery.innerHTML = createMarkupCatalogCard(data.results);
-          });
+          }).finally(() => Loader.hide(catalogRef)); // ховаємо спінер
         });
 
         createMarkupCatalogCard(films)
@@ -122,22 +131,28 @@ const TUI_VISIBLE_PAGES = 3;
 const galleryMovie = document.querySelector('.catalog');
 Api.getWeekTrending().then(data => {});
 
-Api.getWeekTrending(1).then(data => {
-  const films = data.results;
+Loader.show(galleryMovie) // показуємо спінер
 
+Api.getWeekTrending(1).then(data => {
+  Loader.show(galleryMovie)
+  const films = data.results;
   galleryMovie.insertAdjacentHTML(
     'beforeend',
     createMarkupCatalogCard(data.results)
   );
+  Loader.hide(galleryMovie) // ховаємо спінер
 
   const pagination = createPagination(data.total_results, data.total_pages);
   pagination.on('beforeMove', ({ page }) => {
     catalogRef.innerHTML = '';
+    Loader.show(galleryMovie); // показуємо спінер
     Api.getWeekTrending(page).then(data => {
       const films = data.results;
 
       createMarkupCatalogCard(films)
-        .then(data => (catalogRef.innerHTML = data))
+        .then(data => {
+          Loader.hide(galleryMovie); // ховаємо спінер
+          catalogRef.innerHTML = data})
         .catch(error => console.log(error));
     });
   });
