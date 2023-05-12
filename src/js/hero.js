@@ -3,91 +3,22 @@ import * as basicLightbox from 'basiclightbox';
 // import 'basiclightbox/dist/basiclightbox.min.css';
 import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
-import hall from '../../src/images/library/hero-hall-desktop-1x.jpg';
-import people from '../../src/images/hero/hero-people-desktop-1x.jpg';
+// import hall from '../../src/images/library/hero-hall-desktop-1x.jpg';
+// import people from '../../src/images/hero/hero-people-desktop-1x.jpg';
 
 const hero = document.querySelector('.hero');
-// const heroLib = document.querySelector('.library-hero__container');
+const heroLib = document.querySelector('.herolib');
 
 const LightSwitcher = document.querySelector('.switcher');
 const url = window.location.href;
 console.log(url);
-const people = hero.style.backgroundImage;
-hero.style.backgroundImage = `url(${people})`;
-// hero.style.backgroundImage = `background-Image: linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-// url('/src/images/hero/hero-people-mobile-1x.jpg');
-//     @media (min-device-pixel-ratio: 2),
-//     (-webkit-min-device-pixel-ratio: 2),
-//     (min-resolution: 192dpi),
-//     (min-resolution: 2dppx) {
-//         & {
-//       linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('/src/images/hero/hero-people-mobile-2x.jpg');
-//         }
-//     }
-//     @media (min-device-pixel-ratio: 3),
-//     (-webkit-min-device-pixel-ratio: 3),
-//     (min-resolution: 288dpi),
-//     (min-resolution: 3dppx) {
-//         & {
-//        linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%), 
-//         url('/src/images/hero/hero-people-mobile-3x.jpg');
-//         }
-//     }
-
-// @media screen and (min-width: 768px) {
- 
-
-//      linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-// url('/src/images/hero/hero-people-tablet-1x.jpg');
-//     @media (min-device-pixel-ratio: 2),
-//     (-webkit-min-device-pixel-ratio: 2),
-//     (min-resolution: 192dpi),
-//     (min-resolution: 2dppx) {
-//         & {
-//       linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('/src/images/hero/hero-people-tablet-2x.jpg');
-//         }
-//       }
-//         @media (min-device-pixel-ratio: 3),
-//         (-webkit-min-device-pixel-ratio: 3),
-//         (min-resolution: 288dpi),
-//         (min-resolution: 3dppx) {
-//             & {
-//           linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//             url('/src/images/hero/hero-people-tablet-3x.jpg');
-//             }
-//         }    
-//     }    
-
-// @media screen and (min-width: 1280px) {
- 
-
-//    linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-// url('/src/images/hero/hero-people-desktop-1x.jpg');
-//     @media (min-device-pixel-ratio: 2),
-//     (-webkit-min-device-pixel-ratio: 2),
-//     (min-resolution: 192dpi),
-//     (min-resolution: 2dppx) {
-//         & {
-//      linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('/src/images/hero/hero-people-desktop-2x.jpg');
-//         }
-//         @media (min-device-pixel-ratio: 3),
-//     (-webkit-min-device-pixel-ratio: 3),
-//     (min-resolution: 288dpi),
-//     (min-resolution: 3dppx) {
-//         & {
-//        linear-gradient(87.8deg, #0E0E0E 15.61%, rgba(14, 14, 14, 0) 60.39%),
-//         url('/src/images/hero/hero-people-desktop-3x.jpg');
-//         }
-//     }    
-// }
-// }`
+// const people = hero.style.backgroundImage;
+// hero.style.backgroundImage = `url(${people})`;
 
 if (url.includes('library')) {
   hero.innerHTML = '';
-  hero.style.backgroundImage = `url(${hall})`;
+  // hero.style.backgroundImage = `url(${hall})`;
+  hero.classList.remove('hero');
 
   const libMurkup = `
     <div class="hero-wrap__content">
