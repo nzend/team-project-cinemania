@@ -1,9 +1,4 @@
-/*!
- * TOAST UI Pagination
- * @version 3.4.1
- * @author NHN FE Development Team <dl_javascript@nhn.com>
- * @license MIT
- */
+
 @charset 'utf-8';
 
 .tui-pagination * {
@@ -15,7 +10,6 @@
 
 .tui-page-btn {
   display: inline-block;
-  // position: relative;
   text-align: center;
   width: 40px;
   height: 40px;
@@ -52,7 +46,6 @@
 .tui-ico-next,
 .tui-ico-prev {
   overflow: hidden;
-  // outline: red 2px solid;
 }
 
 .tui-pagination {
@@ -82,7 +75,6 @@
   color: #fff;
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   border: 0px solid #b7b7b7;
-  // border-color: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
   cursor: default;
 }
 
@@ -94,7 +86,6 @@
 .tui-pagination .tui-next-is-ellip {
   position: relative;
   overflow: hidden;
-  // height: 26px;
   padding: 0;
   font-size: 0;
   line-height: 26px;
@@ -108,14 +99,12 @@
 }
 
 .tui-pagination .tui-next-is-ellip {
-  // border-left: 1px;
   position: relative;
 }
 
 .tui-pagination .tui-first + .tui-prev,
 .tui-pagination .tui-next + .tui-last {
   position: relative;
-  // border-left: 0;
 }
 
 .tui-pagination .tui-ico-first,
@@ -137,10 +126,6 @@
   line-height: 1;
 }
 
-// .tui-pagination .tui-prev {
-//   // margin-right: 10px;
-// }
-
 .tui-pagination .tui-ico-first {
   width: 11px;
   height: 10px;
@@ -157,7 +142,6 @@
 }
 
 .tui-pagination .tui-ico-next {
-  // outline: red 1px solid;
   width: 9px;
   height: 11px;
   background-position: -19px -24px;
@@ -187,7 +171,6 @@
 }
 
 .tui-pagination .tui-is-disabled:hover {
-  // background: #111111;
   cursor: default;
 }
 

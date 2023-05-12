@@ -1,5 +1,6 @@
 body.modal-open {
   overflow: hidden;
+  padding-right: 8px;
 }
 .modal__wrap {
   position: fixed;
@@ -17,8 +18,10 @@ body.modal-open {
 }
 .modal-film {
   background-color: var(--grey-text-color);
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 16px;
   position: relative;
-  top: 78%;
+  top: 63%;
   left: 50%;
 
   transform: translateX(-50%) translateY(-50%);
