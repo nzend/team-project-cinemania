@@ -53,20 +53,14 @@ export async function getInfoMovie(movie_id) {
 
       const instance = basicLightbox.create(`
 		<div class="notification-trailer-fail">
-		 <button class="modal__close">
-    <svg class="modal__svg" width="24" height="24">
-      <use width="24" height="24" class="svg__use" href="${sprite}#icon-close"></use>
-    </svg>
-  </button>
+		 
     	<p class="notification-trailer-fail-text">OOPS...<br/> We are very sorry!<br /> There is no info of this film</p>
         <div class="bg-box"></div>
 </div>
 
 `);
-		 
-		 instance.show();
 
-     
+      instance.show();
     });
 }
 
