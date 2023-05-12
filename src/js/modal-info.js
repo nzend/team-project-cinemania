@@ -114,6 +114,8 @@ function onCatalogClick(event) {
       buttonAdd.addEventListener('click', onClickAdd);
       buttonRemove.addEventListener('click', onClickRemove);
 
+      buttonAdd.classList.add('hidden');
+      buttonRemove.classList.remove('hidden');
       function onClickAdd() {
         let existing = getAddedMovies();
         existing = existing ? existing : [];
@@ -137,38 +139,36 @@ function onCatalogClick(event) {
         buttonRemove.classList.remove('hidden');
         console.log('its working');
 
-      //   Робить рендеринг картки, якшо знаходимося на сторінці library
-          if (url.includes('library')) {
-            getInfoMovie(filmID).then(film => {
-              myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-            });
-          }
-      }
-
-		 function onClickRemove() {
-			let existing = getAddedMovies();
-      existing = existing ? existing : [];
-      if (existing.includes(filmID)) {
-        let index = existing.findIndex(id => id === filmID);
-
-        existing.splice(index, 1);
-        setAddedMovies(existing);
-        buttonAdd.classList.remove('hidden');
-        buttonRemove.classList.add('hidden');
-      }
-   
-
-			  if (url.includes('library')) {
-				  const libraryFilms = getAddedMovies() || [];
-				console.log(libraryFilms.length === 0);
-				  if (libraryFilms.length === 0) {
-					  console.log('container');
-					  errorContainer.style.display = 'block';
+        //   Робить рендеринг картки, якшо знаходимося на сторінці library
+        if (url.includes('library')) {
+          getInfoMovie(filmID).then(film => {
+            myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+          });
         }
-         
-            removeFromPage(filmID);
+      }
+
+      function onClickRemove() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(filmID)) {
+          let index = existing.findIndex(id => id === filmID);
+
+          existing.splice(index, 1);
+          setAddedMovies(existing);
+          buttonAdd.classList.remove('hidden');
+          buttonRemove.classList.add('hidden');
+        }
+
+        if (url.includes('library')) {
+          const libraryFilms = getAddedMovies() || [];
+          console.log(libraryFilms.length === 0);
+          if (libraryFilms.length === 0) {
+            console.log('container');
+            errorContainer.style.display = 'block';
           }
-      
+
+          removeFromPage(filmID);
+        }
       }
 
       //!---------
@@ -219,19 +219,17 @@ function closeOnOverlay(event) {
 
 function removeFromPage(id) {
   const el = document.querySelector(`[data-id="${id}"]`);
-         
+  console.log(el.parentElement.className === 'mylib-gallery__list catalog');
 
   if (el.parentElement.className === 'mylib-gallery__list catalog') {
-    console.log(11111);
     el.remove();
   } else {
-    console.log(2222);
     el.remove();
   }
 }
 
-  function renderMarkupError() {
-    return `<div class="library-content" id="is-hidden">
+function renderMarkupError() {
+  return `<div class="library-content" id="is-hidden">
       <div class="library-content__wrap">
         <p class="library-content__text">
           OOPS... <br />
@@ -241,4 +239,4 @@ function removeFromPage(id) {
       </div>
       <a class="library-btn" href="./catalog.html">Search movie</a>
     </div>`;
-  }
+}

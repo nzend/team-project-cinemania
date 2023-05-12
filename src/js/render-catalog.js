@@ -16,15 +16,11 @@ async function onBtnSearch(e) {
     const search = input.value.trim();
 
     await Api.getBySearch(search, 1).then(data => {
-      console.log(data);
       const pagination = createPagination(data.total_results, data.total_pages);
       pagination.on('beforeMove', ({ page }) => {
-        console.log(page);
         catalogRef.innerHTML = '';
 
         Api.getBySearch(search, page).then(res => {
-          console.log(res.page);
-          console.log(res);
           const films = res.results;
 
           createMarkupCatalogCard(films)
@@ -35,7 +31,6 @@ async function onBtnSearch(e) {
     });
 
     const searchDatas = await Api.getBySearch(search, 1);
-    // console.log(searchDatas);
     const searchResult = searchDatas.results;
 
     createMarkupCatalogCard(searchResult).then(data => {
@@ -56,14 +51,11 @@ async function onBtnSearch(e) {
           'beforeend',
           createMarkupCatalogCard(data.results)
         );
-        console.log(data.total_results);
-        console.log(data.total_pages);
 
         const pagination = createPagination(
           data.total_results,
           data.total_pages
         );
-        console.log(pagination);
         pagination.on('beforeMove', ({ page }) => {
           catalogRef.innerHTML = '';
           Api.getWeekTrending(page).then(data => {
@@ -86,24 +78,14 @@ async function onBtnSearch(e) {
       notFound.style.display = 'block';
       pag.innerHTML = '';
     }
-    console.log(error);
   }
 }
-//  Рендерить за замовчування фільми за трендом тижня
-// Api.getWeekTrending(1).then(data => {
-//   const films = data.results;
 
-//   createMarkupCatalogCard(films)
-//     .then(data => (catalogRef.innerHTML = data))
-//     .catch(error => console.log(error));
-// });
 
 // __________________________________________________
 
 import { createMarkupCatalogCard } from './markup-catalog';
 import * as Api from './api';
-
-// const catalogRef = document.querySelector('.catalog');
 
 const pag = document.querySelector('#pagination');
 
@@ -135,12 +117,10 @@ function createPagination(totalItems, visiblePages) {
   return pagination;
 }
 
-// console.log(refs.pagination);
 const TUI_VISIBLE_PAGES = 3;
 
 const galleryMovie = document.querySelector('.catalog');
 Api.getWeekTrending().then(data => {
-  console.log(data.results);
 });
 
 Api.getWeekTrending(1).then(data => {
@@ -150,8 +130,6 @@ Api.getWeekTrending(1).then(data => {
     'beforeend',
     createMarkupCatalogCard(data.results)
   );
-  console.log(data.total_results);
-  console.log(data.total_pages);
 
   const pagination = createPagination(data.total_results, data.total_pages);
   console.log(pagination);
@@ -163,7 +141,6 @@ Api.getWeekTrending(1).then(data => {
       createMarkupCatalogCard(films)
         .then(data => (catalogRef.innerHTML = data))
         .catch(error => console.log(error));
-      //   gallery.innerHTML = createMarkupCatalogCard(data.results);
     });
   });
 

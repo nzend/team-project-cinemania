@@ -24,9 +24,6 @@ Api.getUpcoming()
     const random = Math.floor(Math.random() * filmUpcomingRelease.length);
     const render = createMarkup(filmUpcomingRelease[random]);
 
-    // const random = Math.floor(Math.random() * (results.length-1));
-    // const render = createMarkup(results[random]);
-
     renderMarkup(render);
 
     const buttonAdd = document.getElementById('add');

@@ -1,6 +1,5 @@
 import { getDayTrending, getVideos } from './api.js';
 import * as basicLightbox from 'basiclightbox';
-// import 'basiclightbox/dist/basiclightbox.min.css';
 import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
 import hall from '../../src/images/library/hero-hall-desktop-1x.jpg';
@@ -52,19 +51,13 @@ getDayTrending(1).then(({ results }) => {
   function onBtnClick(params) {
     getVideos(movieOfDay.id)
       .then(videos => {
-        console.log(videos);
         const infoTr = videos.find(el => el.name === 'Official Trailer');
         const keyTr = infoTr.key;
 
-        console.log(infoTr);
-        console.log(keyTr);
-
         const instance = basicLightbox.create(`
 
-     <iframe class="iframe" src="https://www.youtube.com/embed/${keyTr}" width="560" height="315" frameborder="0"></iframe>
+      <iframe class="iframe" src="https://www.youtube.com/embed/${keyTr}" width="560" height="315" frameborder="0"></iframe>
 `);
-        console.log(instance);
-
         instance.show(() => console.log('lightbox now visible'));
       })
       .catch(error => {
@@ -77,10 +70,7 @@ getDayTrending(1).then(({ results }) => {
 
 `);
         const closeBtn = document.querySelector('.btn-close');
-        console.log(closeBtn);
         instance.show(() => console.log('lightbox now visible'));
-
-        console.log(error);
       });
   }
 

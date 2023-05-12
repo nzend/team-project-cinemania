@@ -114,14 +114,6 @@ header {
   @media (min-width: 768px) {
     margin-right: 120px;
     margin-left: 59px;
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translateY(-50%);
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // margin: 22px, 509px;
   }
   @media (max-width: 767px) {
     position: absolute;
@@ -272,8 +264,6 @@ header {
   top: 2px;
   right: 2px;
   background-repeat: no-repeat;
-  // background-image: url('/src/images/sprite.svg#ball');
-  // background-size: cover;
   cursor: pointer;
   fill: #595959;
   background-image: url('/src/images/header/Group\ 770831.svg');
@@ -295,7 +285,6 @@ header {
 
 .light .switcher__ball {
   transform: translateX(-25px) rotate(-180deg);
-  // transition-duration: 500ms;
 
   @include tablet {
     transform: translateX(-33px) rotate(-180deg);
