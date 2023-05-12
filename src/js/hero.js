@@ -12,7 +12,6 @@ const heroLib = document.querySelector('.herolib');
 
 const LightSwitcher = document.querySelector('.switcher');
 const url = window.location.href;
-console.log(url);
 // const people = hero.style.backgroundImage;
 // hero.style.backgroundImage = `url(${people})`;
 
@@ -76,7 +75,7 @@ getDayTrending(1).then(({ results }) => {
 </div>
 
 `);
-        const closeBtn = document.querySelector('.btn-close');
+
         instance.show(() => console.log('lightbox now visible'));
       });
   }
@@ -108,11 +107,3 @@ function createTrendingMarkup(movieOfDay) {
     `;
   hero.innerHTML = markup;
 }
-
-const notificationBtnClose = document.querySelector(
-  `.notification-trailer-fail-btn-close`
-);
-const notification = document.querySelector(`.notification-trailer-fail`);
-const notificationTrailerFailOverlay = document.querySelector(
-  `.notification-trailer-fail-overlay`
-);
