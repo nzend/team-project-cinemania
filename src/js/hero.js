@@ -1,6 +1,5 @@
 import { getDayTrending, getVideos } from './api.js';
 import * as basicLightbox from 'basiclightbox';
-// import 'basiclightbox/dist/basiclightbox.min.css';
 import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
 // import hall from '../../src/images/library/hero-hall-desktop-1x.jpg';
@@ -8,7 +7,6 @@ import white from '../../src/images/hero/hero-white-desktop-2x.png';
 
 const hero = document.querySelector('.hero');
 const heroLib = document.querySelector('.herolib');
-
 
 // yy
 
@@ -25,7 +23,7 @@ if (url.includes('library')) {
 
   const libMurkup = `
     <div class="hero-wrap__content">
-      <h1 class="title">Create Your Dream Cinema</h1>
+      <h2 class="title">Create Your Dream Cinema</h2>
 
       <p class="description">
         Is a guide to designing a personalized movie theater experience with the right equipment, customized decor, and favorite films. This guide helps you bring the cinema experience into your own home with cozy seating, dim lighting, and movie theater snacks.
@@ -60,19 +58,13 @@ getDayTrending(1).then(({ results }) => {
   function onBtnClick(params) {
     getVideos(movieOfDay.id)
       .then(videos => {
-        console.log(videos);
         const infoTr = videos.find(el => el.name === 'Official Trailer');
         const keyTr = infoTr.key;
 
-        console.log(infoTr);
-        console.log(keyTr);
-
         const instance = basicLightbox.create(`
 
-     <iframe class="iframe" src="https://www.youtube.com/embed/${keyTr}" width="560" height="315" frameborder="0"></iframe>
+      <iframe class="iframe" src="https://www.youtube.com/embed/${keyTr}" width="560" height="315" frameborder="0"></iframe>
 `);
-        console.log(instance);
-
         instance.show(() => console.log('lightbox now visible'));
       })
       .catch(error => {
@@ -85,10 +77,7 @@ getDayTrending(1).then(({ results }) => {
 
 `);
         const closeBtn = document.querySelector('.btn-close');
-        console.log(closeBtn);
         instance.show(() => console.log('lightbox now visible'));
-
-        console.log(error);
       });
   }
 
@@ -98,13 +87,13 @@ getDayTrending(1).then(({ results }) => {
 function createTrendingMarkup(movieOfDay) {
   hero.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path})`;
   const markup = `
-              
            <span class="black-span">
+          
            
             <div class="hero-wrap__content">
-                    <h1 class="title">${
+                    <h2 class="title">${
                       movieOfDay.title || movieOfDay.name
-                    }</h1>
+                    }</h2>
                     <div class="catalog__stars-wrap-hero">
                         <div class="catalog__rating-active"
                         style="width:${

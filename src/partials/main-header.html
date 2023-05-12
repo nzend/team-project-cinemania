@@ -1,21 +1,40 @@
 <header class="header">
-
   <div class="container header__container">
-
     <a href="index.html" class="link header__logo">
-
       <div class="container__logo">
-
         <picture>
           <source
-            srcset="/src/images/logo/logo-3x.png 3x, /src/images/logo/logo-2x.png 2x, /src/images/logo/logo-1x.png 1x"
-            media="(min-width:1200px)" />
-          <source srcset="/src/images/logo/logo-2x.png 2x, /src/images/logo/logo-1x.png 1x" media="(min-width:768px)" />
+            srcset="
+              /src/images/logo/logo-3x.png 3x,
+              /src/images/logo/logo-2x.png 2x,
+              /src/images/logo/logo-1x.png 1x
+            "
+            media="(min-width:1200px)"
+          />
           <source
-            srcset="/src/images/logo/logo-mobile-3x.png 3x, /src/images/logo/logo-mobile-2x.png 2x, /src/images/logo/logo-mobile-1x.png 1x"
-            media="(min-width:320px)" />
-          <img class="logo-img" srcset="/src/images/logo/logo-mobile-2x.png 2x, /src/images/logo/logo-mobile-1x.png 1x"
-            src="/src/images/logo/logo-mobile-1x.png" alt="logo" />
+            srcset="
+              /src/images/logo/logo-2x.png 2x,
+              /src/images/logo/logo-1x.png 1x
+            "
+            media="(min-width:768px)"
+          />
+          <source
+            srcset="
+              /src/images/logo/logo-mobile-3x.png 3x,
+              /src/images/logo/logo-mobile-2x.png 2x,
+              /src/images/logo/logo-mobile-1x.png 1x
+            "
+            media="(min-width:320px)"
+          />
+          <img
+            class="logo-img"
+            srcset="
+              /src/images/logo/logo-mobile-2x.png 2x,
+              /src/images/logo/logo-mobile-1x.png 1x
+            "
+            src="/src/images/logo/logo-mobile-1x.png"
+            alt="logo"
+          />
         </picture>
         <div class="logo-text">Cinemania</div>
       </div>
@@ -23,9 +42,15 @@
 
     <nav class="header__nav">
       <ul class="list header__list">
-        <li class="header__item"><a href="index.html" class="link header__nav-link">HOME</a></li>
-        <li class="header__item"><a href="catalog.html" class="link header__nav-link">CATALOG</a></li>
-        <li class="header__item"><a href="my-library.html" class="link header__nav-link">MY LIBRARY</a></li>
+        <li class="header__item home__current">
+          <a href="index.html" class="link header__nav-link">HOME</a>
+        </li>
+        <li class="header__item">
+          <a href="catalog.html" class="link header__nav-link">CATALOG</a>
+        </li>
+        <li class="header__item">
+          <a href="my-library.html" class="link header__nav-link">MY LIBRARY</a>
+        </li>
       </ul>
 
       <!-- MOBILE MENU NAVIGATION BLOCK -->
@@ -34,24 +59,53 @@
         <a href="index.html" class="link header__logo">
           <picture>
             <source
-              srcset="/src/images/logo/logo-3x.png 3x, /src/images/logo/logo-2x.png 2x, /src/images/logo/logo-1x.png 1x"
-              media="(min-width:1200px)" />
-            <source srcset="/src/images/logo/logo-2x.png 2x, /src/images/logo/logo-1x.png 1x"
-              media="(min-width:768px)" />
+              srcset="
+                /src/images/logo/logo-3x.png 3x,
+                /src/images/logo/logo-2x.png 2x,
+                /src/images/logo/logo-1x.png 1x
+              "
+              media="(min-width:1200px)"
+            />
             <source
-              srcset="/src/images/logo/logo-mobile-3x.png 3x, /src/images/logo/logo-mobile-2x.png 2x, /src/images/logo/logo-mobile-1x.png 1x"
-              media="(min-width:320px)" />
-            <img class="logo-img"
-              srcset="/src/images/logo/logo-mobile-2x.png 2x, /src/images/logo/logo-mobile-1x.png 1x"
-              src="/src/images/logo/logo-mobile-1x.png" alt="logo" />
+              srcset="
+                /src/images/logo/logo-2x.png 2x,
+                /src/images/logo/logo-1x.png 1x
+              "
+              media="(min-width:768px)"
+            />
+            <source
+              srcset="
+                /src/images/logo/logo-mobile-3x.png 3x,
+                /src/images/logo/logo-mobile-2x.png 2x,
+                /src/images/logo/logo-mobile-1x.png 1x
+              "
+              media="(min-width:320px)"
+            />
+            <img
+              class="logo-img"
+              srcset="
+                /src/images/logo/logo-mobile-2x.png 2x,
+                /src/images/logo/logo-mobile-1x.png 1x
+              "
+              src="/src/images/logo/logo-mobile-1x.png"
+              alt="logo"
+            />
           </picture>
         </a>
 
-          <ul class="list mobile-menu__list">
-            <li class="mobile-menu__item"><a href="index.html" class="link mobile-menu__link">HOME</a></li>
-            <li class="mobile-menu__item"><a href="catalog.html" class="link mobile-menu__link">CATALOG</a></li>
-            <li class="mobile-menu__item"><a href="my-library.html" class="link mobile-menu__link">MY LIBRARY</a></li>
-          </ul>
+        <ul class="list mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a href="index.html" class="link mobile-menu__link">HOME</a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="catalog.html" class="link mobile-menu__link">CATALOG</a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="my-library.html" class="link mobile-menu__link"
+              >MY LIBRARY</a
+            >
+          </li>
+        </ul>
       </div>
     </nav>
     <button id="menu">MENU</button>
@@ -64,7 +118,7 @@
         <svg width="14" height="14" class="header__icon-moon">
           <use href="/src/images/sprite.svg#icon-moon"></use>
         </svg>
-      </div> 
+      </div>
 
       <div class="switch-icon">
         <svg width="14" height="14" class="header__icon-sun">
@@ -73,7 +127,6 @@
       </div>
     </div>
   </div>
-<!-- OPASITY OVERLAY -->
-<div id="overlay"></div>
+  <!-- OPASITY OVERLAY -->
+  <div id="overlay"></div>
 </header>
-

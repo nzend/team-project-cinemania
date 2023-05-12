@@ -85,8 +85,6 @@ header {
   }
 }
 
-
-
 .header__nav-link {
   display: block;
   text-align: center;
@@ -114,14 +112,6 @@ header {
   @media (min-width: 768px) {
     margin-right: 120px;
     margin-left: 59px;
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translateY(-50%);
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // margin: 22px, 509px;
   }
   @media (max-width: 767px) {
     position: absolute;
@@ -272,15 +262,13 @@ header {
   top: 2px;
   right: 2px;
   background-repeat: no-repeat;
-  // background-image: url('/src/images/sprite.svg#ball');
-  // background-size: cover;
   cursor: pointer;
   fill: #595959;
   background-image: url('/src/images/header/Group\ 770831.svg');
   background-size: contain;
 
   @include tablet {
-    left: 34px;
+    left: 37px;
     width: 16px;
     height: 16px;
   }
@@ -295,7 +283,6 @@ header {
 
 .light .switcher__ball {
   transform: translateX(-25px) rotate(-180deg);
-  // transition-duration: 500ms;
 
   @include tablet {
     transform: translateX(-33px) rotate(-180deg);
@@ -326,12 +313,36 @@ body.light {
   background-color: #ffffff;
   color: #000000;
   transition: background-color 0.25s ease-out;
+
+  a.library-btn {
+    color: #111;
+    border: 1px solid var(--brend-color);
+  }
+
+  p.info__title {
+    color: #fff;
+  }
+
+  h3.upcoming-content__title {
+    color: #111;
+  }
 }
 
 //* HEADER
 body.light {
   .header__container {
     background-color: #ffffff;
+  }
+
+  .catalog__input {
+    border: 1px solid #595959;
+    border-radius: 8px;
+    background-color: transparent;
+  }
+  .black-span {
+    @include tablet {
+      background-image: url(../images/hero/hero-white-desktop-3x.png);
+    }
   }
 
   a {
