@@ -10,12 +10,14 @@ function onOpenModal(event) {
   document.querySelector('body').classList.add('modal-open');
 
   modal.classList.remove('modal-hide');
+  modal.classList.add('team-modal--open');
 }
 
 function modalClose(event) {
   event.preventDefault();
   document.querySelector('body').classList.remove('modal-open');
 
+  modal.classList.remove('team-modal--open');
 
   modal.classList.add('modal-hide');
 }
