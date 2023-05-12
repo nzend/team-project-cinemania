@@ -93,8 +93,7 @@ function onCatalogClick(event) {
       const buttonAdd = document.querySelector('.weekly__btn--add');
       const buttonRemove = document.querySelector('.weekly__btn--remove');
       //-----------------------------------------------------------------------
-      console.log(buttonAdd);
-      console.log(buttonRemove);
+    
 
       // CHECKED IF LIBRARY
       if (url.includes('library')) {
@@ -139,7 +138,6 @@ function onCatalogClick(event) {
 
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
-        console.log('its working');
 
         //   Робить рендеринг картки, якшо знаходимося на сторінці library
         if (url.includes('library')) {
@@ -165,7 +163,6 @@ function onCatalogClick(event) {
           const libraryFilms = getAddedMovies() || [];
           console.log(libraryFilms.length === 0);
           if (libraryFilms.length === 0) {
-            console.log('container');
             errorContainer.style.display = 'block';
           }
 
