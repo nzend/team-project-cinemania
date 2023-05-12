@@ -44,13 +44,13 @@ function makeCard({
   }" width="395" height="574" class="catalog__img lazyload" />
     </div>
     <div class="catalog__info info" data-id="${id}">
-      <p class="info__title">${name || title}</p>
-		<div class="info__wrap">
-		<ul class="info__list">
-      <li class="info__descr" style="display:${style}">${stringOfGenres}</li>
-      <li class="info__descr">${convertReleaseDate(date)}</li>
+      <p class="info__title" data-id="${id}">${name || title}</p>
+		<div class="info__wrap" data-id="${id}">
+		<ul class="info__list" data-id="${id}">
+      <li class="info__descr" data-id="${id}" style="display:${style}">${stringOfGenres}</li>
+      <li class="info__descr" data-id="${id}" >${convertReleaseDate(date)}</li>
       </ul>
-		<div class="catalog__stars-wrap">
+		<div class="catalog__stars-wrap" data-id="${id}">
 		<div class="catalog__rating-active" style="width:${
       vote_average / 2 / 0.05
     }%"></div>
