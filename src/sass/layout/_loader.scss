@@ -9,7 +9,7 @@
 .spinner:before {
   content: '';
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   top: 57%;
   left: 50%;
   width: 50px;
@@ -17,9 +17,10 @@
   margin-top: -25px;
   margin-left: -25px;
   border-radius: 50%;
-  border: 3px solid #ccc;
-  border-top-color: #666;
+  border: 3px solid #cccccc;
+  border-top-color: var(--brend-color);
   animation: spinner .6s linear infinite;
+  z-index: 5;
 
   @include tablet {
     top: 65%;
