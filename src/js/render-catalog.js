@@ -143,7 +143,6 @@ Api.getWeekTrending(1).then(data => {
   Loader.hide(galleryMovie) // ховаємо спінер
 
   const pagination = createPagination(data.total_results, data.total_pages);
-  console.log(pagination);
   pagination.on('beforeMove', ({ page }) => {
     catalogRef.innerHTML = '';
     Loader.show(galleryMovie); // показуємо спінер

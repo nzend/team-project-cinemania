@@ -2,17 +2,23 @@ import { getDayTrending, getVideos } from './api.js';
 import * as basicLightbox from 'basiclightbox';
 import black from '../../src/images/hero/hero-desktop-1x.png';
 import white from '../../src/images/hero/hero-white-desktop-2x.png';
-import hall from '../../src/images/library/hero-hall-desktop-1x.jpg';
-import people from '../../src/images/hero/hero-people-desktop-1x.jpg';
+// import hall from '../../src/images/library/hero-hall-desktop-1x.jpg';
+// import people from '../../src/images/hero/hero-people-desktop-1x.jpg';
 
 const hero = document.querySelector('.hero');
+const heroLib = document.querySelector('.herolib');
+
+// yy
+
 const LightSwitcher = document.querySelector('.switcher');
 const url = window.location.href;
-hero.style.backgroundImage = `url(${people})`;
+// const people = hero.style.backgroundImage;
+// hero.style.backgroundImage = `url(${people})`;
 
 if (url.includes('library')) {
   hero.innerHTML = '';
-  hero.style.backgroundImage = `url(${hall})`;
+  // hero.style.backgroundImage = `url(${hall})`;
+  hero.classList.remove('hero');
 
   const libMurkup = `
     <div class="hero-wrap__content">
@@ -69,7 +75,7 @@ getDayTrending(1).then(({ results }) => {
 </div>
 
 `);
-        const closeBtn = document.querySelector('.btn-close');
+
         instance.show(() => console.log('lightbox now visible'));
       });
   }
@@ -101,11 +107,3 @@ function createTrendingMarkup(movieOfDay) {
     `;
   hero.innerHTML = markup;
 }
-
-const notificationBtnClose = document.querySelector(
-  `.notification-trailer-fail-btn-close`
-);
-const notification = document.querySelector(`.notification-trailer-fail`);
-const notificationTrailerFailOverlay = document.querySelector(
-  `.notification-trailer-fail-overlay`
-);

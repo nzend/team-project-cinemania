@@ -19,9 +19,6 @@ const navLink = document.querySelectorAll(
 
 navLink[0].classList.add('current__nav-link');
 navLink[3].classList.add('current__nav-link');
-console.log(navLink);
-console.log(navLink[0]);
-console.log(navLink[1]);
 
 if (currentUrl.includes('index')) {
   return;
