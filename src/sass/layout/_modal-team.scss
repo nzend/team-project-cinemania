@@ -28,9 +28,10 @@
 
   bottom: -100%;
   left: 0;
-  transition: bottom 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .team-modal--open {
+
   bottom: 0; /* изменение положения модального окна */
 }
 .team__title {
