@@ -85,8 +85,6 @@ header {
   }
 }
 
-
-
 .header__nav-link {
   display: block;
   text-align: center;
@@ -321,6 +319,17 @@ body.light {
 body.light {
   .header__container {
     background-color: #ffffff;
+  }
+
+  .catalog__input {
+    border: 1px solid #595959;
+    border-radius: 8px;
+    background-color: transparent;
+  }
+  .black-span {
+    @include tablet {
+      background-image: url(../images/hero/hero-white-desktop-3x.png);
+    }
   }
 
   a {
