@@ -9,6 +9,9 @@ import white from '../../src/images/hero/hero-white-desktop-2x.png';
 const hero = document.querySelector('.hero');
 const heroLib = document.querySelector('.herolib');
 
+
+// yy
+
 const LightSwitcher = document.querySelector('.switcher');
 const url = window.location.href;
 console.log(url);
