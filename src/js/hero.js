@@ -85,7 +85,6 @@ getDayTrending(1).then(({ results }) => {
 
 function createTrendingMarkup(movieOfDay) {
 	hero.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path})`;
-	console.log(movieOfDay.overview.length);
   const markup = `
            <span class="black-span">
           
