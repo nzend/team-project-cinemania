@@ -17,8 +17,26 @@ const navLink = document.querySelectorAll(
   '.mobile-menu__link, .header__nav-link'
 );
 
-// if (currentUrl.includes('index')) {
-//   classList.toggle('current__nav-link');
-// } else if (currentUrl.includes('catalog')) {
-//   link.classList.toggle('current__nav-link');
-// }
+navLink[0].classList.add('current__nav-link');
+navLink[3].classList.add('current__nav-link');
+console.log(navLink);
+console.log(navLink[0]);
+console.log(navLink[1]);
+
+if (currentUrl.includes('index')) {
+  return;
+} else if (currentUrl.includes('catalog')) {
+  navLink[0].classList.remove('current__nav-link');
+  navLink[3].classList.remove('current__nav-link');
+  navLink[1].classList.add('current__nav-link');
+  navLink[4].classList.add('current__nav-link');
+  return;
+} else if (currentUrl.includes('library')) {
+  navLink[0].classList.remove('current__nav-link');
+  navLink[3].classList.remove('current__nav-link');
+  navLink[1].classList.remove('current__nav-link');
+  navLink[4].classList.remove('current__nav-link');
+  navLink[2].classList.add('current__nav-link');
+  navLink[5].classList.add('current__nav-link');
+  return;
+}

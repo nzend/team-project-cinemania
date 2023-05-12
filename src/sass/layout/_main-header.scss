@@ -268,7 +268,7 @@ header {
   background-size: contain;
 
   @include tablet {
-    left: 34px;
+    left: 37px;
     width: 16px;
     height: 16px;
   }
@@ -313,6 +313,19 @@ body.light {
   background-color: #ffffff;
   color: #000000;
   transition: background-color 0.25s ease-out;
+
+  a.library-btn {
+    color: #111;
+    border: 1px solid var(--brend-color);
+  }
+
+  p.info__title {
+    color: #fff;
+  }
+
+  h3.upcoming-content__title {
+    color: #111;
+  }
 }
 
 //* HEADER
