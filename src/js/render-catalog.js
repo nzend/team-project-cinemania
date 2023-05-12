@@ -18,6 +18,7 @@ async function onBtnSearch(e) {
     await Api.getBySearch(search, 1).then(data => {
       const pagination = createPagination(data.total_results, data.total_pages);
       pagination.on('beforeMove', ({ page }) => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         catalogRef.innerHTML = '';
 
         Api.getBySearch(search, page).then(res => {
@@ -57,10 +58,10 @@ async function onBtnSearch(e) {
           data.total_pages
         );
         pagination.on('beforeMove', ({ page }) => {
+          document.documentElement.scrollTop = 0;
           catalogRef.innerHTML = '';
           Api.getWeekTrending(page).then(data => {
             const films = data.results;
-
             createMarkupCatalogCard(films)
               .then(data => (catalogRef.innerHTML = data))
               .catch(error => console.log(error));
@@ -80,7 +81,6 @@ async function onBtnSearch(e) {
     }
   }
 }
-
 
 // __________________________________________________
 
@@ -120,8 +120,7 @@ function createPagination(totalItems, visiblePages) {
 const TUI_VISIBLE_PAGES = 3;
 
 const galleryMovie = document.querySelector('.catalog');
-Api.getWeekTrending().then(data => {
-});
+Api.getWeekTrending().then(data => {});
 
 Api.getWeekTrending(1).then(data => {
   const films = data.results;
