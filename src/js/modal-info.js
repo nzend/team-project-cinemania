@@ -93,6 +93,8 @@ function onCatalogClick(event) {
       const buttonAdd = document.querySelector('.weekly__btn--add');
       const buttonRemove = document.querySelector('.weekly__btn--remove');
       //-----------------------------------------------------------------------
+      console.log(buttonAdd);
+      console.log(buttonRemove);
 
       // CHECKED IF LIBRARY
       if (url.includes('library')) {
@@ -114,8 +116,8 @@ function onCatalogClick(event) {
       buttonAdd.addEventListener('click', onClickAdd);
       buttonRemove.addEventListener('click', onClickRemove);
 
-      buttonAdd.classList.add('hidden');
-      buttonRemove.classList.remove('hidden');
+      // buttonAdd.classList.add('hidden');
+      // buttonRemove.classList.remove('hidden'); ------------------- тут завалився проект!
       function onClickAdd() {
         let existing = getAddedMovies();
         existing = existing ? existing : [];
