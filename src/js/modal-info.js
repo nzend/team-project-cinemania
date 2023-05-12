@@ -5,6 +5,7 @@ import sprite from '../images/sprite.svg';
 
 //* INTERACTION WITH CATALOG
 document.querySelector('.catalog').addEventListener('click', onCatalogClick);
+
 const url = window.location.href; // Бере поточну сторінку
 
 function makeGenres(objArray) {
@@ -77,8 +78,7 @@ function createCardMarkup({
 }
 
 function onCatalogClick(event) {
-  event.preventDefault();
-
+	event.preventDefault();
   const filmID = event.target.offsetParent.getAttribute('data-id');
 
   getInfoMovie(filmID)
@@ -93,8 +93,7 @@ function onCatalogClick(event) {
       const buttonAdd = document.querySelector('.weekly__btn--add');
       const buttonRemove = document.querySelector('.weekly__btn--remove');
       //-----------------------------------------------------------------------
-      console.log(buttonAdd);
-      console.log(buttonRemove);
+    
 
       // CHECKED IF LIBRARY
       if (url.includes('library')) {
@@ -139,7 +138,6 @@ function onCatalogClick(event) {
 
         buttonAdd.classList.add('hidden');
         buttonRemove.classList.remove('hidden');
-        console.log('its working');
 
         //   Робить рендеринг картки, якшо знаходимося на сторінці library
         if (url.includes('library')) {
@@ -163,9 +161,7 @@ function onCatalogClick(event) {
 
         if (url.includes('library')) {
           const libraryFilms = getAddedMovies() || [];
-          console.log(libraryFilms.length === 0);
           if (libraryFilms.length === 0) {
-            console.log('container');
             errorContainer.style.display = 'block';
           }
 
@@ -182,7 +178,7 @@ function onCatalogClick(event) {
         .querySelector('.modal__wrap')
         .addEventListener('click', closeOnOverlay);
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error.messeage));
 }
 
 //* MODAL CLOSING
@@ -221,7 +217,6 @@ function closeOnOverlay(event) {
 
 function removeFromPage(id) {
   const el = document.querySelector(`[data-id="${id}"]`);
-  console.log(el.parentElement.className === 'mylib-gallery__list catalog');
 
   if (el.parentElement.className === 'mylib-gallery__list catalog') {
     el.remove();

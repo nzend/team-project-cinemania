@@ -84,7 +84,7 @@ getDayTrending(1).then(({ results }) => {
 });
 
 function createTrendingMarkup(movieOfDay) {
-  hero.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path})`;
+	hero.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path})`;
   const markup = `
            <span class="black-span">
           
@@ -99,7 +99,9 @@ function createTrendingMarkup(movieOfDay) {
                           movieOfDay.vote_average / 2 / 0.05
                         }%"></div>
                     </div>
-                    <p class="description">${movieOfDay.overview}</p>
+                    <p class="description">${
+                      movieOfDay.overview.slice(0, 315) + '...'
+                    }</p>
                     <button class="watch-trailer__btn" id="trailer-btn" data-btn="trailer-fail" >Watch trailer</button>
                 </div>
                 </span>
