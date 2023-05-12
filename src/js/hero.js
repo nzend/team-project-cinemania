@@ -16,7 +16,7 @@ if (url.includes('library')) {
 
   const libMurkup = `
     <div class="hero-wrap__content">
-      <h1 class="title">Create Your Dream Cinema</h1>
+      <h2 class="title">Create Your Dream Cinema</h2>
 
       <p class="description">
         Is a guide to designing a personalized movie theater experience with the right equipment, customized decor, and favorite films. This guide helps you bring the cinema experience into your own home with cozy seating, dim lighting, and movie theater snacks.
@@ -80,13 +80,13 @@ getDayTrending(1).then(({ results }) => {
 function createTrendingMarkup(movieOfDay) {
   hero.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path})`;
   const markup = `
-              
            <span class="black-span">
+          
            
             <div class="hero-wrap__content">
-                    <h1 class="title">${
+                    <h2 class="title">${
                       movieOfDay.title || movieOfDay.name
-                    }</h1>
+                    }</h2>
                     <div class="catalog__stars-wrap-hero">
                         <div class="catalog__rating-active"
                         style="width:${

@@ -4,7 +4,7 @@ img {
 }
 
 .hero {
-  padding: 40px 0px 28px;
+  padding: 0px 0px 28px;
   min-width: 320px;
   height: 380px;
   position: relative;
@@ -55,7 +55,7 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 3;
     background-image: url(../images/hero/hero-desktop-3x.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -81,6 +81,7 @@ img {
 }
 
 .title {
+  padding-top: 40px;
   width: 100%;
   font-weight: 700;
   font-size: 32px;
