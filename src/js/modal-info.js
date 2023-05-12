@@ -79,8 +79,6 @@ function createCardMarkup({
 
 function onCatalogClick(event) {
 	event.preventDefault();
-	console.dir(event.target);
-console.log(event.target.offsetParent);
   const filmID = event.target.offsetParent.getAttribute('data-id');
 
   getInfoMovie(filmID)
@@ -163,7 +161,6 @@ console.log(event.target.offsetParent);
 
         if (url.includes('library')) {
           const libraryFilms = getAddedMovies() || [];
-          console.log(libraryFilms.length === 0);
           if (libraryFilms.length === 0) {
             errorContainer.style.display = 'block';
           }
@@ -181,7 +178,7 @@ console.log(event.target.offsetParent);
         .querySelector('.modal__wrap')
         .addEventListener('click', closeOnOverlay);
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error.messeage));
 }
 
 //* MODAL CLOSING
@@ -220,7 +217,6 @@ function closeOnOverlay(event) {
 
 function removeFromPage(id) {
   const el = document.querySelector(`[data-id="${id}"]`);
-  console.log(el.parentElement.className === 'mylib-gallery__list catalog');
 
   if (el.parentElement.className === 'mylib-gallery__list catalog') {
     el.remove();

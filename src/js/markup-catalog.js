@@ -43,7 +43,7 @@ function makeCard({
     name || title
   }" width="395" height="574" class="catalog__img lazyload" />
     </div>
-    <div class="catalog__info info">
+    <div class="catalog__info info" data-id="${id}">
       <p class="info__title">${name || title}</p>
 		<div class="info__wrap">
 		<ul class="info__list">
